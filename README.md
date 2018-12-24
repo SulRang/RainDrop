@@ -5,18 +5,18 @@
 members
 -------
 
-### Programming Team
+#### Programming Team
 
-#### Ryu JiHoon
-#### Baek MinSu
-#### Lee YunJoo
-#### Jang HyunSoo
+##### Ryu JiHoon
+##### Baek MinSu
+##### Lee YunJoo
+##### Jang HyunSoo
 
 
-### Art Team
+#### Art Team
 
-#### Ahn JeongHee
-#### Kang YeonJu
+##### Ahn JeongHee
+##### Kang YeonJu
 
 
 
