@@ -1,13 +1,14 @@
 30 Turn Hero
 ============
 
+Unity Version 
+-------------
 
-members
--------
+##### "Unity 2018.3.0f2"
+
 
 ##### Programming Team
 
-- Ryu JiHoon
 - Baek MinSu
 - Lee YunJoo
 - Jang HyunSoo

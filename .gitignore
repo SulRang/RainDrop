@@ -12,7 +12,7 @@
  
 [Ll]ibrary/
  
- 
+[Ll]og/
  
 # ===================================== #
  
@@ -41,7 +41,8 @@ ExportedObj/
 *.unityproj
  
 *.booproj
- 
+
+*.meta
  
  
 # ============ #
@@ -74,16 +75,8 @@ ProjectVersion.txt
  
 # ============ #
 
-#  Aplication  #
+#   Dropbox    #
 
 # ============ #
 
-*.apk
-
-# ============= #
-
-#  Collaborate  #
-
-# ============= #
-
-.collabignore
+Assets/Dropbox/
