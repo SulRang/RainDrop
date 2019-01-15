@@ -16,8 +16,10 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.name == "Arrow(Clone)")
+        if(col.gameObject.tag == "Arrow")
             SceneManager.LoadScene("ResultScene");
+        if (col.gameObject.tag == "Boom")
+            ArrowManager.BoomCount++;
     }
 
     void Awake()

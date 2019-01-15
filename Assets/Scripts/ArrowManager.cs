@@ -8,10 +8,12 @@ public class ArrowManager : MonoBehaviour
     [SerializeField] [Range(0f, 100)] int speed = 10;
     [SerializeField] [Range(0f, 10f)] float radius = 3;
 
-    private Transform ArrowHolder = null;
-    public float count = 0f;
+    public int count = 0;
+    public GameObject Boom;
     public GameObject[] ArrowType;
-    public GameObject ArrowBoard;
+    public static int BoomCount;
+    public Transform ArrowHolder = null;
+    public GameObject ArrowBoard = null;
 
     public void MakeArrowForBoard()
     {
@@ -20,19 +22,17 @@ public class ArrowManager : MonoBehaviour
         float x = radius * Mathf.Cos(random);
         float y = radius * Mathf.Sin(random);
 
-        GameObject instance = Instantiate(ArrowType[Random.Range(0, ArrowType.Length - 1)], new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(ArrowType[Random.Range(0,ArrowType.Length)], new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
         instance.transform.SetParent(ArrowHolder);
     }
 
 
-    private void Update()
+    void Update()
     {
-        count++;
         
-        if (!(StartButton.BMainActive) && count != 2)
+        if (!(PauseButton.BPauseActive) && !(StartButton.BMainActive) && Random.Range(0,6) == 5)
         {
             MakeArrowForBoard();
-            count = 0;
         }
     }
 
