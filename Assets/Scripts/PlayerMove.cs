@@ -9,7 +9,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] [Range(0f, 10f)] float speed = 3;
     [SerializeField] [Range(0f, 10f)] float radius = 3;
 
+    public GameObject ArrowBoard;
     public static float Score;
+    public static int BoomCount = 1;
     private float runningTime = 0;
     private Vector3 newPos = new Vector3();
 
@@ -18,8 +20,11 @@ public class PlayerMove : MonoBehaviour
     {
         if(col.gameObject.tag == "Arrow")
             SceneManager.LoadScene("ResultScene");
-        if (col.gameObject.tag == "Boom")
-            ArrowManager.BoomCount++;
+        if (col.gameObject.tag == "Item")
+        {
+            BoomCount++;
+            Destroy(col.gameObject);
+        }
     }
 
     void Awake()
@@ -56,6 +61,14 @@ public class PlayerMove : MonoBehaviour
             float y = radius * Mathf.Sin(runningTime);
             newPos = new Vector3(x, y, 0f);
             
+        }
+        if(Input.GetKey(KeyCode.Space) == true && BoomCount > 0)
+        {
+            BoomCount--;
+            foreach(Transform child in ArrowBoard.transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
         this.transform.position = newPos;
     }

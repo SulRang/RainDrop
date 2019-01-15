@@ -569,9 +569,9 @@ GameObject:
   m_Component:
   - component: {fileID: 267586903}
   - component: {fileID: 267586905}
-  - component: {fileID: 267586906}
   - component: {fileID: 267586907}
   - component: {fileID: 267586904}
+  - component: {fileID: 267586906}
   m_Layer: 0
   m_Name: Player_Game
   m_TagString: Untagged
@@ -603,7 +603,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -681,6 +681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   radius: 1.5
+  ArrowBoard: {fileID: 1624776435}
 --- !u!50 &267586907
 Rigidbody2D:
   serializedVersion: 4
@@ -2122,8 +2123,8 @@ MonoBehaviour:
   speed: 20
   radius: 9
   count: 0
-  Boom: {fileID: 0}
-  ArrowType:
+  Boom: {fileID: 1372633420742209349, guid: 0758529911865bf4299a55d1f0bcacb5, type: 3}
+  Arrows:
   - {fileID: 2975562346421056502, guid: 5e57a470c706c294299da27dcf937a4c, type: 3}
   ArrowHolder: {fileID: 1624776436}
   ArrowBoard: {fileID: 1624776435}
@@ -2143,7 +2144,7 @@ MonoBehaviour:
   radius: 3
   count: 0
   Boom: {fileID: 0}
-  ArrowType: []
+  Arrows: []
   ArrowHolder: {fileID: 0}
   ArrowBoard: {fileID: 0}
 --- !u!4 &1211388174
