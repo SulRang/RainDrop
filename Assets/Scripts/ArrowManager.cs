@@ -12,12 +12,10 @@ public class ArrowManager : MonoBehaviour
     public static int Level = 1;
     public GameObject Boom;
     public GameObject[] Arrows;
-    public Transform ArrowHolder = null;
-    public GameObject ArrowBoard = null;
+    private Transform ArrowHolder = null;
 
     public void MakeArrowForBoard()
     {
-        ArrowHolder = ArrowBoard.transform;
         float random = Random.Range(0, 100);
         float x = radius * Mathf.Cos(random);
         float y = radius * Mathf.Sin(random);
@@ -28,11 +26,16 @@ public class ArrowManager : MonoBehaviour
         instance.transform.SetParent(ArrowHolder);
     }
 
+    private void Awake()
+    {
+        Boom = Resources.Load("Prefabs/Boom") as GameObject;
+        ArrowHolder = GameObject.Find("Canvas/ingame/ArrowParent").transform;
+    }
 
-    void Update()
+    private void Update()
     {
         
-        if (!(PauseButton.BPauseActive) && !(StartButton.BMainActive) && Random.Range(0,6) == 5)
+        if (!(PauseButton.BPauseActive) && !(StartButton.BMainActive) && Random.Range(0,speed) == 0)
         {
             MakeArrowForBoard();
         }

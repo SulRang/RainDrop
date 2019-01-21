@@ -7,7 +7,7 @@ public class ArrowMove : MonoBehaviour
     public  Vector3 target = new Vector3(0f,0f,0f);
     private Transform Arrow;
     public float speed;
-    
+
     void Start()
     {
         
