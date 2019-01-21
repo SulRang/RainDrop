@@ -2069,10 +2069,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a59333b72cc4fd419d02949d8c291f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 5
   radius: 9
   count: 0
-  Boom: {fileID: 0}
+  Boom: {fileID: 1372633420742209349, guid: 0758529911865bf4299a55d1f0bcacb5, type: 3}
   Arrows:
   - {fileID: 2975562346421056502, guid: 5e57a470c706c294299da27dcf937a4c, type: 3}
 --- !u!4 &1211388174

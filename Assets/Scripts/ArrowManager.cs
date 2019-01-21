@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class ArrowManager : MonoBehaviour
 {
-    [SerializeField] [Range(0f, 100)] private int speed = 10;
+    [SerializeField] [Range(0f, 100)] private int speed = 5;
     [SerializeField] [Range(0f, 10f)] private float radius = 3;
 
     public int count = 0;
@@ -20,7 +20,7 @@ public class ArrowManager : MonoBehaviour
         float x = radius * Mathf.Cos(random);
         float y = radius * Mathf.Sin(random);
 
-        GameObject ArrowType = (Random.Range(0, 50) == 5) ? Boom : Arrows[Random.Range(0, Arrows.Length)]; 
+        GameObject ArrowType = (Random.Range(0, 25) == 5) ? Boom : Arrows[Random.Range(0, Arrows.Length)]; 
             
         GameObject instance = Instantiate(ArrowType, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
         instance.transform.SetParent(ArrowHolder);
@@ -28,7 +28,6 @@ public class ArrowManager : MonoBehaviour
 
     private void Awake()
     {
-        Boom = Resources.Load("Prefabs/Boom") as GameObject;
         ArrowHolder = GameObject.Find("Canvas/ingame/ArrowParent").transform;
     }
 
