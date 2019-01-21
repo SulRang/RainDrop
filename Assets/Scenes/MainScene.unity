@@ -617,7 +617,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1}
+  m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
 --- !u!212 &267586905
 SpriteRenderer:
@@ -1546,6 +1546,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5804892556297928845, guid: 87dfcddf56222174ca42d2302be1c9ce,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804892556297928845, guid: 87dfcddf56222174ca42d2302be1c9ce,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87dfcddf56222174ca42d2302be1c9ce, type: 3}
 --- !u!1 &936738971
@@ -2069,7 +2079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a59333b72cc4fd419d02949d8c291f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   radius: 9
   count: 0
   Boom: {fileID: 1372633420742209349, guid: 0758529911865bf4299a55d1f0bcacb5, type: 3}

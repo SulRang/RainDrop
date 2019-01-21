@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2975562346421056488}
   - component: {fileID: 2975562346421056489}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: Arrow(Normal)
   m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &2975562346421056488
 Rigidbody2D:
