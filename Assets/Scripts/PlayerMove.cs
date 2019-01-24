@@ -6,11 +6,11 @@ using UnityEngine.Networking;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] [Range(0f, 10f)] float speed = 3;
-    [SerializeField] [Range(0f, 10f)] float radius = 3;
+    [SerializeField] [Range(0f, 10f)] public float speed = 3f;
+    [SerializeField] [Range(0f, 10f)] public float radius = 3f;
 
     public GameObject ArrowBoard;
-    public static float Score;
+
     public static int BoomCount = 1;
     private float runningTime = 0;
     private Vector3 newPos = new Vector3();
@@ -28,17 +28,11 @@ public class PlayerMove : MonoBehaviour
 
     void Awake()
     {
-        runningTime = 0;
-        Score = 0;
+        runningTime = 0;       
     }
 
     void Update()
     {
-        // 나중에 BMainActive 없에고 다른걸로 바꾸기
-
-        if(!StartButton.BMainActive)
-            Score += Time.deltaTime;
-
         if(StartButton.BMainActive)
         {
             runningTime += Time.deltaTime * speed;
