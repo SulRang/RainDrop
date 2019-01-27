@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
+        ScoreManager.CScore = 0f;
+        ScoreManager.BScore = 0f;
+        UIManager.BMainActive = true;
+        UIManager.BPauseActive = false;
     }
 
     void Update()

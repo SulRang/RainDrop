@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public static bool BMainActive = true;
     public static bool BPauseActive = false;
 
-    private float UI_duration = 0.25f;
+    private float UI_duration = 0.5f;
 
     //  Main UI
     public RectTransform title, start, option;
@@ -25,12 +25,12 @@ public class UIManager : MonoBehaviour
     public RectTransform ps_panel;
 
     //  Result UI
-    public RectTransform rs_panel;
+    public RectTransform rs_panel, retry, home;
 
     void Start()
     {
-      //BMainActive = true;
-      //BPauseActive = false;
+        //BMainActive = true;
+        //BPauseActive = false;
     }
 
 
@@ -72,11 +72,39 @@ public class UIManager : MonoBehaviour
         BPauseActive = true;        
     }
 
+    public void HomeBnt()
+    {
+        ArrowManager arrowManager = FindObjectOfType<ArrowManager>();
+        BMainActive = true;
+        BPauseActive = false;
+        arrowManager.speed = 13;
+        ScoreManager.CScore = 0f;
+        SceneManager.LoadScene("MainScene");
+    }
+       
     public void Result()
     {
         CloseIngame();
         OpenResult();
     }
+
+    public void RetryBnt()
+    {
+        GameObject arrowBoard = GameObject.Find("ArrowParent");
+        ArrowManager arrowManager = FindObjectOfType<ArrowManager>();
+        foreach (Transform child in arrowBoard.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        ScoreManager.CScore = 0f;
+        arrowManager.speed = 13;
+        BPauseActive = true;
+
+        CloseResult();
+        OpenIngame();
+
+    }
+
 
     void CloseMain()
     {
@@ -129,10 +157,15 @@ public class UIManager : MonoBehaviour
     void OpenResult()
     {
         rs_panel.DOAnchorPos(new Vector2(0, 0), UI_duration);
+        retry.DOAnchorPos(new Vector2(-275, -400), UI_duration);
+        home.DOAnchorPos(new Vector2(275, -400), UI_duration);
     }
 
     void CloseResult()
     {
         rs_panel.DOAnchorPos(new Vector2(0, 800), UI_duration);
+        retry.DOAnchorPos(new Vector2(-275, -600), UI_duration);
+        home.DOAnchorPos(new Vector2(275, -600), UI_duration);
     }
+   
 }

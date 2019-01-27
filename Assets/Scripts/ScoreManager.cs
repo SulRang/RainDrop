@@ -11,10 +11,8 @@ public class ScoreManager : MonoBehaviour
     public static float CScore;
     public static float BScore;
     
-    void Awake()
-    {
-        CScore = 0f;
-        BScore = 0f;
+    void Start()
+    {           
     }
     
     void Update()
