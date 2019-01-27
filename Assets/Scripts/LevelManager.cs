@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
     
     void Update()
     {
-        if (ScoreManager.Score >= levelSection * gameLevel)
+        if (ScoreManager.CScore >= levelSection * gameLevel)
         {
             arrowManager.speed--;
             gameLevel++;

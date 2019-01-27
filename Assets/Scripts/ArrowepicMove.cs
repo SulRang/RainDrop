@@ -23,7 +23,7 @@ public class ArrowepicMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseButton.BPauseActive)
+        if (!UIManager.BPauseActive)
         {
             float step = speed * Time.deltaTime;
             radius -= speed * Time.deltaTime;

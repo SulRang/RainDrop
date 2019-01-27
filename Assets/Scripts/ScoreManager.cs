@@ -7,22 +7,25 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public Text scoreLabel;
-    public static float Score;
-
-    // Start is called before the first frame update
+    public Text currentScore, BestScore;
+    public static float CScore;
+    public static float BScore;
+    
     void Awake()
     {
-        Score = 0f;
-        scoreLabel = GetComponent<Text>();
+        CScore = 0f;
+        BScore = 0f;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        if (!StartButton.BMainActive)
-            Score += Time.deltaTime;
+        if (!UIManager.BMainActive && UIManager.BPauseActive)
+            CScore += Time.deltaTime;
 
-        if (!(StartButton.BMainActive))
-            scoreLabel.text = "Score : " + Score.ToString();
+        if (!(UIManager.BMainActive))
+            scoreLabel.text = CScore.ToString("N2");
+
+        currentScore.text = CScore.ToString("N2");
+        BestScore.text = PlayerPrefs.GetFloat("BEST", 0).ToString("N2");
     }
 }

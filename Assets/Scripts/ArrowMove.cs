@@ -16,7 +16,7 @@ public class ArrowMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseButton.BPauseActive)
+        if (UIManager.BPauseActive)
         {
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, target, step);

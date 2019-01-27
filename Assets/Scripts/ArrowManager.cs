@@ -38,7 +38,7 @@ public class ArrowManager : MonoBehaviour
 
     private void Update()
     {
-        if (!(StartButton.BMainActive) && !(PauseButton.BPauseActive) && Random.Range(0, (int)speed) == 0)
+        if (!(UIManager.BMainActive) && (UIManager.BPauseActive) && Random.Range(0, (int)speed) == 0)
             MakeArrow();   
     }
 }
