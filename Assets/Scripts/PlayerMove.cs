@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] [Range(0f, 10f)] public float speed;
-    [SerializeField] [Range(0f, 10f)] public float radius;
+    public float speed;
+    public float radius;
 
     public GameObject ArrowBoard;
     private UIManager resultFnc;
@@ -17,10 +17,8 @@ public class PlayerMove : MonoBehaviour
     private float runningTime = 0f;
     private Vector3 newPos = new Vector3();
 
-    private float x = 0f;
-    private float y = 1f;
-
-
+    public static float x = 0f;
+    public static float y = 1f;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -32,7 +30,7 @@ public class PlayerMove : MonoBehaviour
             }
             UIManager.BPauseActive = false;
             resultFnc.Result();
-           
+
         }
         if (col.gameObject.tag == "Item")
         {
@@ -51,6 +49,8 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        
+
         if (UIManager.BMainActive)
         {
             runningTime += Time.deltaTime * speed;
@@ -59,7 +59,6 @@ public class PlayerMove : MonoBehaviour
             newPos = new Vector3(x, y, 0f);
         }
 
-        
         if (Input.GetKey(KeyCode.LeftArrow) == true)
         {
             runningTime += Time.deltaTime * speed;
@@ -67,22 +66,24 @@ public class PlayerMove : MonoBehaviour
             y = radius * Mathf.Sin(runningTime);
             newPos = new Vector3(x, y, 0f);
         }
-        else if(Input.GetKey(KeyCode.RightArrow) == true)
+        else if (Input.GetKey(KeyCode.RightArrow) == true)
         {
             runningTime -= Time.deltaTime * speed;
             x = radius * Mathf.Cos(runningTime);
             y = radius * Mathf.Sin(runningTime);
-            newPos = new Vector3(x, y, 0f);            
+            newPos = new Vector3(x, y, 0f);
         }
-        if(Input.GetKey(KeyCode.Space) == true && BoomCount > 0)
+
+        if (Input.GetKey(KeyCode.Space) == true && BoomCount > 0)
         {
             BoomCount--;
-            foreach(Transform child in ArrowBoard.transform)
+            foreach (Transform child in ArrowBoard.transform)
             {
                 Destroy(child.gameObject);
             }
         }
         this.transform.position = newPos;
+
     }
 }
 

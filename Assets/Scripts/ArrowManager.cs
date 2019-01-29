@@ -22,7 +22,7 @@ public class ArrowManager : MonoBehaviour
         instance.transform.SetParent(ArrowHolder);
     }
 
-    private void MakeBoom()
+    public void MakeBoom()
     {
         float random = Random.Range(0, 100);
         float x = radius * Mathf.Cos(random);
@@ -39,6 +39,10 @@ public class ArrowManager : MonoBehaviour
     private void Update()
     {
         if (!(UIManager.BMainActive) && (UIManager.BPauseActive) && Random.Range(0, (int)speed) == 0)
-            MakeArrow();   
+            MakeArrow();
+
+        //if (ScoreManager.CScore >= levelSection * gameLevel)
+        //    MakeBoom();
+
     }
 }

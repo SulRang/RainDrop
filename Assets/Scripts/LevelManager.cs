@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    private ArrowManager arrowManager;
+    public ArrowManager arrowManager;
    
-    [SerializeField] [Range(0f, 10f)] private float levelSection;
+    [SerializeField] [Range(0f, 10f)] public float levelSection;
     [SerializeField] [Range(0f, 10f)] private float gameLevel;
 
 
     void Start()
     {
-        arrowManager = FindObjectOfType<ArrowManager>();
+        //arrowManager = FindObjectOfType<ArrowManager>();
 
         levelSection = 10f;
         gameLevel = 1f;
@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
         {
             arrowManager.speed--;
             gameLevel++;
+            arrowManager.MakeBoom();
         }
     }
 }

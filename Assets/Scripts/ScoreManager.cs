@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public Text scoreLabel;
+    public Text levelLabel;
     public Text currentScore, BestScore;
     public static float CScore;
     public static float BScore;
+    public LevelManager mlevelManager = null;
     
     void Start()
-    {           
+    {
+        this.mlevelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
     }
     
     void Update()

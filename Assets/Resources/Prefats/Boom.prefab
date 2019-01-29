@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2275974541177373720}
   - component: {fileID: 3123342405647598711}
   - component: {fileID: 1745487926493362718}
-  - component: {fileID: 240364977746409229}
+  - component: {fileID: 8343904122974186191}
   m_Layer: 0
   m_Name: Boom
   m_TagString: Item
@@ -107,7 +107,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &240364977746409229
+--- !u!114 &8343904122974186191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1372633420742209349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cc0d0cbae2647145bbbae6ef4c60826, type: 3}
+  m_Script: {fileID: 11500000, guid: ef33101fd30696d41afdc2ab0da22d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
