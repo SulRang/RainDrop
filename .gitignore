@@ -24,7 +24,6 @@ ExportedObj/
 
 .vs/
 
-Assets/Demigiant/
 
 *.svd
  
@@ -74,8 +73,10 @@ ProjectVersion.txt
  
 # ============ #
 
-#   Dropbox    #
+#    Assets    #
 
 # ============ #
 
 Assets/Dropbox/
+
+Assets/Demigiant/
