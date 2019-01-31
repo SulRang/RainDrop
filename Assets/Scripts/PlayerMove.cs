@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     public float speed;
     public float radius;
 
     public GameObject ArrowBoard;
     private UIManager resultFnc;
-
 
     public static int BoomCount = 1;
     private float runningTime = 0f;
