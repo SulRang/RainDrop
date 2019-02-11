@@ -11,8 +11,10 @@ public class ArrowMove : MonoBehaviour
 
     void Start()
     {
-        if(this.tag.Equals("Arrow"))
-        speed = Random.Range(3,6);
+        if (this.tag.Equals("Arrow"))
+            speed = Random.Range(2, 5);
+        else
+            speed = 2;
     }
 
     // Update is called once per frame

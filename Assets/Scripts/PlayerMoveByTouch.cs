@@ -51,6 +51,15 @@ public class PlayerMoveByTouch : MonoBehaviour
     void Update()
     {
 
+        if (UIManager.BMainActive)
+        {
+            runningTime += Time.deltaTime * speed;
+            x = radius * Mathf.Cos(runningTime);
+            y = radius * Mathf.Sin(runningTime);
+            newPos = new Vector3(x, y, 0f);
+            this.transform.position = newPos;
+        }
+
         if (!UIManager.BPauseActive)
             return;
 
