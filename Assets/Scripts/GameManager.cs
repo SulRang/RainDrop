@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private GameManager _instance = null;
+
     private LevelManager levelManager;
+
+    private void GameInit()
+    {
+        
+    }
 
     void Start()
     {
+        DontDestroyOnLoad(this);
+
+        if (_instance != this)
+            Destroy(gameObject);
+
         levelManager = FindObjectOfType<LevelManager>();
         ScoreManager.CScore = 0f;
         ScoreManager.BScore = 0f;

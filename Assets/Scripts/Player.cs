@@ -35,7 +35,8 @@ public class Player : MonoBehaviour
             BoomCount--;
             foreach (Transform child in ArrowBoard.transform)
             {
-                Destroy(child.gameObject);
+                if(child.tag == "Arrow")
+                    Destroy(child.gameObject);
             }
         }
     }

@@ -12,6 +12,11 @@ public class ArrowManager : MonoBehaviour
     public GameObject[] Arrows;
     public Transform ArrowHolder = null;
 
+    public void DestoryArrow()
+    {
+        
+    }
+
     private void MakeArrow()
     {
         float random = Random.Range(0, 100);
