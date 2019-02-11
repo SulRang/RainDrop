@@ -5,44 +5,35 @@ using Random = UnityEngine.Random;
 
 public class ArrowManager : MonoBehaviour
 {
-    [SerializeField] [Range(0f, 100f)] public float speed = 5f;
-    [SerializeField] [Range(0f, 100f)] private float radius = 3f;
+    [SerializeField] [Range(0f, 100)] int speed = 10;
+    [SerializeField] [Range(0f, 10f)] float radius = 3;
 
-    public GameObject Boom;
-    public GameObject[] Arrows;
-    public Transform ArrowHolder = null;
+    private Transform ArrowHolder = null;
+    public static int count = 0;
+    public GameObject[] ArrowType;
+    public GameObject ArrowBoard;
 
-    private void MakeArrow()
+    public void MakeArrowForBoard()
     {
-        float random = Random.Range(0, 100);
-        float x = radius * Mathf.Cos(random);
-        float y = radius * Mathf.Sin(random);
-            
-        GameObject instance = Instantiate(Arrows[Random.Range(0, Arrows.Length)], new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
-        instance.transform.SetParent(ArrowHolder);
-    }
-
-    public void MakeBoom()
-    {
+        ArrowHolder = ArrowBoard.transform;
         float random = Random.Range(0, 100);
         float x = radius * Mathf.Cos(random);
         float y = radius * Mathf.Sin(random);
 
-        GameObject instance = Instantiate(Boom, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(ArrowType[Random.Range(0, ArrowType.Length - 1)], new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
         instance.transform.SetParent(ArrowHolder);
     }
 
-    private void Awake()
-    {
-    }
 
     private void Update()
     {
-        if (!(UIManager.BMainActive) && (UIManager.BPauseActive) && Random.Range(0, (int)speed) == 0)
-            MakeArrow();
-
-        //if (ScoreManager.CScore >= levelSection * gameLevel)
-        //    MakeBoom();
-
+        count++;
+        
+        if (!(StartButton.BMainActive) && count != 2)
+        {
+            MakeArrowForBoard();
+            count = 0;
+        }
     }
+
 }
