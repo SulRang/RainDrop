@@ -24,6 +24,7 @@ ExportedObj/
 
 .vs/
 
+
 *.svd
  
 *.userprefs
@@ -40,9 +41,7 @@ ExportedObj/
  
 *.unityproj
  
-*.booproj
- 
-*.meta
+*.booproj 
  
 # ============ #
  
@@ -74,8 +73,10 @@ ProjectVersion.txt
  
 # ============ #
 
-#   Dropbox    #
+#    Assets    #
 
 # ============ #
 
 Assets/Dropbox/
+
+Assets/Demigiant/

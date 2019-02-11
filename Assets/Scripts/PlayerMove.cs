@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class PlayerMove : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField] [Range(0f, 10f)] float speed = 3;
     [SerializeField] [Range(0f, 10f)] float radius = 3;
@@ -53,3 +53,5 @@ public class PlayerMove : MonoBehaviour
         this.transform.position = newPos;
     }
 }
+
+
