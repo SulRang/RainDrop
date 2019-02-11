@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ArrowMove : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class ArrowMove : MonoBehaviour
 
     void Start()
     {
-        
+        if(this.tag.Equals("Arrow"))
+        speed = Random.Range(3,6);
     }
 
     // Update is called once per frame

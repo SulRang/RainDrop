@@ -11,32 +11,12 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject ArrowBoard;
     private UIManager resultFnc;
-
-    public static int BoomCount = 1;
+    
     private float runningTime = 0f;
     private Vector3 newPos = new Vector3();
 
     public static float x = 0f;
     public static float y = 1f;
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "Arrow")
-        {
-            if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
-            {
-                PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
-            }
-            UIManager.BPauseActive = false;
-            resultFnc.Result();
-
-        }
-        if (col.gameObject.tag == "Item")
-        {
-            BoomCount++;
-            Destroy(col.gameObject);
-        }
-    }
 
     void Awake()
     {
@@ -73,14 +53,7 @@ public class PlayerManager : MonoBehaviour
             newPos = new Vector3(x, y, 0f);
         }
 
-        if (Input.GetKey(KeyCode.Space) == true && BoomCount > 0)
-        {
-            BoomCount--;
-            foreach (Transform child in ArrowBoard.transform)
-            {
-                Destroy(child.gameObject);
-            }
-        }
+        
         this.transform.position = newPos;
 
     }

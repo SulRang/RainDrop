@@ -50,7 +50,10 @@ public class PlayerMoveByTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (!UIManager.BPauseActive)
+            return;
+
         if(bRight)
         {
             runningTime += Time.deltaTime * speed;
