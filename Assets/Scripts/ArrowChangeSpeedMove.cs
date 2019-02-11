@@ -27,9 +27,9 @@ public class ArrowChangeSpeedMove : MonoBehaviour
 
         Legth = Mathf.Sqrt(x * x + y * y);
 
-        if(Legth <= 200)
+        if(Legth <= 300)
         {
-            speed = 20;
+            speed = 100;
         }
 
         if (UIManager.BPauseActive)
