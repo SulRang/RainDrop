@@ -21,15 +21,10 @@ public class ArrowChangeSpeedMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float Legth = 0;
-        float x = this.transform.position.x;
-        float y = this.transform.position.y;
 
-        Legth = Mathf.Sqrt(x * x + y * y);
-
-        if(Legth <= 300)
+        if(Mathf.Abs(this.transform.position.x) <= 5f && Mathf.Abs(this.transform.position.y) <= 3f)
         {
-            speed = 100;
+            speed = 7.5f;
         }
 
         if (UIManager.BPauseActive)

@@ -11,16 +11,16 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Arrow")
-        {
-            if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
-            {
-                PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
-            }
-            UIManager.BPauseActive = false;
-            resultFnc.Result();
+        //if (col.gameObject.tag == "Arrow")
+        //{
+        //    if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
+        //    {
+        //        PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
+        //    }
+        //    UIManager.BPauseActive = false;
+        //    resultFnc.Result();
 
-        }
+        //}
         if (col.gameObject.tag.Equals("Item"))
         {
             BoomCount++;

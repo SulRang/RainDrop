@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7496996879613332908}
   - component: {fileID: 5138336569879758474}
   - component: {fileID: 6761391049993573037}
-  - component: {fileID: 1540316960582613869}
+  - component: {fileID: 4418096888239652845}
   m_Layer: 0
   m_Name: Arrow(Epic)
   m_TagString: Arrow
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1540316960582613869
+--- !u!114 &4418096888239652845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7654602156162330594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef33101fd30696d41afdc2ab0da22d61, type: 3}
+  m_Script: {fileID: 11500000, guid: ad2288a3a43e8c848b20ce49df73f0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
