@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6761391049993573037}
   - component: {fileID: 4418096888239652845}
   m_Layer: 0
-  m_Name: Arrow(Epic)
+  m_Name: Arrow(ChanageSpeed)
   m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

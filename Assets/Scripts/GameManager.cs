@@ -8,10 +8,6 @@ public class GameManager : MonoBehaviour
 
     private LevelManager levelManager;
 
-    private void GameInit()
-    {
-        
-    }
 
     void Start()
     {
@@ -35,9 +31,9 @@ public class GameManager : MonoBehaviour
        
     }
 
-    private void Game_Init()
+    private void GameInit()
     {
-
+        
     }
 
     private void Run()
