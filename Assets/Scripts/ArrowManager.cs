@@ -13,6 +13,7 @@ public class ArrowManager : MonoBehaviour
 
     private int count = 0;
     public GameObject Boom;
+
     public GameObject[] Arrows;
     private Transform ArrowHolder = null;
    

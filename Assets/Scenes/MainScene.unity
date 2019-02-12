@@ -3257,9 +3257,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 13
   radius: 11
+  Boom: {fileID: 1372633420742209349, guid: 0758529911865bf4299a55d1f0bcacb5, type: 3}
   Arrows:
   - {fileID: 7654602156162330594, guid: 560fd02c9e44d284986377cedea4901f, type: 3}
   - {fileID: 2975562346421056502, guid: 5e57a470c706c294299da27dcf937a4c, type: 3}
+  - {fileID: 2873721626049689815, guid: 57c3b9600be3cda428e6f5cd25771527, type: 3}
 --- !u!114 &1211388173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3272,7 +3274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65231102acdecd04984341f87bbdc4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowManager: {fileID: 1211388172}
   levelSection: 0
   gameLevel: 1
 --- !u!4 &1211388174
