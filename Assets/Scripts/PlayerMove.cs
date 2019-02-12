@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveByTouch : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
 
     public float speed = 2f;
@@ -63,6 +63,7 @@ public class PlayerMoveByTouch : MonoBehaviour
         if (!UIManager.BPauseActive)
             return;
 
+#if UNITY_ANDROID
         if(bRight)
         {
             runningTime += Time.deltaTime * speed;
@@ -80,6 +81,24 @@ public class PlayerMoveByTouch : MonoBehaviour
             newPos = new Vector3(x, y, 0f);
             this.transform.position = newPos;
         }
+#else
+        if(Input.GetKey(KeyCode.LeftArrow) == true)
+        {
+            runningTime -= Time.deltaTime * speed;
+            x = radius * Mathf.Cos(runningTime);
+            y = radius * Mathf.Sin(runningTime);
+            newPos = new Vector3(x, y, 0f);
+            this.transform.position = newPos;
+        }
+        if(Input.GetKey(KeyCode.RightArrow) == true)
+        {
+            runningTime += Time.deltaTime * speed;
+            x = radius * Mathf.Cos(runningTime);
+            y = radius * Mathf.Sin(runningTime);
+            newPos = new Vector3(x, y, 0f);
+            this.transform.position = newPos;
+        }
 
+#endif
     }
 }
