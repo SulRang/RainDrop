@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private GameManager _instance = null;
+    private static GameManager _instance = null;
 
     private LevelManager levelManager;
 
@@ -15,12 +15,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(this);
 
+        if (_instance == null)
+            _instance = this;
         if (_instance != this)
             Destroy(gameObject);
 
         levelManager = FindObjectOfType<LevelManager>();
+
         ScoreManager.CScore = 0f;
         ScoreManager.BScore = 0f;
         UIManager.BMainActive = true;
@@ -29,17 +31,19 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        Run();
+       
     }
 
-    void Game_Init()
+    private void Game_Init()
     {
 
     }
 
-    void Game_Run()
+    private void Run()
     {
-       // if ()
+        if(!UIManager.BMainActive && UIManager.BPauseActive)
+            ArrowManager.Instance.SpawnArrow();
     }
-
 
 }

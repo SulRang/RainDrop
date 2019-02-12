@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,23 +9,43 @@ public class ArrowManager : MonoBehaviour
     [SerializeField] [Range(0f, 100f)] public float speed = 5f;
     [SerializeField] [Range(0f, 100f)] private float radius = 3f;
 
+    private static ArrowManager _instance = null;
+
+    private int count = 0;
     public GameObject Boom;
     public GameObject[] Arrows;
-    public Transform ArrowHolder = null;
-
-    public void DestoryArrow()
+    private Transform ArrowHolder = null;
+   
+    public static ArrowManager Instance
     {
-        
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType(typeof(ArrowManager)) as ArrowManager;
+
+                if (_instance == null)
+                    Debug.Log("ArrowManager is nowhere");
+            }
+            return _instance;
+        }
     }
 
-    private void MakeArrow()
+    public void MakeArrow()
     {
         float random = Random.Range(0, 100);
         float x = radius * Mathf.Cos(random);
         float y = radius * Mathf.Sin(random);
-            
-        GameObject instance = Instantiate(Arrows[Random.Range(0, Arrows.Length)], new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
-        instance.transform.SetParent(ArrowHolder);
+
+        try
+        {
+            GameObject instance = Instantiate(Arrows[Random.Range(0, Arrows.Length)], new Vector3(x, y, 0f), Quaternion.identity);
+                instance.transform.SetParent(ArrowHolder);
+        }
+        catch(NullReferenceException ex)
+        {
+            Debug.Log("Arrow can not instantiate");
+        }
     }
 
     public void MakeBoom()
@@ -33,21 +54,28 @@ public class ArrowManager : MonoBehaviour
         float x = radius * Mathf.Cos(random);
         float y = radius * Mathf.Sin(random);
 
-        GameObject instance = Instantiate(Boom, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
-        instance.transform.SetParent(ArrowHolder);
+        GameObject Object = Instantiate(Boom, new Vector3(x, y, 0f), Quaternion.identity);
+        Object.transform.SetParent(ArrowHolder);
+    }
+
+    public void SpawnArrow()
+    {
+        if (count >= speed)
+        {
+            count = 0;
+            MakeArrow();
+        }
+        count++;
     }
 
     private void Awake()
     {
+        ArrowHolder = GameObject.Find("ArrowParent").transform;
+
     }
 
     private void Update()
     {
-        if (!(UIManager.BMainActive) && (UIManager.BPauseActive) && Random.Range(0, (int)speed) == 0)
-            MakeArrow();
-
-        //if (ScoreManager.CScore >= levelSection * gameLevel)
-        //    MakeBoom();
-
+        
     }
 }

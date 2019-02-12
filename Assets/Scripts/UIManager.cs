@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
 
     public void HomeBnt()
     {
-        ArrowManager arrowManager = FindObjectOfType<ArrowManager>();
+        ArrowManager arrowManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ArrowManager>();
         BMainActive = true;
         BPauseActive = false;
         arrowManager.speed = 13;
@@ -91,7 +91,7 @@ public class UIManager : MonoBehaviour
     public void RetryBnt()
     {
         GameObject arrowBoard = GameObject.Find("ArrowParent");
-        ArrowManager arrowManager = FindObjectOfType<ArrowManager>();
+        ArrowManager arrowManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ArrowManager>();
         foreach (Transform child in arrowBoard.transform)
         {
             Destroy(child.gameObject);

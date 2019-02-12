@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public ArrowManager arrowManager;
-   
+    
     [SerializeField] [Range(0f, 10f)] public float levelSection;
     [SerializeField] [Range(0f, 10f)] private float gameLevel;
 
@@ -23,9 +22,9 @@ public class LevelManager : MonoBehaviour
     {
         if (ScoreManager.CScore >= levelSection * gameLevel)
         {
-            arrowManager.speed--;
+            ArrowManager.Instance.speed--;
             gameLevel++;
-            arrowManager.MakeBoom();
+            ArrowManager.Instance.MakeBoom();
         }
     }
 }
