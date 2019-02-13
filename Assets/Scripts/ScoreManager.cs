@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
     public static float CScore;
     public static float BScore;
     private LevelManager mlevelManager = null;
-    
+
     void Start()
     {
         this.mlevelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
