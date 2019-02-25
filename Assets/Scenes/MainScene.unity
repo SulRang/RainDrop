@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 267586908}
   - component: {fileID: 267586906}
   m_Layer: 0
-  m_Name: Player_Game
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,7 +808,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!212 &267586905
 SpriteRenderer:
@@ -3260,8 +3260,8 @@ MonoBehaviour:
   radius: 11
   Boom: {fileID: 1372633420742209349, guid: 0758529911865bf4299a55d1f0bcacb5, type: 3}
   Arrows:
-  - {fileID: 7654602156162330594, guid: 560fd02c9e44d284986377cedea4901f, type: 3}
   - {fileID: 2975562346421056502, guid: 5e57a470c706c294299da27dcf937a4c, type: 3}
+  - {fileID: 7654602156162330594, guid: 560fd02c9e44d284986377cedea4901f, type: 3}
   - {fileID: 2873721626049689815, guid: 57c3b9600be3cda428e6f5cd25771527, type: 3}
 --- !u!114 &1211388173
 MonoBehaviour:
@@ -3276,7 +3276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSection: 0
-  gameLevel: 1
+  gameLevel: 0
 --- !u!4 &1211388174
 Transform:
   m_ObjectHideFlags: 0

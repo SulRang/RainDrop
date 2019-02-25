@@ -46,10 +46,20 @@ public class PlayerMove : MonoBehaviour
         bRight = false;
     }
 
+    public static float GetAngle(Vector3 vStart, Vector3 vEnd)
+    {
+        Vector3 v = vEnd - vStart;
+
+        return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+    }
 
     // Update is called once per frame
     void Update()
     {
+
+        float angle = GetAngle(transform.position, new Vector3(0f,0f,0f));
+        Vector3 euler = new Vector3(0f, 0f, angle);
+        transform.rotation = Quaternion.Euler(euler);
 
         if (UIManager.BMainActive)
         {

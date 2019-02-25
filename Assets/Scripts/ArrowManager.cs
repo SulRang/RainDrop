@@ -11,12 +11,14 @@ public class ArrowManager : MonoBehaviour
 
     private static ArrowManager _instance = null;
 
-    private int count = 0;
+
     public GameObject Boom;
 
     public GameObject[] Arrows;
     private Transform ArrowHolder = null;
-   
+
+    private int count = 0;
+
     public static ArrowManager Instance
     {
         get
@@ -38,12 +40,14 @@ public class ArrowManager : MonoBehaviour
         float x = radius * Mathf.Cos(random);
         float y = radius * Mathf.Sin(random);
 
+        int ArrowIndex = Random.Range(0, (Arrows.Length > LevelManager.Instance.gameLevel - 1) ? LevelManager.Instance.gameLevel : Arrows.Length);
+
         try
         {
-            GameObject instance = Instantiate(Arrows[Random.Range(0, Arrows.Length)], new Vector3(x, y, 0f), Quaternion.identity);
-                instance.transform.SetParent(ArrowHolder);
+            GameObject instance = Instantiate(Arrows[ArrowIndex], new Vector3(x, y, 0f), Quaternion.identity);
+            instance.transform.SetParent(ArrowHolder);
         }
-        catch(NullReferenceException ex)
+        catch (NullReferenceException ex)
         {
             Debug.Log("Arrow can not instantiate");
         }
@@ -61,6 +65,7 @@ public class ArrowManager : MonoBehaviour
 
     public void SpawnArrow()
     {
+
         if (count >= speed)
         {
             count = 0;

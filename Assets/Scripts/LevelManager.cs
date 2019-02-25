@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     
     [SerializeField] [Range(0f, 10f)] public float levelSection;
-    [SerializeField] [Range(0f, 10f)] private float gameLevel;
+    [SerializeField] [Range(0f, 10f)] public int gameLevel;
 
     private static LevelManager _instance = null;
 
@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         //arrowManager = FindObjectOfType<ArrowManager>();
 
         levelSection = 10f;
-        gameLevel = 1f;
+        gameLevel = 1;
 
     }
     
