@@ -58,7 +58,7 @@ public class PlayerMove : MonoBehaviour
     {
 
         float angle = GetAngle(transform.position, new Vector3(0f,0f,0f));
-        Vector3 euler = new Vector3(0f, 0f, angle);
+        Vector3 euler = new Vector3(0f, 0f, angle * 1f);
         transform.rotation = Quaternion.Euler(euler);
 
         if (UIManager.BMainActive)
