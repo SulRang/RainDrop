@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using DG;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
