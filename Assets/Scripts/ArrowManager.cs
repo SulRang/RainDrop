@@ -49,7 +49,7 @@ public class ArrowManager : MonoBehaviour
         }
         catch (NullReferenceException ex)
         {
-            Debug.Log("Arrow can not instantiate");
+            Debug.Log(ex.ToString());
         }
     }
 
@@ -66,7 +66,7 @@ public class ArrowManager : MonoBehaviour
     public void SpawnArrow()
     {
 
-        if (count >= speed)
+        if (count >= speed * 2)
         {
             count = 0;
             MakeArrow();
