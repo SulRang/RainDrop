@@ -66,7 +66,7 @@ public class ArrowManager : MonoBehaviour
     public void SpawnArrow()
     {
 
-        if (count >= 50 / LevelManager.Instance.gameLevel)
+        if (count >= 100 / LevelManager.Instance.gameLevel)
         {
             count = 0;
             MakeArrow();

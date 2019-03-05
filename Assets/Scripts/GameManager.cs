@@ -33,7 +33,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Run();
-       
+
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
     }
 
     private void GameInit()

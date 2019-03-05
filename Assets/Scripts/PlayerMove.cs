@@ -81,19 +81,32 @@ public class PlayerMove : MonoBehaviour
 #if UNITY_ANDROID
         if(bRight)
         {
+            if (MoveAngle > -80 && MoveAngle < 80)
+                MoveAngle -= Time.deltaTime * 500;
+
             runningTime += Time.deltaTime * speed;
             x = radius * Mathf.Cos(runningTime);
             y = radius * Mathf.Sin(runningTime);
             newPos = new Vector3(x, y, 0f);
             this.transform.position = newPos;
         }
-        if(bLeft)
+        else if(bLeft)
         {
+            if (MoveAngle > -80 && MoveAngle < 80)
+                MoveAngle += Time.deltaTime * 500;
+
             runningTime -= Time.deltaTime * speed;
             x = radius * Mathf.Cos(runningTime);
             y = radius * Mathf.Sin(runningTime);
             newPos = new Vector3(x, y, 0f);
             this.transform.position = newPos;
+        }
+        else
+        {
+            if (MoveAngle > 0)
+                MoveAngle -= Time.deltaTime * 200;
+            else if (MoveAngle < 0)
+                MoveAngle += Time.deltaTime * 200;
         }
 #else
         if(Input.GetKey(KeyCode.LeftArrow) == true)
