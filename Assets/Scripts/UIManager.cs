@@ -79,6 +79,7 @@ public class UIManager : MonoBehaviour
         BMainActive = true;
         BPauseActive = false;
         arrowManager.speed = 13;
+        LevelManager.Instance.gameLevel = 0;
         ScoreManager.CScore = 0f;
         SceneManager.LoadScene("MainScene");
     }
@@ -99,6 +100,7 @@ public class UIManager : MonoBehaviour
         }
         ScoreManager.CScore = 0f;
         arrowManager.speed = 13;
+        LevelManager.Instance.gameLevel = 0;
         BPauseActive = true;
 
         CloseResult();

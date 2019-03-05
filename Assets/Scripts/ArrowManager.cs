@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class ArrowManager : MonoBehaviour
 {
-    [SerializeField] [Range(0f, 100f)] public float speed = 5f;
+    [SerializeField] [Range(0f, 100f)] public float speed = 50f;
     [SerializeField] [Range(0f, 100f)] private float radius = 3f;
 
     private static ArrowManager _instance = null;
@@ -66,7 +66,7 @@ public class ArrowManager : MonoBehaviour
     public void SpawnArrow()
     {
 
-        if (count >= speed * 2)
+        if (count >= 50 / LevelManager.Instance.gameLevel)
         {
             count = 0;
             MakeArrow();

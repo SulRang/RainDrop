@@ -16,8 +16,13 @@ public class GameManager : MonoBehaviour
             _instance = this;
         if (_instance != this)
             Destroy(gameObject);
-
+        
         levelManager = FindObjectOfType<LevelManager>();
+
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.Background);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.RainDrop);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.Fire);
+
 
         ScoreManager.CScore = 0f;
         ScoreManager.BScore = 0f;

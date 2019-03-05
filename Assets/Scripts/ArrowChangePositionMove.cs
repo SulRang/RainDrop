@@ -6,7 +6,7 @@ public class ArrowChangePositionMove : MonoBehaviour
 {
     private Vector3 target = new Vector3(0f, 0f, 0f);
     private Transform Arrow;
-    private float speed;
+    public float speed;
     private bool bChange = true;
 
     void Start()

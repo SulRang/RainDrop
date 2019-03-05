@@ -38,7 +38,6 @@ public class LevelManager : MonoBehaviour
     {
         if (ScoreManager.CScore >= levelSection * gameLevel)
         {
-            ArrowManager.Instance.speed--;
             gameLevel++;
             ArrowManager.Instance.MakeBoom();
         }

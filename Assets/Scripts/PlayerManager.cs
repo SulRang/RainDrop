@@ -19,7 +19,6 @@ public class PlayerManager : MonoBehaviour
             }
             UIManager.BPauseActive = false;
             resultFnc.Result();
-
         }
         if (col.gameObject.tag.Equals("Item"))
         {
@@ -28,6 +27,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+
+
     public void ActiveBoom()
     {
         if (BoomCount > 0)
@@ -35,6 +36,8 @@ public class PlayerManager : MonoBehaviour
             BoomCount--;
             foreach (Transform child in ArrowBoard.transform)
             {
+                AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.Bomb);
+
                 if (child.tag == "Arrow")
                     Destroy(child.gameObject);
             }
@@ -51,13 +54,6 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKey(KeyCode.Space) == true && BoomCount > 0)
-        {
-            BoomCount--;
-            foreach (Transform child in ArrowBoard.transform)
-            {
-                if (child.tag == "Arrow")
-                    Destroy(child.gameObject);
-            }
-        }
+            ActiveBoom();
     }
 }
