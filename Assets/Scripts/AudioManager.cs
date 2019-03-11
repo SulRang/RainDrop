@@ -1,10 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
-
 
 public class AudioManager : MonoBehaviour
 {
@@ -21,7 +18,9 @@ public class AudioManager : MonoBehaviour
 
     // Random pitch adjustment range.
     public Slider BackgroundMusic;
+    public float BackgroundValue = 1f;
     public Slider EffectMusic;
+    public float EffectValue = 1f;
     public float LowPitch = 0.95f;
     public float HighPitch = 1.05f;
 
@@ -39,6 +38,16 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+    }
+
+    public void InitAudioManager()
+    {
+        BackgroundMusic = GameObject.Find("Canvas/option/Panel/sfx").GetComponent<Slider>();
+        EffectMusic = GameObject.Find("Canvas/option/Panel/bgm").GetComponent<Slider>();
+
+        BackgroundValue = PlayerPrefs.GetFloat("Background", BackgroundValue);
+        EffectValue = PlayerPrefs.GetFloat("Effect", EffectValue);
     }
 
     // Play a single clip through the music source.
@@ -68,8 +77,12 @@ public class AudioManager : MonoBehaviour
         foreach (AudioSource item in MusicSource)
         {
             item.volume = BackgroundMusic.value;
+            BackgroundValue = BackgroundMusic.value;
+            PlayerPrefs.SetFloat("Bakcground", BackgroundValue);
         }
         EffectsSource.volume = EffectMusic.value;
+        EffectValue = EffectMusic.value;
+        PlayerPrefs.SetFloat("Effect", EffectValue);
     }
 
 }
