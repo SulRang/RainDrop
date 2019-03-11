@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
@@ -63,7 +66,15 @@ public class AudioManager : MonoBehaviour
     {
         foreach (AudioSource item in MusicSource)
         {
-            item.volume = BackgroundSound;
+            try
+            {
+
+                item.volume = BackgroundSound;
+            }
+            catch (NullReferenceException ex)
+            {
+                Debug.Log(ex);
+            }
         }
         EffectsSource.volume = EffectSound;
     }
