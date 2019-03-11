@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class ArrowMove : MonoBehaviour
+public class ArrowChangeSpeedMove : MonoBehaviour
 {
-    public  Vector3 target = new Vector3(0f,0f,0f);
+    public Vector3 target = new Vector3(0f, 0f, 0f);
     private Transform Arrow;
     public float speed;
 
-    
+
 
     void Start()
     {
@@ -22,8 +21,13 @@ public class ArrowMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UIManager.BPauseActive)
 
+        if(Mathf.Abs(this.transform.position.x) <= 5f && Mathf.Abs(this.transform.position.y) <= 3f)
+        {
+            speed = 7.5f;
+        }
+
+        if (UIManager.BPauseActive)
         {
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, target, step);

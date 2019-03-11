@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using DG;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
@@ -19,7 +20,7 @@ public class UIManager : MonoBehaviour
     public RectTransform op_panel, back;
 
     //  Ingame UI
-    public RectTransform score, pause;
+    public RectTransform score, pause, bomb;
 
     //  Pause UI 
     public RectTransform ps_panel;
@@ -74,10 +75,11 @@ public class UIManager : MonoBehaviour
 
     public void HomeBnt()
     {
-        ArrowManager arrowManager = FindObjectOfType<ArrowManager>();
+        ArrowManager arrowManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ArrowManager>();
         BMainActive = true;
         BPauseActive = false;
         arrowManager.speed = 13;
+        LevelManager.Instance.gameLevel = 0;
         ScoreManager.CScore = 0f;
         SceneManager.LoadScene("MainScene");
     }
@@ -91,13 +93,14 @@ public class UIManager : MonoBehaviour
     public void RetryBnt()
     {
         GameObject arrowBoard = GameObject.Find("ArrowParent");
-        ArrowManager arrowManager = FindObjectOfType<ArrowManager>();
+        ArrowManager arrowManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ArrowManager>();
         foreach (Transform child in arrowBoard.transform)
         {
             Destroy(child.gameObject);
         }
         ScoreManager.CScore = 0f;
         arrowManager.speed = 13;
+        LevelManager.Instance.gameLevel = 0;
         BPauseActive = true;
 
         CloseResult();
@@ -134,12 +137,14 @@ public class UIManager : MonoBehaviour
 
     void OpenIngame()
     {
+        bomb.DOAnchorPos(new Vector2(850, -450), UI_duration);
         score.DOAnchorPos(new Vector2(-860, 495), UI_duration);
         pause.DOAnchorPos(new Vector2(855, 435), UI_duration);
     }
 
     void CloseIngame()
     {
+        bomb.DOAnchorPos(new Vector2(850, -600), UI_duration);
         score.DOAnchorPos(new Vector2(-860, 585), UI_duration);
         pause.DOAnchorPos(new Vector2(855, 620), UI_duration);
     }

@@ -4,11 +4,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager _instance = null;
+
     private LevelManager levelManager;
+
 
     void Start()
     {
+
+        if (_instance == null)
+            _instance = this;
+        if (_instance != this)
+            Destroy(gameObject);
+        
         levelManager = FindObjectOfType<LevelManager>();
+
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.Background);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.RainDrop);
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.Fire);
+
+
         ScoreManager.CScore = 0f;
         ScoreManager.BScore = 0f;
         UIManager.BMainActive = true;
@@ -17,17 +32,21 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        Run();
+
+        if (Input.GetKey(KeyCode.Escape))
+            Application.Quit();
     }
 
-    void Game_Init()
+    private void GameInit()
     {
-
+        
     }
 
-    void Game_Run()
+    private void Run()
     {
-       // if ()
+        if(!UIManager.BMainActive && UIManager.BPauseActive)
+            ArrowManager.Instance.SpawnArrow();
     }
-
 
 }

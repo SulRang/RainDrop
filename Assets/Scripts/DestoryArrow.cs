@@ -9,6 +9,22 @@ public class DestoryArrow : MonoBehaviour
     {
         if (col.gameObject.tag == "Arrow")
         {
+            if (col.gameObject.name.Equals("Arrow(Normal)(Clone)"))
+            {
+                if(col.GetComponent<ArrowMove>().speed >= 4)
+                    AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            }
+            else if(col.gameObject.name.Equals("Arrow(ChangeSpeed)(Clone)"))
+            {
+                if (col.GetComponent<ArrowChangeSpeedMove>().speed >= 4)
+                    AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            }
+            else if (col.gameObject.name.Equals("Arrow(ChangePosition)(Clone)"))
+            {
+                if (col.GetComponent<ArrowChangePositionMove>().speed >= 4)
+                    AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            }
+
             Destroy(col.gameObject);
         }
     }

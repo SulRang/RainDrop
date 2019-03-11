@@ -11,8 +11,8 @@ public class ScoreManager : MonoBehaviour
     public Text currentScore, BestScore;
     public static float CScore;
     public static float BScore;
-    public LevelManager mlevelManager = null;
-    
+    private LevelManager mlevelManager = null;
+
     void Start()
     {
         this.mlevelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
