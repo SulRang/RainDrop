@@ -69,8 +69,8 @@ public class PlayerMove : MonoBehaviour
                 MoveAngle -= Time.deltaTime * 500;
 
             runningTime += Time.deltaTime * speed;
-            x = radius * Mathf.Cos(runningTime);
-            y = radius * Mathf.Sin(runningTime);
+            float x = radius * Mathf.Cos(runningTime);
+            float y = radius * Mathf.Sin(runningTime);
             newPos = new Vector3(x, y, 0f);
             this.transform.position = newPos;
         }
@@ -85,8 +85,8 @@ public class PlayerMove : MonoBehaviour
                 MoveAngle -= Time.deltaTime * 500;
 
             runningTime += Time.deltaTime * speed;
-            x = radius * Mathf.Cos(runningTime);
-            y = radius * Mathf.Sin(runningTime);
+            float x = radius * Mathf.Cos(runningTime);
+            float y = radius * Mathf.Sin(runningTime);
             newPos = new Vector3(x, y, 0f);
             this.transform.position = newPos;
         }
@@ -96,8 +96,8 @@ public class PlayerMove : MonoBehaviour
                 MoveAngle += Time.deltaTime * 500;
 
             runningTime -= Time.deltaTime * speed;
-            x = radius * Mathf.Cos(runningTime);
-            y = radius * Mathf.Sin(runningTime);
+            float x = radius * Mathf.Cos(runningTime);
+            float y = radius * Mathf.Sin(runningTime);
             newPos = new Vector3(x, y, 0f);
             this.transform.position = newPos;
         }

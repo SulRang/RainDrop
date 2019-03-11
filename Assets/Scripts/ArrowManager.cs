@@ -55,6 +55,7 @@ public class ArrowManager : MonoBehaviour
 
     public void MakeBoom()
     {
+        ArrowHolder = ArrowBoard.transform;
         float random = Random.Range(0, 100);
         float x = radius * Mathf.Cos(random);
         float y = radius * Mathf.Sin(random);
@@ -84,4 +85,5 @@ public class ArrowManager : MonoBehaviour
     {
         
     }
+
 }
