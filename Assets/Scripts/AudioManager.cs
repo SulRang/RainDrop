@@ -5,6 +5,7 @@ using System;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+
 public class AudioManager : MonoBehaviour
 {
     // Audio players components.
@@ -19,8 +20,8 @@ public class AudioManager : MonoBehaviour
     public int MusicCount = 0;
 
     // Random pitch adjustment range.
-    public float BackgroundSound = 1.0f;
-    public float EffectSound = 1.0f;
+    public Slider BackgroundMusic;
+    public Slider EffectMusic;
     public float LowPitch = 0.95f;
     public float HighPitch = 1.05f;
 
@@ -66,17 +67,9 @@ public class AudioManager : MonoBehaviour
     {
         foreach (AudioSource item in MusicSource)
         {
-            try
-            {
-
-                item.volume = BackgroundSound;
-            }
-            catch (NullReferenceException ex)
-            {
-                Debug.Log(ex);
-            }
+            item.volume = BackgroundMusic.value;
         }
-        EffectsSource.volume = EffectSound;
+        EffectsSource.volume = EffectMusic.value;
     }
 
 }
