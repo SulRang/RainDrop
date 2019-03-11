@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
     public int MusicCount = 0;
 
     // Random pitch adjustment range.
+    public float BackgroundSound = 1.0f;
+    public float EffectSound = 1.0f;
     public float LowPitch = 0.95f;
     public float HighPitch = 1.05f;
 
@@ -55,6 +57,15 @@ public class AudioManager : MonoBehaviour
         EffectsSource.pitch = randomPitch;
         EffectsSource.clip = clips;
         EffectsSource.Play();
+    }
+
+    public void AudioRun()
+    {
+        foreach (AudioSource item in MusicSource)
+        {
+            item.volume = BackgroundSound;
+        }
+        EffectsSource.volume = EffectSound;
     }
 
 }

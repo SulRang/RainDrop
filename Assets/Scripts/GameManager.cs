@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
     {
         if(!UIManager.BMainActive && UIManager.BPauseActive)
             ArrowManager.Instance.SpawnArrow();
+        //if (!UIManager.BMainActive && UIManager.BPauseActive)
+        //    AudioManager.Instance.AudioRun();
     }
 
 }
