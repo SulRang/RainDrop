@@ -125,6 +125,7 @@ public class UIManager : MonoBehaviour
 
     void OpenOption()
     {
+        AudioManager.Instance.InitAudioManager();
         op_panel.DOAnchorPos(new Vector2(0, 0), UI_duration);
         back.DOAnchorPos(new Vector2(855, 435), UI_duration);
     }

@@ -46,8 +46,8 @@ public class AudioManager : MonoBehaviour
         BackgroundMusic = GameObject.Find("Canvas/option/Panel/sfx").GetComponent<Slider>();
         EffectMusic = GameObject.Find("Canvas/option/Panel/bgm").GetComponent<Slider>();
 
-        BackgroundValue = PlayerPrefs.GetFloat("Background", BackgroundValue);
-        EffectValue = PlayerPrefs.GetFloat("Effect", EffectValue);
+        BackgroundMusic.value = PlayerPrefs.GetFloat("Background", BackgroundValue);
+        EffectMusic.value = PlayerPrefs.GetFloat("Effect", EffectValue);
     }
 
     // Play a single clip through the music source.
@@ -76,7 +76,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (AudioSource item in MusicSource)
         {
-            EffectsSource.volume = EffectMusic.value;
+            item.volume = BackgroundMusic.value;
             BackgroundValue = BackgroundMusic.value;
             PlayerPrefs.SetFloat("Bakcground", BackgroundValue);
         }
