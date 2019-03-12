@@ -6,8 +6,6 @@ using UnityEngine.UI;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 
-public delegate void DelegateOnReciveData(object data = null);
-
 public class GPGSManager : MonoBehaviour
 
 {
@@ -22,7 +20,7 @@ public class GPGSManager : MonoBehaviour
 
         // 구글 플레이 로그를 확인할려면 활성화
         PlayGamesPlatform.DebugLogEnabled = true;
-        
+
         PlayGamesPlatform.Activate();
 
         // Callback 함수 정의
@@ -35,21 +33,16 @@ public class GPGSManager : MonoBehaviour
         };
     }
     // 로그인
-    public void SignIn()
+    public void Login()
     {
-        // 로그아웃 상태면 호출
         if (PlayGamesPlatform.Instance.IsAuthenticated() == false)
-            PlayGamesPlatform.Instance.Authenticate(signInCallback);
-    }
-    // 로그아웃
-    public void SignOut()
-    {
-        // 로그인 상태면 호출
-        if (PlayGamesPlatform.Instance.IsAuthenticated() == true)
         {
-            stateText.text = "Bye~!";
+            PlayGamesPlatform.Instance.Authenticate(signInCallback);
+        }
+        else if (PlayGamesPlatform.Instance.IsAuthenticated() == true)
+        {
             PlayGamesPlatform.Instance.SignOut();
         }
     }
 }
-}
+
