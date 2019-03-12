@@ -3251,7 +3251,7 @@ MonoBehaviour:
   title: {fileID: 1138742067}
   start: {fileID: 243237358}
   option: {fileID: 496016253}
-  login: {fileID: 0}
+  login: {fileID: 1126648819}
   op_panel: {fileID: 1251222848}
   back: {fileID: 1553127936}
   score: {fileID: 1145996652}
