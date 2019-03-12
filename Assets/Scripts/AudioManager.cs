@@ -41,10 +41,22 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    public void CheckSilder()
+    {
+        if(BackgroundMusic == null || EffectMusic == null)
+        {
+            BackgroundMusic = GameObject.Find("Canvas/option/Panel/bgm").GetComponent<Slider>();
+            EffectMusic = GameObject.Find("Canvas/option/Panel/sfx").GetComponent<Slider>();
+
+            BackgroundMusic.value = PlayerPrefs.GetFloat("Background", BackgroundValue);
+            EffectMusic.value = PlayerPrefs.GetFloat("Effect", EffectValue);
+        }
+    }
+
     public void InitAudioManager()
     {
-        BackgroundMusic = GameObject.Find("Canvas/option/Panel/sfx").GetComponent<Slider>();
-        EffectMusic = GameObject.Find("Canvas/option/Panel/bgm").GetComponent<Slider>();
+        BackgroundMusic = GameObject.Find("Canvas/option/Panel/bgm").GetComponent<Slider>();
+        EffectMusic = GameObject.Find("Canvas/option/Panel/sfx").GetComponent<Slider>();
 
         BackgroundMusic.value = PlayerPrefs.GetFloat("Background", BackgroundValue);
         EffectMusic.value = PlayerPrefs.GetFloat("Effect", EffectValue);
@@ -74,6 +86,8 @@ public class AudioManager : MonoBehaviour
 
     public void AudioRun()
     {
+        CheckSilder();
+
         foreach (AudioSource item in MusicSource)
         {
             item.volume = BackgroundMusic.value;

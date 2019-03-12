@@ -27,8 +27,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-
-
     public void ActiveBoom()
     {
         if (BoomCount > 0)

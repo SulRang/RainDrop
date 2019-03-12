@@ -34,6 +34,14 @@ public class UIManager : MonoBehaviour
         //BPauseActive = false;
     }
 
+    public bool CheckGamePause()
+    {
+        if (!BMainActive)
+            return false;
+        if (BPauseActive)
+            return false; 
+        return true;
+    }
 
 
     public void StartBnt()
@@ -106,6 +114,20 @@ public class UIManager : MonoBehaviour
         CloseResult();
         OpenIngame();
 
+    }
+
+
+    public void MusicBnt()
+    {
+        foreach (var item in AudioManager.Instance.MusicSource)
+        {
+            item.mute = !(item.mute);
+        }
+    }
+
+    public void EffectBnt()
+    {
+        AudioManager.Instance.EffectsSource.mute = !(AudioManager.Instance.EffectsSource.mute);
     }
 
 
