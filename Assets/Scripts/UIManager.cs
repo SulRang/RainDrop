@@ -117,6 +117,20 @@ public class UIManager : MonoBehaviour
     }
 
 
+    public void MusicBnt()
+    {
+        foreach (var item in AudioManager.Instance.MusicSource)
+        {
+            item.mute = !(item.mute);
+        }
+    }
+
+    public void EffectBnt()
+    {
+        AudioManager.Instance.EffectsSource.mute = !(AudioManager.Instance.EffectsSource.mute);
+    }
+
+
     void CloseMain()
     {
         title.DOAnchorPos(new Vector2(0, 660), UI_duration);
