@@ -34,6 +34,14 @@ public class UIManager : MonoBehaviour
         //BPauseActive = false;
     }
 
+    public bool CheckGamePause()
+    {
+        if (!BMainActive)
+            return false;
+        if (BPauseActive)
+            return false; 
+        return true;
+    }
 
 
     public void StartBnt()

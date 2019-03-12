@@ -77,11 +77,7 @@ public class ArrowManager : MonoBehaviour
     private void Awake()
     {
         ArrowHolder = GameObject.Find("ArrowParent").transform;
-
     }
 
-    private void Update()
-    {
-        
-    }
+    
 }
