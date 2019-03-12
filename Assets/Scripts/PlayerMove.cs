@@ -55,14 +55,62 @@ public class PlayerMove : MonoBehaviour
         return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
     }
 
+    private void PlayerIdle()
+    {
+        float angle = GetAngle(transform.position, new Vector3(0f, 0f, 0f));
+        Vector3 euler = new Vector3(0f, 0f, angle + 90f + MoveAngle);
+        transform.rotation = Quaternion.Euler(euler);
+    }
+
+    private void MoveIdleAnimation()
+    {
+        if (MoveAngle > 0)
+            MoveAngle -= Time.deltaTime * 200;
+        else if (MoveAngle < 0)
+            MoveAngle += Time.deltaTime * 200;
+    }
+
+    private void MovePositionRight()
+    {
+        runningTime += Time.deltaTime * speed;
+        x = radius * Mathf.Cos(runningTime);
+        y = radius * Mathf.Sin(runningTime);
+        newPos = new Vector3(x, y, 0f);
+        this.transform.position = newPos;
+    }
+
+    private void MovePositionLeft()
+    {
+        runningTime -= Time.deltaTime * speed;
+        x = radius * Mathf.Cos(runningTime);
+        y = radius * Mathf.Sin(runningTime);
+        newPos = new Vector3(x, y, 0f);
+        this.transform.position = newPos;
+    }
+
+    private void MoveAnimationRight()
+    {
+        if (MoveAngle >= -80 && MoveAngle <= 80) MoveAngle -= Time.deltaTime * 500;
+        CheckMoveAnimation();
+    }
+
+    private void MoveAnimationLeft()
+    {
+        if (MoveAngle >= -80 && MoveAngle <= 80) MoveAngle += Time.deltaTime * 500;
+        CheckMoveAnimation();
+    }
+
+    private void CheckMoveAnimation()
+    {
+        if (MoveAngle < -80) MoveAngle = -80;
+        else if (MoveAngle > 80) MoveAngle = 80;
+    }
+
     // Update is called once per frame
     void Update()
     {
-
-        float angle = GetAngle(transform.position, new Vector3(0f,0f,0f));
-        Vector3 euler = new Vector3(0f, 0f, angle + 90f + MoveAngle);
-        transform.rotation = Quaternion.Euler(euler);
-
+        PlayerIdle();
+        
         if (UIManager.BMainActive)
         {
             if (MoveAngle > -80 && MoveAngle < 80)
@@ -73,7 +121,7 @@ public class PlayerMove : MonoBehaviour
             y = radius * Mathf.Sin(runningTime);
             newPos = new Vector3(x, y, 0f);
             this.transform.position = newPos;
-        }
+        }   // MainMenu Player
 
         if (!UIManager.BPauseActive)
             return;
@@ -81,63 +129,27 @@ public class PlayerMove : MonoBehaviour
 #if UNITY_ANDROID
         if(bRight)
         {
-            if (MoveAngle > -80 && MoveAngle < 80)
-                MoveAngle -= Time.deltaTime * 500;
-
-            runningTime += Time.deltaTime * speed;
-            x = radius * Mathf.Cos(runningTime);
-            y = radius * Mathf.Sin(runningTime);
-            newPos = new Vector3(x, y, 0f);
-            this.transform.position = newPos;
+            MoveAnimationRight();
+            MovePositionRight();
         }
         else if(bLeft)
         {
-            if (MoveAngle > -80 && MoveAngle < 80)
-                MoveAngle += Time.deltaTime * 500;
-
-            runningTime -= Time.deltaTime * speed;
-            x = radius * Mathf.Cos(runningTime);
-            y = radius * Mathf.Sin(runningTime);
-            newPos = new Vector3(x, y, 0f);
-            this.transform.position = newPos;
+            MoveAnimationLeft();
+            MovePositionLeft();
         }
-        else
-        {
-            if (MoveAngle > 0)
-                MoveAngle -= Time.deltaTime * 200;
-            else if (MoveAngle < 0)
-                MoveAngle += Time.deltaTime * 200;
-        }
+        else MoveIdleAnimation();
 #else
-        if(Input.GetKey(KeyCode.LeftArrow) == true)
+        if (Input.GetKey(KeyCode.LeftArrow) == true)
         {
-            if(MoveAngle > -80 && MoveAngle < 80)
-                MoveAngle += Time.deltaTime * 500;
-
-            runningTime -= Time.deltaTime * speed;
-            x = radius * Mathf.Cos(runningTime);
-            y = radius * Mathf.Sin(runningTime);
-            newPos = new Vector3(x, y, 0f);
-            this.transform.position = newPos;
+            MoveAnimationLeft();
+            MovePositionLeft();
         }
         else if(Input.GetKey(KeyCode.RightArrow) == true)
         {
-            if (MoveAngle > -80 && MoveAngle < 80)
-                MoveAngle -= Time.deltaTime * 500;
-
-            runningTime += Time.deltaTime * speed;
-            x = radius * Mathf.Cos(runningTime);
-            y = radius * Mathf.Sin(runningTime);
-            newPos = new Vector3(x, y, 0f);
-            this.transform.position = newPos;
+            MoveAnimationRight();
+            MovePositionRight();
         }
-        else
-        {
-            if (MoveAngle > 0)
-                MoveAngle -= Time.deltaTime * 200;
-            else if (MoveAngle < 0)
-                MoveAngle += Time.deltaTime * 200;
-        }
+        else MoveIdleAnimation();
 #endif
     }
 }
