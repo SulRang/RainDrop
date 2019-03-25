@@ -35,11 +35,12 @@ public class GPGSManager : MonoBehaviour
     // 로그인
     public void Login()
     {
+        
         if (PlayGamesPlatform.Instance.IsAuthenticated() == false)
         {
             PlayGamesPlatform.Instance.Authenticate(signInCallback);
         }
-        else if (PlayGamesPlatform.Instance.IsAuthenticated() == true)
+        else
         {
             PlayGamesPlatform.Instance.SignOut();
         }
