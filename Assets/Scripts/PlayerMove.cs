@@ -68,6 +68,8 @@ public class PlayerMove : MonoBehaviour
             MoveAngle -= Time.deltaTime * 200;
         else if (MoveAngle < 0)
             MoveAngle += Time.deltaTime * 200;
+        else if (MoveAngle == 0)
+            return;
     }
 
     private void MovePositionRight()
@@ -113,15 +115,9 @@ public class PlayerMove : MonoBehaviour
         
         if (UIManager.BMainActive)
         {
-            if (MoveAngle > -80 && MoveAngle < 80)
-                MoveAngle -= Time.deltaTime * 500;
-
-            runningTime += Time.deltaTime * speed;
-            x = radius * Mathf.Cos(runningTime);
-            y = radius * Mathf.Sin(runningTime);
-            newPos = new Vector3(x, y, 0f);
-            this.transform.position = newPos;
-        }   // MainMenu Player
+            MoveAnimationRight();
+            MovePositionRight();
+        } 
 
         if (!UIManager.BPauseActive)
             return;

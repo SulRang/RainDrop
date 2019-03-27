@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
             _instance = this;
         if (_instance != this)
             Destroy(gameObject);
-        
+
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+
         levelManager = FindObjectOfType<LevelManager>();
 
         AudioManager.Instance.PlayMusic(AudioManager.Instance.Background);
