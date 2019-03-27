@@ -28,5 +28,8 @@ public class ScoreManager : MonoBehaviour
 
         currentScore.text = CScore.ToString("N2");
         BestScore.text = PlayerPrefs.GetFloat("BEST", 0).ToString("N2");
+        if(BScore != CScore)
+            Social.Active.ReportScore((long)BScore, GPGSIds.leaderboard_1,null);
+
     }
 }
