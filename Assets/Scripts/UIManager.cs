@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     private float UI_duration = 0.5f;
 
     //  Main UI
-    public RectTransform title, start, option, login;
+    public RectTransform title, start, option, login, leaderboard;
 
     //  Option UI
     public RectTransform op_panel, back;
@@ -135,7 +135,7 @@ public class UIManager : MonoBehaviour
     {
         login.DOAnchorPos(new Vector2(850, -600), UI_duration);
         title.DOAnchorPos(new Vector2(0, 660), UI_duration);
-       // start.DOAnchorPos(new Vector2(0, -2000), UI_duration);
+        leaderboard.DOAnchorPos(new Vector2(850, -620), UI_duration);
         start.gameObject.SetActive(false);
         option.DOAnchorPos(new Vector2(855, 620), UI_duration);
     }
@@ -144,7 +144,7 @@ public class UIManager : MonoBehaviour
     {
         login.DOAnchorPos(new Vector2(850, -430), UI_duration);
         title.DOAnchorPos(new Vector2(0, 300), UI_duration);
-        //start.DOAnchorPos(new Vector2(0, -300), UI_duration);
+        leaderboard.DOAnchorPos(new Vector2(850, -250), UI_duration);
         start.gameObject.SetActive(true);
         option.DOAnchorPos(new Vector2(855, 435), UI_duration);
     }
