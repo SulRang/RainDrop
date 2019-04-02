@@ -5,45 +5,63 @@ using Random = UnityEngine.Random;
 
 public class ArrowRoundMove : MonoBehaviour
 {
-    public Vector3 target = new Vector3(0f, 0f, 0f);
-    private Transform Arrow;
-    public float speed;
-    public float RoundSpeed;
-    public float runningtime = 0;
-    public float radius = 100;
+    public Vector3 vTarget = new Vector3(0f, 0f, 0f);
+    public float fArrowSpeed = 2;
+    public float RoundSpeed = 0.5f;
+    public float fNowAngle = 0;
+    public float fRandius = 100;
 
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (this.tag.Equals("Arrow"))
-            speed = Random.Range(2, 5);
-        else
-            speed = 2;
-
-        RoundSpeed = 0.5f;
-        radius = 10;
-        runningtime = Random.Range(0, 100);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (UIManager.BPauseActive)
+        if (collision.gameObject.tag.Equals("Respawn"))
         {
-            runningtime += RoundSpeed * Time.deltaTime;
-            radius -= speed * Time.deltaTime;
-            float x = radius * Mathf.Cos(runningtime);
-            float y = radius * Mathf.Sin(runningtime);
-            transform.position = new Vector3(x, y, 0f); 
-            float angle = GetAngle(transform.position, target);
-            Vector3 euler = new Vector3(0f, 0f, angle);
-            transform.rotation = Quaternion.Euler(euler);
+            if (fArrowSpeed >= 5)
+                AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            Destroy(this.gameObject);
         }
     }
+
+    private void RandomArrowSpeed(int val)
+    {
+        fArrowSpeed = Random.Range(2, val);
+    }
+
+    private void CheckAngle()
+    {
+        fNowAngle = Mathf.Atan2(transform.position.y, transform.position.x);
+    }
+
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)
     {
         Vector3 v = vEnd - vStart;
 
         return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+    }
+
+    private void MoveArrow()
+    {
+        if (!UIManager.BPauseActive)
+            return;
+
+        fNowAngle += RoundSpeed * Time.deltaTime;
+        fRandius -= fArrowSpeed * Time.deltaTime;
+        float x = fRandius * Mathf.Cos(fNowAngle);
+        float y = fRandius * Mathf.Sin(fNowAngle);
+        transform.position = new Vector3(x, y, 0f);
+        float angle = GetAngle(transform.position, vTarget);
+        Vector3 euler = new Vector3(0f, 0f, angle);
+        transform.rotation = Quaternion.Euler(euler);
+    }
+
+    void Start()
+    {
+        RandomArrowSpeed(5);
+        CheckAngle();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        MoveArrow();
     }
 }

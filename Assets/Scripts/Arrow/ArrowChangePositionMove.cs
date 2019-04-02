@@ -6,15 +6,34 @@ public class ArrowChangePositionMove : MonoBehaviour
 {
     private Vector3 target = new Vector3(0f, 0f, 0f);
     private Transform Arrow;
-    public float speed;
+    public float fArrowSpeed;
     private bool bChange = true;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Respawn"))
+        {
+            if (fArrowSpeed >= 5)
+                AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void MoveArrow()
+    {
+
+    }
 
     void Start()
     {
-        if (this.tag.Equals("Arrow"))
-            speed = Random.Range(2, 5);
-        else
-            speed = 2;
+        if (UIManager.BPauseActive)
+            return;
+
+        float step = fArrowSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target, step);
+        float angle = GetAngle(transform.position, target);
+        Vector3 euler = new Vector3(0f, 0f, angle);
+        transform.rotation = Quaternion.Euler(euler);
     }
 
     // Update is called once per frame
@@ -28,16 +47,6 @@ public class ArrowChangePositionMove : MonoBehaviour
             transform.position = new Vector3((-1) * x, (-1) * y, 0f);
 
             bChange = false;
-        }
-
-
-        if (UIManager.BPauseActive)
-        {
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target, step);
-            float angle = GetAngle(transform.position, target);
-            Vector3 euler = new Vector3(0f, 0f, angle);
-            transform.rotation = Quaternion.Euler(euler);
         }
     }
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)

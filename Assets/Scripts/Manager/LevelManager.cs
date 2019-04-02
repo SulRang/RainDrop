@@ -5,8 +5,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     
-    [SerializeField] [Range(0f, 10f)] public float levelSection;
-    [SerializeField] [Range(0f, 10f)] public int gameLevel;
+    public float levelSection;
+    public int gameLevel;
 
     private static LevelManager _instance = null;
 
@@ -23,6 +23,11 @@ public class LevelManager : MonoBehaviour
 
             return _instance;
         }
+    }
+
+    public int GetGameLevel()
+    {
+        return gameLevel;
     }
 
     void Start()

@@ -4713,7 +4713,7 @@ GameObject:
   - component: {fileID: 1624776436}
   m_Layer: 0
   m_Name: ArrowParent
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6029,9 +6029,8 @@ GameObject:
   - component: {fileID: 5804892555562362137}
   - component: {fileID: 5804892555562362139}
   - component: {fileID: 5804892555562362136}
-  - component: {fileID: 5804892555562362138}
   m_Layer: 0
-  m_Name: DestoryArrow
+  m_Name: DestroyArrow
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6047,7 +6046,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -6077,18 +6076,6 @@ Transform:
   m_Father: {fileID: 1051979340}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5804892555562362138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5804892555562362134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e7c269d570cb9c45b48876da13f5639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &5804892555562362139
 SpriteRenderer:
   m_ObjectHideFlags: 0
