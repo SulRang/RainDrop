@@ -9,8 +9,6 @@ public class ArrowMove : MonoBehaviour
     private Transform Arrow;
     public float speed;
 
-    
-
     void Start()
     {
         if (this.tag.Equals("Arrow"))

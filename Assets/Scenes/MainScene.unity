@@ -907,8 +907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c974276bdc096ff46bf0ff59e3343aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  radius: 1.5
 --- !u!50 &267586907
 Rigidbody2D:
   serializedVersion: 4
@@ -942,7 +940,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8257fdef400ae43a2b4e1e89d5c0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bPlayerMove: 0
   ArrowBoard: {fileID: 1624776435}
+  fSpeed: 5
+  fRadius: 1.5
 --- !u!95 &267586909
 Animator:
   serializedVersion: 3
@@ -5311,7 +5312,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 267586906}
+        - m_Target: {fileID: 267586908}
           m_MethodName: MoveLeft
           m_Mode: 1
           m_Arguments:
@@ -5328,7 +5329,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 267586906}
+        - m_Target: {fileID: 267586908}
           m_MethodName: MoveLeftDown
           m_Mode: 1
           m_Arguments:
@@ -5477,7 +5478,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 267586906}
+        - m_Target: {fileID: 267586908}
           m_MethodName: MoveRight
           m_Mode: 1
           m_Arguments:
@@ -5494,7 +5495,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 267586906}
+        - m_Target: {fileID: 267586908}
           m_MethodName: MoveRightDown
           m_Mode: 1
           m_Arguments:
