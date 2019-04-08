@@ -7,13 +7,13 @@ public class ArrowChangeSpeedMove : MonoBehaviour
     public Vector3 target = new Vector3(0f, 0f, 0f);
     public float fArrowSpeed;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Respawn"))
+        if (collision.gameObject.name.Equals("DestroyArrow"))
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -26,7 +26,7 @@ public class ArrowChangeSpeedMove : MonoBehaviour
     {
         if (!UIManager.BPauseActive)
             return;
-        float step = fArrowSpeed * Time.deltaTime;
+        float step = fArrowSpeed * GameManager.Instance.fGameSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
         float angle = GetAngle(transform.position, target);
         Vector3 euler = new Vector3(0f, 0f, angle);

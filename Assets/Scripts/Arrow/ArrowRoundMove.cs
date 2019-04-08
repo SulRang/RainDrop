@@ -11,13 +11,13 @@ public class ArrowRoundMove : MonoBehaviour
     public float fNowAngle = 0;
     public float fRandius = 100;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Respawn"))
+        if (collision.gameObject.name.Equals("DestroyArrow"))
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

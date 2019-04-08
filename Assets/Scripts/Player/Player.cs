@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -75,7 +76,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public static float GetAngle(Vector3 vStart, Vector3 vEnd)
+    public float GetAngle(Vector3 vStart, Vector3 vEnd)
     {
         Vector3 v = vEnd - vStart;
 
@@ -140,6 +141,15 @@ public class Player : MonoBehaviour
         return bPlayerMove;
     }
 
+    private void GoToMove()
+    {
+        fRunningTime = Mathf.Atan2(transform.position.x, transform.position.y);
+        while(fRunningTime >= 0f)
+        {
+            fRunningTime -= Time.deltaTime * fSpeed;
+        }
+    }
+
     private void Start()
     {
         mUIManager = FindObjectOfType<UIManager>();
@@ -149,6 +159,9 @@ public class Player : MonoBehaviour
     private void Update()
     {
         PlayerIdle();
+
+        if (bPlayerMove)
+            return;
 
         if (bRight)
         {

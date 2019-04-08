@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
 
     public void StartBnt()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         CloseMain();
         OpenIngame();
         BMainActive = false;

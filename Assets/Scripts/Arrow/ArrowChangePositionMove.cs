@@ -9,22 +9,17 @@ public class ArrowChangePositionMove : MonoBehaviour
     public float fArrowSpeed;
     private bool bChange = true;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Respawn"))
+        if (collision.gameObject.name.Equals("DestroyArrow"))
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
     private void MoveArrow()
-    {
-
-    }
-
-    void Start()
     {
         if (UIManager.BPauseActive)
             return;
@@ -34,6 +29,11 @@ public class ArrowChangePositionMove : MonoBehaviour
         float angle = GetAngle(transform.position, target);
         Vector3 euler = new Vector3(0f, 0f, angle);
         transform.rotation = Quaternion.Euler(euler);
+    }
+
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
@@ -48,6 +48,7 @@ public class ArrowChangePositionMove : MonoBehaviour
 
             bChange = false;
         }
+        MoveArrow();
     }
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)
     {

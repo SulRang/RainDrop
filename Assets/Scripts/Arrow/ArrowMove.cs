@@ -8,15 +8,13 @@ public class ArrowMove : MonoBehaviour
     public Vector3 target = new Vector3(0f, 0f, 0f);
     public float fArrowSpeed;
 
-    private void onTriggerEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("fucking");
-
-        if (!collision.gameObject.tag.Equals("Respawn"))
+        if (collision.gameObject.name.Equals("DestroyArrow"))
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

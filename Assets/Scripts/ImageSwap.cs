@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ImageSwap : MonoBehaviour
 {
-
     public Sprite[] Source;
     public Image image;
     private bool swap = false;
@@ -15,6 +14,4 @@ public class ImageSwap : MonoBehaviour
         if (swap) { image.sprite = Source[0]; swap = !swap; }
         else { image.sprite = Source[1]; swap = !swap; }
     }
-
-
 }
