@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+        Screen.SetResolution(1920, 1080, false);
 
         AudioManager.Instance.PlayMusic(AudioManager.Instance.Background);
         AudioManager.Instance.PlayMusic(AudioManager.Instance.RainDrop);
