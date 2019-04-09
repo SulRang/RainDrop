@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class ArrowChangePositionMove : MonoBehaviour
 {
-    private bool bCanArrowMove;
     private Vector3 target = new Vector3(0f, 0f, 0f);
-    private Transform Arrow;
-    public float fArrowSpeed;
+    public float fArrowSpeed = 3;
     private bool bChange = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,9 +18,16 @@ public class ArrowChangePositionMove : MonoBehaviour
         }
     }
 
+    private void RandomArrowSpeed(int val)
+    {
+        fArrowSpeed = Random.Range(2, val);
+    }
+
     private void MoveArrow()
     {
-        
+        if (!GameManager.Instance.IsInGame)
+            return;
+
         float step = fArrowSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
         float angle = GetAngle(transform.position, target);
@@ -32,12 +37,13 @@ public class ArrowChangePositionMove : MonoBehaviour
 
     void Start()
     {
-        
+        RandomArrowSpeed(4);
     }
 
     // Update is called once per frame
     void Update()
     {
+        MoveArrow();
         if (Mathf.Abs(this.transform.position.x) <= 5f && Mathf.Abs(this.transform.position.y) <= 3f && bChange)
         {
             float x = this.transform.position.x;
@@ -47,7 +53,6 @@ public class ArrowChangePositionMove : MonoBehaviour
 
             bChange = false;
         }
-        MoveArrow();
     }
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)
     {

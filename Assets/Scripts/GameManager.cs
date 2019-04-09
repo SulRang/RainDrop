@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
         if (_instance == null)
             _instance = this;
         if (_instance != this)
@@ -45,8 +44,6 @@ public class GameManager : MonoBehaviour
 
         ScoreManager.CScore = 0f;
         ScoreManager.BScore = 0f;
-        UIManager.BMainActive = true;
-        UIManager.BPauseActive = false;
     }
 
     void Update()
@@ -66,8 +63,9 @@ public class GameManager : MonoBehaviour
     {
         if (IsInGame)
         {
-            ArrowManager.Instance.SpawnArrow();
-            LevelManager.Instance.UpdateLevel();
+            ArrowManager.Instance.ArrowUpdate();
+            LevelManager.Instance.LevelUpdate();
+            ScoreManager.Instance.ScoreUpdate();
         }
         AudioManager.Instance.AudioRun();
     }

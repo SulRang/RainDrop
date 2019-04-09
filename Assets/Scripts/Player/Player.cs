@@ -31,9 +31,9 @@ public class Player : MonoBehaviour
             if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
             {
                 PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
+                Social.Active.ReportScore((long)ScoreManager.BScore, GPGSIds.leaderboard_1, null);
             }
-            UIManager.BPauseActive = false;
-            mUIManager.Result();
+            //mUIManager.Result();
         }
         if (col.gameObject.tag.Equals("Item"))
         {

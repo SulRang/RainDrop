@@ -8,9 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public static bool BMainActive = true;
-    public static bool BPauseActive = false;
-
     private float UI_duration = 0.5f;
 
     //  Main UI
@@ -39,8 +36,6 @@ public class UIManager : MonoBehaviour
         //PlayerPrefs.DeleteAll();
         CloseMain();
         OpenIngame();
-        BMainActive = false;
-        BPauseActive = true;
         tutorial.gameObject.active = true;
         GameManager.Instance.IsStart = false;
         GameManager.Instance.IsTutorial = true;
@@ -75,7 +70,6 @@ public class UIManager : MonoBehaviour
         OpenPause();
         GameManager.Instance.IsInGame = false;
         GameManager.Instance.IsPause = true;
-        BPauseActive = false;
     }
 
     public void ContinueBnt()
@@ -84,7 +78,6 @@ public class UIManager : MonoBehaviour
         OpenIngame();
         GameManager.Instance.IsInGame = true;
         GameManager.Instance.IsPause = false;
-        BPauseActive = true;        
     }
 
     public void HomeBnt()
@@ -96,8 +89,6 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.IsInGame = false;
         GameManager.Instance.IsPause = false;
         GameManager.Instance.IsResult = false;
-        BMainActive = true;
-        BPauseActive = false;
         arrowManager.speed = 13;
         LevelManager.Instance.gameLevel = 0;
         ScoreManager.CScore = 0f;

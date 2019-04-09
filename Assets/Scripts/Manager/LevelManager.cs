@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
         return gameLevel;
     }
 
-    public void UpdateLevel()
+    public void LevelUpdate()
     {
         fRunningTime += Time.deltaTime;
 
