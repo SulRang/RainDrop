@@ -12,11 +12,12 @@ public class GPGSManager : MonoBehaviour
 
     //싱글톤 패턴
     private static GPGSManager _instance;
+
     public static GPGSManager Instance
     {
         get
         {
-            if (_instance == null) _instance = new GPGSManager();
+            if (_instance == null) _instance = FindObjectOfType<GPGSManager>() as GPGSManager;
             return _instance;
         }
     }
