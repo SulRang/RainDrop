@@ -10,6 +10,7 @@ using GooglePlayGames;
 
 public class ScoreManager : MonoBehaviour
 {
+    public bool IsUpdateScore;
     public Text scoreLabel;
     public Text levelLabel;
     public Text currentScore, BestScore;
@@ -36,10 +37,10 @@ public class ScoreManager : MonoBehaviour
 
     public void ScoreUpdate()
     {
-        if (!UIManager.BMainActive && UIManager.BPauseActive)
+        if (GameManager.Instance.IsInGame)
             CScore += Time.deltaTime;
 
-        if (!(UIManager.BMainActive))
+        if (GameManager.Instance.IsInGame)
             scoreLabel.text = CScore.ToString("N2");
 
         currentScore.text = CScore.ToString("N2");
@@ -54,15 +55,8 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        if (!UIManager.BMainActive && UIManager.BPauseActive)
-            CScore += Time.deltaTime;
+        ScoreUpdate();
 
-        if (!(UIManager.BMainActive))
-            scoreLabel.text = CScore.ToString("N2");
-
-        currentScore.text = CScore.ToString("N2");
-        //bestscore value 불러오기
-        BestScore.text = PlayerPrefs.GetFloat("BEST", 0).ToString("N2");
         if (BScore != CScore)
             Social.Active.ReportScore((long)BScore, GPGSIds.leaderboard_1, null);
 

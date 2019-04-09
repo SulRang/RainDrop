@@ -34,8 +34,7 @@ public class ArrowManager : MonoBehaviour
 
     public GameObject RandomArrow()
     {
-        int index = (LevelManager.Instance.gameLevel >= Arrows.Length) ? Arrows.Length - 1 : LevelManager.Instance.gameLevel - 1;
-        return Arrows[index];
+        return Arrows[Random.Range(0, LevelManager.Instance.GetGameLevel()) % (Arrows.Length - 1)];
     }
 
     public void MakeArrow()

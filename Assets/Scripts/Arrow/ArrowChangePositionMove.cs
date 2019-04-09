@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArrowChangePositionMove : MonoBehaviour
 {
+    private bool bCanArrowMove;
     private Vector3 target = new Vector3(0f, 0f, 0f);
     private Transform Arrow;
     public float fArrowSpeed;
@@ -21,9 +22,7 @@ public class ArrowChangePositionMove : MonoBehaviour
 
     private void MoveArrow()
     {
-        if (UIManager.BPauseActive)
-            return;
-
+        
         float step = fArrowSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
         float angle = GetAngle(transform.position, target);

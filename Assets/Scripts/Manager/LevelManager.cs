@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    
-    public float levelSection;
-    public int gameLevel;
+    public float levelSection = 10f;
+    public int gameLevel = 1;
+    public float fRunningTime = 0f;
 
     private static LevelManager _instance = null;
 
@@ -20,9 +20,15 @@ public class LevelManager : MonoBehaviour
                 if (_instance == null)
                     Debug.Log("LevelManager is nowhere");
             }
-
             return _instance;
         }
+    }
+        
+    public void Initialize()
+    {
+        gameLevel = 1;
+        fRunningTime = 0;
+        levelSection = 10;
     }
 
     public int GetGameLevel()
@@ -30,21 +36,27 @@ public class LevelManager : MonoBehaviour
         return gameLevel;
     }
 
+    public void UpdateLevel()
+    {
+        fRunningTime += Time.deltaTime;
+
+        if(fRunningTime >= levelSection)
+        {
+            fRunningTime = 0;
+            levelSection += 2;
+            gameLevel++;
+            ArrowManager.Instance.MakeBoom();
+        }
+    }
+
     void Start()
     {
         //arrowManager = FindObjectOfType<ArrowManager>();
-
-        levelSection = 10f;
-        gameLevel = 1;
-
+        Initialize();
     }
     
     void Update()
     {
-        if (ScoreManager.CScore >= levelSection * gameLevel)
-        {
-            gameLevel++;
-            ArrowManager.Instance.MakeBoom();
-        }
+        
     }
 }

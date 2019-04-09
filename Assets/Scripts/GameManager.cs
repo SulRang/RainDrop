@@ -17,7 +17,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public float fGameSpeed = 1f;
+    public float fGameSpeed = 1;
+
+    //게임 진행위치
+    public bool IsStart = true;
+    public bool IsTutorial = false;
+    public bool IsInGame = false;
+    public bool IsOption = false;
+    public bool IsResult = false;
+    public bool IsPause = false;
 
     void Start()
     {
@@ -56,8 +64,11 @@ public class GameManager : MonoBehaviour
 
     private void Run()
     {
-        if(!UIManager.BMainActive && UIManager.BPauseActive)
+        if (IsInGame)
+        {
             ArrowManager.Instance.SpawnArrow();
+            LevelManager.Instance.UpdateLevel();
+        }
         AudioManager.Instance.AudioRun();
     }
 

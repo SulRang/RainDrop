@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     public RectTransform op_panel, back;
 
     //  Ingame UI
-    public RectTransform score, pause, bomb;
+    public RectTransform score, pause, bomb, tutorial;
 
     //  Pause UI 
     public RectTransform ps_panel;
@@ -34,16 +34,6 @@ public class UIManager : MonoBehaviour
         //BPauseActive = false;
     }
 
-    public bool CheckGamePause()
-    {
-        if (!BMainActive)
-            return false;
-        if (BPauseActive)
-            return false; 
-        return true;
-    }
-
-
     public void StartBnt()
     {
         //PlayerPrefs.DeleteAll();
@@ -51,39 +41,61 @@ public class UIManager : MonoBehaviour
         OpenIngame();
         BMainActive = false;
         BPauseActive = true;
+        tutorial.gameObject.active = true;
+        GameManager.Instance.IsStart = false;
+        GameManager.Instance.IsTutorial = true;
+    }
+
+    public void TutorialBnt()
+    {
+        tutorial.gameObject.active = false;
+        GameManager.Instance.IsTutorial = false;
+        GameManager.Instance.IsInGame = true;
     }
 
     public void OptionBnt()
     {
         CloseMain();
         OpenOption();
+        GameManager.Instance.IsStart = false;
+        GameManager.Instance.IsOption = true;
     }
 
     public void BackBnt()
     {
         OpenMenu();
-        CloseOption();           
+        CloseOption();
+        GameManager.Instance.IsStart = true;
+        GameManager.Instance.IsOption = false;
     }
 
     void PauseBnt()
     {
         CloseIngame();
         OpenPause();
-
-        BPauseActive = false;   
+        GameManager.Instance.IsInGame = false;
+        GameManager.Instance.IsPause = true;
+        BPauseActive = false;
     }
 
     public void ContinueBnt()
     {
         ClosePause();
         OpenIngame();
-
+        GameManager.Instance.IsInGame = true;
+        GameManager.Instance.IsPause = false;
         BPauseActive = true;        
     }
 
     public void HomeBnt()
     {
         ArrowManager arrowManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ArrowManager>();
+        GameManager.Instance.IsStart = true;
+        GameManager.Instance.IsTutorial = false;
+        GameManager.Instance.IsOption = false;
+        GameManager.Instance.IsInGame = false;
+        GameManager.Instance.IsPause = false;
+        GameManager.Instance.IsResult = false;
         BMainActive = true;
         BPauseActive = false;
         arrowManager.speed = 13;
@@ -96,6 +108,8 @@ public class UIManager : MonoBehaviour
     {
         CloseIngame();
         OpenResult();
+        GameManager.Instance.IsInGame = false;
+        GameManager.Instance.IsResult = true;
     }
 
     public void RetryBnt()
@@ -108,9 +122,9 @@ public class UIManager : MonoBehaviour
         }
         ScoreManager.CScore = 0f;
         arrowManager.speed = 13;
-        LevelManager.Instance.gameLevel = 0;
-        BPauseActive = true;
-
+        LevelManager.Instance.gameLevel = 1;
+        GameManager.Instance.IsInGame = true;
+        GameManager.Instance.IsResult = false;
         CloseResult();
         OpenIngame();
 

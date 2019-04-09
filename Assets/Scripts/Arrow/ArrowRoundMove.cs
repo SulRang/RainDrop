@@ -9,7 +9,7 @@ public class ArrowRoundMove : MonoBehaviour
     public float fArrowSpeed = 2;
     public float RoundSpeed = 0.5f;
     public float fNowAngle = 0;
-    public float fRandius = 100;
+    public float fRandius = 10f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,14 +24,16 @@ public class ArrowRoundMove : MonoBehaviour
     private void RandomArrowSpeed(int val)
     {
         fArrowSpeed = Random.Range(2, val);
+        fRandius = 10f;
     }
 
     private void CheckAngle()
     {
-        fNowAngle = Mathf.Atan2(transform.position.y, transform.position.x);
+        fNowAngle = Random.Range(0f, 100f);
+        //fNowAngle = Mathf.Atan2(transform.position.y, transform.position.x) * Mathf.Rad2Deg;
     }
 
-    public static float GetAngle(Vector3 vStart, Vector3 vEnd)
+    public float GetAngle(Vector3 vStart, Vector3 vEnd)
     {
         Vector3 v = vEnd - vStart;
 
@@ -40,7 +42,7 @@ public class ArrowRoundMove : MonoBehaviour
 
     private void MoveArrow()
     {
-        if (!UIManager.BPauseActive)
+        if (!GameManager.Instance.IsInGame)
             return;
 
         fNowAngle += RoundSpeed * Time.deltaTime;
