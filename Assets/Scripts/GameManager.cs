@@ -6,8 +6,18 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance = null;
 
-    private LevelManager levelManager;
+    public static GameManager Instance
+    {
+        get
+        {
+            _instance = FindObjectOfType<GameManager>();
+            if (_instance == null)
+                Debug.Log("GameManager is not Find.");
+            return _instance;
+        }
+    }
 
+    public float fGameSpeed = 1f;
 
     void Start()
     {
@@ -18,8 +28,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-
-        levelManager = FindObjectOfType<LevelManager>();
+        Screen.SetResolution(1920, 1080, false);
 
         AudioManager.Instance.PlayMusic(AudioManager.Instance.Background);
         AudioManager.Instance.PlayMusic(AudioManager.Instance.RainDrop);

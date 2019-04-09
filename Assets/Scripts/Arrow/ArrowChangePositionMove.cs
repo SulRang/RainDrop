@@ -6,15 +6,34 @@ public class ArrowChangePositionMove : MonoBehaviour
 {
     private Vector3 target = new Vector3(0f, 0f, 0f);
     private Transform Arrow;
-    public float speed;
+    public float fArrowSpeed;
     private bool bChange = true;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name.Equals("DestroyArrow"))
+        {
+            if (fArrowSpeed >= 5)
+                AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            Destroy(gameObject);
+        }
+    }
+
+    private void MoveArrow()
+    {
+        if (UIManager.BPauseActive)
+            return;
+
+        float step = fArrowSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, target, step);
+        float angle = GetAngle(transform.position, target);
+        Vector3 euler = new Vector3(0f, 0f, angle);
+        transform.rotation = Quaternion.Euler(euler);
+    }
 
     void Start()
     {
-        if (this.tag.Equals("Arrow"))
-            speed = Random.Range(2, 5);
-        else
-            speed = 2;
+        
     }
 
     // Update is called once per frame
@@ -29,16 +48,7 @@ public class ArrowChangePositionMove : MonoBehaviour
 
             bChange = false;
         }
-
-
-        if (UIManager.BPauseActive)
-        {
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target, step);
-            float angle = GetAngle(transform.position, target);
-            Vector3 euler = new Vector3(0f, 0f, angle);
-            transform.rotation = Quaternion.Euler(euler);
-        }
+        MoveArrow();
     }
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)
     {
