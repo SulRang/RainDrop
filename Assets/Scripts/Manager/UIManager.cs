@@ -6,6 +6,14 @@ using DG.Tweening;
 using DG;
 using UnityEngine.SceneManagement;
 
+enum eSOUND_LEVEL
+{
+    MUTE,
+    LEVEL1,
+    LEVEL2,
+    LEVEL3
+}
+
 public class UIManager : MonoBehaviour
 {
     private float UI_duration = 0.5f;
@@ -27,13 +35,11 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        //BMainActive = true;
-        //BPauseActive = false;
+
     }
 
     public void StartBnt()
     {
-        //PlayerPrefs.DeleteAll();
         CloseMain();
         OpenIngame();
         tutorial.gameObject.active = true;

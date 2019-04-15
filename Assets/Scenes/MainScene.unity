@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.65882355, g: 0.65882355, b: 0.65882355, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2864,7 +2864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.65882355, g: 0.65882355, b: 0.65882355, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3416,7 +3416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39793c7c48c34c648a15ed04ccc97af3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsUpdateScore: 0
   scoreLabel: {fileID: 1949622523}
   levelLabel: {fileID: 0}
   currentScore: {fileID: 1279647859}

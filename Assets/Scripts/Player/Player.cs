@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
                 PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
                 Social.Active.ReportScore((long)ScoreManager.BScore, GPGSIds.leaderboard_1, null);
             }
-            //mUIManager.Result();
+            mUIManager.Result();
         }
         if (col.gameObject.tag.Equals("Item"))
         {
@@ -44,22 +44,22 @@ public class Player : MonoBehaviour
 
     public void MoveLeft()
     {
-        bLeft = true;
+        bRight = true;
     }
 
     public void MoveRight()
     {
-        bRight = true;
+        bLeft = true;
     }
 
     public void MoveLeftDown()
     {
-        bLeft = false;
+        bRight = false;
     }
 
     public void MoveRightDown()
     {
-        bRight = false;
+        bLeft = false;
     }
 
     public void ActiveBoom()
