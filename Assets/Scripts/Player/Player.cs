@@ -6,16 +6,17 @@ using UnityEngine.EventSystems;
 public class Player : MonoBehaviour
 {
     public bool bPlayerMove;
+    public bool bPlayerControl;
     private UIManager mUIManager;
     public GameObject ArrowBoard = null;
     public static int BoomCount = 0;
 
     public float fSpeed = 5f;
     public float fRadius = 1.5f;
-    private float fRunningTime = 0f;
+    public float fRunningTime = 0f;
 
     private bool bLeft = false;
-    private bool bRight = true;
+    private bool bRight = false;
 
     private Vector3 vNewPos = new Vector3();
     private float x = 0f;
@@ -30,9 +31,9 @@ public class Player : MonoBehaviour
             if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
             {
                 PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
+                Social.Active.ReportScore((long)ScoreManager.BScore, GPGSIds.leaderboard_1, null);
             }
-            UIManager.BPauseActive = false;
-            mUIManager.Result();
+            //mUIManager.Result();
         }
         if (col.gameObject.tag.Equals("Item"))
         {
@@ -143,11 +144,14 @@ public class Player : MonoBehaviour
 
     private void GoToMove()
     {
-        fRunningTime = Mathf.Atan2(transform.position.x, transform.position.y);
-        while(fRunningTime >= 0f)
+        fSpeed = 2f;
+        if (transform.position.y <= 1.49f)
         {
-            fRunningTime -= Time.deltaTime * fSpeed;
+            MovePositionRight();
+            MoveAnimationRight();
         }
+        else MoveIdleAnimation();
+        fSpeed = 5f;
     }
 
     private void Start()
@@ -160,7 +164,20 @@ public class Player : MonoBehaviour
     {
         PlayerIdle();
 
-        if (bPlayerMove)
+        if (GameManager.Instance.IsTutorial)
+        {
+            GoToMove();
+            return;
+        }
+
+        if (GameManager.Instance.IsStart)
+        {
+            MoveAnimationRight();
+            MovePositionRight();
+            return;
+        }
+
+        if (!GameManager.Instance.IsInGame)
             return;
 
         if (bRight)

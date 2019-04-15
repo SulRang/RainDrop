@@ -24,8 +24,9 @@ public class ArrowChangeSpeedMove : MonoBehaviour
 
     private void MoveArrow()
     {
-        if (!UIManager.BPauseActive)
+        if (!GameManager.Instance.IsInGame)
             return;
+
         float step = fArrowSpeed * GameManager.Instance.fGameSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target, step);
         float angle = GetAngle(transform.position, target);

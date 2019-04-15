@@ -17,11 +17,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public float fGameSpeed = 1f;
+    public float fGameSpeed = 1;
+
+    //게임 진행위치
+    public bool IsStart = true;
+    public bool IsTutorial = false;
+    public bool IsInGame = false;
+    public bool IsOption = false;
+    public bool IsResult = false;
+    public bool IsPause = false;
 
     void Start()
     {
-
         if (_instance == null)
             _instance = this;
         if (_instance != this)
@@ -37,8 +44,6 @@ public class GameManager : MonoBehaviour
 
         ScoreManager.CScore = 0f;
         ScoreManager.BScore = 0f;
-        UIManager.BMainActive = true;
-        UIManager.BPauseActive = false;
     }
 
     void Update()
@@ -56,8 +61,12 @@ public class GameManager : MonoBehaviour
 
     private void Run()
     {
-        if(!UIManager.BMainActive && UIManager.BPauseActive)
-            ArrowManager.Instance.SpawnArrow();
+        if (IsInGame)
+        {
+            ArrowManager.Instance.ArrowUpdate();
+            LevelManager.Instance.LevelUpdate();
+            ScoreManager.Instance.ScoreUpdate();
+        }
         AudioManager.Instance.AudioRun();
     }
 
