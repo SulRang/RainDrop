@@ -103,6 +103,7 @@ public class UIManager : MonoBehaviour
        
     public void Result()
     {
+        ScoreManager.Instance.ScoreUpdate();
         CloseIngame();
         OpenResult();
         GameManager.Instance.IsInGame = false;
