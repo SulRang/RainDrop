@@ -16,6 +16,17 @@ enum eSOUND_LEVEL
 
 public class UIManager : MonoBehaviour
 {
+    private static UIManager _instance = null;
+    public static UIManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = FindObjectOfType<UIManager>();
+            return _instance;
+        }
+    }
+
     private float UI_duration = 0.5f;
 
     //  Main UI
