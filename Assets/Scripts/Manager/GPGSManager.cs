@@ -37,9 +37,6 @@ public class GPGSManager : MonoBehaviour
         PlayGamesPlatform.Activate();
     }
 
-    public Text stateText;                  // 상태 메세지
-    private Action<bool> signInCallback;    // 로그인 성공 여부 확인을 위한 Callback 함수
-
     void Awake()
     {
         // 안드로이드 빌더 초기화
@@ -50,36 +47,15 @@ public class GPGSManager : MonoBehaviour
         PlayGamesPlatform.DebugLogEnabled = true;
 
         PlayGamesPlatform.Activate();
-
-        signInCallback = (bool success) =>
-        {
-            if (success)
-            {
-                stateText.text = "SignIn Success!";
-            }
-            else
-            {
-                stateText.text = "SignIn Fail!";
-
-            }
-        };
+        
     }
     // 로그인
     public void Login()
     {
         if (PlayGamesPlatform.Instance.IsAuthenticated() == false)
         {
-
-            if (Authenticated || _authenticating)
-            {
-                Debug.LogWarning("Ignoring repeated call to Authenticate().");
-                return;
-            }
-
-            _authenticating = true;
             Social.localUser.Authenticate((bool success) =>
             {
-                _authenticating = false;
                 if (success)
                 {
                     Debug.Log("Sign in successful!");
@@ -89,7 +65,6 @@ public class GPGSManager : MonoBehaviour
                     Debug.LogWarning("Failed to sign in with Google Play");
                 }
             });
-            PlayGamesPlatform.Instance.Authenticate(signInCallback);
         }
         else
         {

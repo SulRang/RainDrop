@@ -14,8 +14,8 @@ public class ScoreManager : MonoBehaviour
     public Text scoreLabel;
     public Text levelLabel;
     public Text currentScore, BestScore;
-    public static float CScore;
-    public static float BScore;
+    public static int CScore;
+    public static int BScore;
 
     public static ScoreManager Instance
     {
@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
 
     public void CheckScore()
     {
-        Social.LoadScores(GPGSIds.leaderboard_1, Scores =>
+        Social.LoadScores(GPGSIds.leaderboard, Scores =>
         {
             if (Scores.Length > 0)
             {
@@ -42,7 +42,6 @@ public class ScoreManager : MonoBehaviour
                     if (score.value <= CScore)
                     {
                         BScore = CScore;
-                        Social.Active.ReportScore((long)BScore, GPGSIds.leaderboard_1, null);
                     }
                 }
             }
@@ -51,8 +50,6 @@ public class ScoreManager : MonoBehaviour
 
     public void ScoreUpdate()
     {
-        if(GameManager.Instance.IsInGame)
-            CScore += Time.deltaTime;
         scoreLabel.text = CScore.ToString("N2");
         currentScore.text = CScore.ToString("N2");
         BestScore.text = PlayerPrefs.GetFloat("BEST", 0).ToString("N2");
