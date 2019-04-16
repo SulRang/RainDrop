@@ -35,13 +35,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-        Screen.SetResolution(1920, 1080, false);
+        Screen.SetResolution(1920, 1080, true);
 
         AudioManager.Instance.PlayMusic(AudioManager.Instance.Background);
         AudioManager.Instance.PlayMusic(AudioManager.Instance.RainDrop);
         AudioManager.Instance.PlayMusic(AudioManager.Instance.Fire);
-
-        UIManager.Instance.HomeBnt();
 
         ScoreManager.CScore = 0f;
         ScoreManager.BScore = 0f;
@@ -66,6 +64,10 @@ public class GameManager : MonoBehaviour
         {
             ArrowManager.Instance.ArrowUpdate();
             LevelManager.Instance.LevelUpdate();
+            ScoreManager.Instance.ScoreUpdate();
+        }
+        if(IsResult)
+        {
             ScoreManager.Instance.ScoreUpdate();
         }
 

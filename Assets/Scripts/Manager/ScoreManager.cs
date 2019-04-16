@@ -51,7 +51,8 @@ public class ScoreManager : MonoBehaviour
 
     public void ScoreUpdate()
     {
-        CScore += Time.deltaTime;
+        if(GameManager.Instance.IsInGame)
+            CScore += Time.deltaTime;
         scoreLabel.text = CScore.ToString("N2");
         currentScore.text = CScore.ToString("N2");
         BestScore.text = PlayerPrefs.GetFloat("BEST", 0).ToString("N2");
