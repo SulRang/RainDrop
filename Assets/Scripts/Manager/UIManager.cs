@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.IsResult = false;
         arrowManager.speed = 13;
         LevelManager.Instance.gameLevel = 0;
-        ScoreManager.CScore = 0f;
+        ScoreManager.CScore = 0;
         SceneManager.LoadScene("MainScene");
     }
        
@@ -129,7 +129,7 @@ public class UIManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        ScoreManager.CScore = 0f;
+        ScoreManager.CScore = 0;
         arrowManager.speed = 13;
         LevelManager.Instance.gameLevel = 1;
         GameManager.Instance.IsInGame = true;
