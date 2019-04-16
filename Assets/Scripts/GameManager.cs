@@ -67,6 +67,11 @@ public class GameManager : MonoBehaviour
             LevelManager.Instance.LevelUpdate();
             ScoreManager.Instance.ScoreUpdate();
         }
+        if(IsResult)
+        {
+            ScoreManager.Instance.ScoreUpdate();
+        }
+
         AudioManager.Instance.AudioRun();
     }
 
