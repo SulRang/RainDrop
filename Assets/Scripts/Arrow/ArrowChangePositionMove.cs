@@ -16,6 +16,22 @@ public class ArrowChangePositionMove : MonoBehaviour
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "Active")
+        {
+            float x = this.transform.position.x;
+            float y = this.transform.position.y;
+            transform.position = new Vector3((-1) * x, (-1) * y, 0f);
+        }
+    }
+
+    private void nCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Active")
+        {
+            float x = this.transform.position.x;
+            float y = this.transform.position.y;
+            transform.position = new Vector3((-1) * x, (-1) * y, 0f);
+        }
     }
 
     private void RandomArrowSpeed(int val)
@@ -44,15 +60,15 @@ public class ArrowChangePositionMove : MonoBehaviour
     void Update()
     {
         MoveArrow();
-        if (Mathf.Abs(this.transform.position.x) <= 5f && Mathf.Abs(this.transform.position.y) <= 3f && bChange)
-        {
-            float x = this.transform.position.x;
-            float y = this.transform.position.y;
+        //if (Mathf.Abs(this.transform.position.x) <= 5f && Mathf.Abs(this.transform.position.y) <= 3f && bChange)
+        //{
+        //    float x = this.transform.position.x;
+        //    float y = this.transform.position.y;
 
-            transform.position = new Vector3((-1) * x, (-1) * y, 0f);
+        //    transform.position = new Vector3((-1) * x, (-1) * y, 0f);
 
-            bChange = false;
-        }
+        //    bChange = false;
+        //}
     }
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)
     {

@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     private float x = 0f;
     private float y = 1f;
 
-    private float fMoveAngle = 0;
+    private float fAnimationAngle = 0;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -84,20 +84,25 @@ public class Player : MonoBehaviour
         return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
     }
 
+    private void ChangeAnimationAngle(float val)
+    {
+        fAnimationAngle += val * Time.deltaTime;
+    }
+
     private void PlayerIdle()
     {
         float angle = GetAngle(transform.position, new Vector3(0f, 0f, 0f));
-        Vector3 euler = new Vector3(0f, 0f, angle + 90f + fMoveAngle);
+        Vector3 euler = new Vector3(0f, 0f, angle + 90f + fAnimationAngle);
         transform.rotation = Quaternion.Euler(euler);
     }
 
     private void MoveIdleAnimation()
     {
-        if (fMoveAngle > 0)
-            fMoveAngle -= Time.deltaTime * 200;
-        else if (fMoveAngle < 0)
-            fMoveAngle += Time.deltaTime * 200;
-        else if (fMoveAngle == 0)
+        if (fAnimationAngle > 0)
+            ChangeAnimationAngle(-200);
+        else if (fAnimationAngle < 0)
+            ChangeAnimationAngle(200);
+        else if (fAnimationAngle == 0)
             return;
     }
 
@@ -121,20 +126,20 @@ public class Player : MonoBehaviour
 
     private void MoveAnimationRight()
     {
-        if (fMoveAngle >= -80 && fMoveAngle <= 80) fMoveAngle -= Time.deltaTime * 500;
+        if (fAnimationAngle >= -80 && fAnimationAngle <= 80) ChangeAnimationAngle(-500);
         CheckMoveAnimation();
     }
 
     private void MoveAnimationLeft()
     {
-        if (fMoveAngle >= -80 && fMoveAngle <= 80) fMoveAngle += Time.deltaTime * 500;
+        if (fAnimationAngle >= -80 && fAnimationAngle <= 80) ChangeAnimationAngle(500);
         CheckMoveAnimation();
     }
 
     private void CheckMoveAnimation()
     {
-        if (fMoveAngle < -80) fMoveAngle = -80;
-        else if (fMoveAngle > 80) fMoveAngle = 80;
+        if (fAnimationAngle < -80) fAnimationAngle = -80;
+        else if (fAnimationAngle > 80) fAnimationAngle = 80;
     }
 
     public bool GetbPlayerMove()
@@ -142,6 +147,7 @@ public class Player : MonoBehaviour
         return bPlayerMove;
     }
 
+    //tutorial
     private void GoToMove()
     {
         fSpeed = 2f;
@@ -157,6 +163,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         mUIManager = FindObjectOfType<UIManager>();
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         BoomCount = 0;
     }
 
