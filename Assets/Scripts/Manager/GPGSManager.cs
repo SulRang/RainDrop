@@ -67,7 +67,6 @@ public class GPGSManager : MonoBehaviour
     // 로그인
     public void Login()
     {
-        
         if (PlayGamesPlatform.Instance.IsAuthenticated() == false)
         {
 

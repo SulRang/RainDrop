@@ -15,6 +15,18 @@ public class ArrowChangeSpeedMove : MonoBehaviour
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "Active")
+        {
+            ChangeSpeed();
+        }
+    }
+
+    private void onCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Active")
+        {
+            ChangeSpeed();
+        }
     }
 
     private void RandomArrowSpeed(int val)
@@ -47,11 +59,6 @@ public class ArrowChangeSpeedMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(Mathf.Abs(this.transform.position.x) <= 5f && Mathf.Abs(this.transform.position.y) <= 3f)
-        {
-            ChangeSpeed();
-        }
         MoveArrow();
         
     }

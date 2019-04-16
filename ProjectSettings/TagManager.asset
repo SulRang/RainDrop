@@ -7,6 +7,7 @@ TagManager:
   - Arrow
   - Item
   - GameManager
+  - Active
   layers:
   - Default
   - TransparentFX
