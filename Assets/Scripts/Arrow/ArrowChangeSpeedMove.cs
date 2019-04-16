@@ -9,23 +9,26 @@ public class ArrowChangeSpeedMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("DestroyArrow"))
+        if (collision.gameObject.tag == "Active")
+        {
+            ChangeSpeed();
+        }
+
+        if (collision.gameObject.tag.Equals("Respawn"))
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Active")
-        {
-            ChangeSpeed();
-        }
     }
 
-    private void onCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Active")
+        if (collision.gameObject.tag.Equals("Respawn"))
         {
-            ChangeSpeed();
+            if (fArrowSpeed >= 5)
+                AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            Destroy(gameObject);
         }
     }
 
@@ -60,7 +63,6 @@ public class ArrowChangeSpeedMove : MonoBehaviour
     void Update()
     {
         MoveArrow();
-        
     }
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)
     {
