@@ -76,8 +76,7 @@ ProjectVersion.txt
 #    Assets    #
 
 # ============ #
-
-Assets/Dropbox/
+Assets/Resources/Dropbox/
 
 Assets/Demigiant/
 
@@ -85,8 +84,4 @@ Assets/GooglePlayGames/
 
 Assets/PlayServicesResolver/
 
-<<<<<<< HEAD
 Assets/Plugins/
-=======
-Assets/Plugin/
->>>>>>> 52827eb03586d37930d35bf43f50d4bfd954d6cb
