@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.PlayMusic(AudioManager.Instance.RainDrop);
         AudioManager.Instance.PlayMusic(AudioManager.Instance.Fire);
 
+        UIManager.Instance.HomeBnt();
 
         ScoreManager.CScore = 0f;
         ScoreManager.BScore = 0f;
