@@ -5,6 +5,29 @@ using UnityEngine.Advertisements;
 
 public class AdManager : MonoBehaviour
 {
+
+    private static AdManager _instance = null;
+
+    public static AdManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<AdManager>();
+                if (_instance == null)
+                    Debug.Log("AdManager");
+            }
+            return _instance;
+        }
+    }
+
+    public void IsShowAd()
+    {
+        if (LevelManager.Instance.GetGameLevel() >= 2)
+            ShowRewardedAd();
+
+    }
     public void ShowRewardedAd()
     {
         if (Advertisement.IsReady("rewardedVideo"))
