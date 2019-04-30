@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
                 Social.Active.ReportScore(ScoreManager.CScore*1, GPGSIds.leaderboard, null);
             }
             mUIManager.Result();
+            AdManager.Instance.IsShowAd();
         }
         if (col.gameObject.tag.Equals("Item"))
         {
