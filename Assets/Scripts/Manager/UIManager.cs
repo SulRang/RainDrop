@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     public RectTransform op_panel, back;
 
     //  Ingame UI
-    public RectTransform score, pause, bomb, tutorial;
+    public RectTransform score, pause, bomb, tutorial, level;
 
     //  Pause UI 
     public RectTransform ps_panel;
@@ -100,6 +100,7 @@ public class UIManager : MonoBehaviour
     public void HomeBnt()
     {
         ArrowManager arrowManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ArrowManager>();
+        LevelManager.Instance.Initialize();
         GameManager.Instance.IsStart = true;
         GameManager.Instance.IsTutorial = false;
         GameManager.Instance.IsOption = false;
@@ -190,6 +191,7 @@ public class UIManager : MonoBehaviour
         bomb.DOAnchorPos(new Vector2(850, -450), UI_duration);
         score.DOAnchorPos(new Vector2(-860, 495), UI_duration);
         pause.DOAnchorPos(new Vector2(855, 435), UI_duration);
+        level.DOAnchorPos(new Vector2(-860, 423), UI_duration);
     }
 
     void CloseIngame()
@@ -197,6 +199,7 @@ public class UIManager : MonoBehaviour
         bomb.DOAnchorPos(new Vector2(850, -600), UI_duration);
         score.DOAnchorPos(new Vector2(-860, 585), UI_duration);
         pause.DOAnchorPos(new Vector2(855, 620), UI_duration);
+        level.DOAnchorPos(new Vector2(-860, 647), UI_duration);
     }
 
     void OpenPause()
