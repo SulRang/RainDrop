@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     public float levelSection = 10f;
     public int gameLevel = 1;
     public float fRunningTime = 0f;
+    public Slider LvLable;
 
     private static LevelManager _instance = null;
 
@@ -26,6 +28,7 @@ public class LevelManager : MonoBehaviour
         
     public void Initialize()
     {
+        LvLable.value = 0;
         gameLevel = 1;
         fRunningTime = 0;
         levelSection = 10;
@@ -39,6 +42,8 @@ public class LevelManager : MonoBehaviour
     public void LevelUpdate()
     {
         fRunningTime += Time.deltaTime;
+
+        LvLable.value = fRunningTime / levelSection;
 
         if(fRunningTime >= levelSection)
         {
