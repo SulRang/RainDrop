@@ -31,7 +31,17 @@ public class Player : MonoBehaviour
             if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
             {
                 PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
-                Social.Active.ReportScore(ScoreManager.CScore*1, GPGSIds.leaderboard, null);
+                Social.Active.ReportScore(ScoreManager.CScore*1, GPGSIds.leaderboard_readerboard, bSuccess =>
+                {
+                    if (bSuccess)
+                    {
+                        Debug.Log($"{ScoreManager.CScore} reported");
+                    }
+                    else
+                    {
+                        Debug.Log("Authentication is required");
+                    }
+                });
             }
             mUIManager.Result();
             AdManager.Instance.IsShowAd();
