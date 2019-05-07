@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
 
     public void CheckScore()
     {
-        Social.LoadScores(GPGSIds.leaderboard, Scores =>
+        Social.LoadScores(GPGSIds.leaderboard_readerboard, Scores =>
         {
             if (Scores.Length > 0)
             {
