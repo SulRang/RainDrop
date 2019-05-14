@@ -277,7 +277,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 42322636}
-  - component: {fileID: 42322637}
   m_Layer: 0
   m_Name: ingame
   m_TagString: Untagged
@@ -304,25 +303,6 @@ Transform:
   m_Father: {fileID: 1089810889}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &42322637
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42322635}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0109e5e8584680841be3e5e4216f5c95, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &55380899
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +911,9 @@ MonoBehaviour:
   bPlayerMove: 0
   bPlayerControl: 0
   ArrowBoard: {fileID: 1624776435}
+  BombEffect: {fileID: 6022756028756518584, guid: b72f5aa146e67f04482b3678db99f13c,
+    type: 3}
+  InGame: {fileID: 42322635}
   fSpeed: 5
   fRadius: 1.5
   fRunningTime: 0
@@ -5094,8 +5077,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: fe67907cc2a65a448883d1103aa240fa, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
