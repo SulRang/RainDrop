@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private UIManager mUIManager;
     public GameObject ArrowBoard = null;
     public static int BoomCount = 0;
+    public GameObject BombEffect;
+    public GameObject InGame;
 
     public float fSpeed = 5f;
     public float fRadius = 1.5f;
@@ -78,10 +80,10 @@ public class Player : MonoBehaviour
         if (BoomCount > 0)
         {
             BoomCount--;
+            GameObject instance = Instantiate(BombEffect, new Vector3(0f, 0f, 10f), Quaternion.identity);
             foreach (Transform child in ArrowBoard.transform)
             {
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.Bomb);
-
                 if (child.tag == "Arrow")
                     Destroy(child.gameObject);
             }
