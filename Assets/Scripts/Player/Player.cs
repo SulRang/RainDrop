@@ -80,7 +80,8 @@ public class Player : MonoBehaviour
         if (BoomCount > 0)
         {
             BoomCount--;
-            GameObject instance = Instantiate(BombEffect, new Vector3(0f, 0f, 10f), Quaternion.identity);
+            GameObject instance = Instantiate(BombEffect, new Vector3(0f, 0f, 10f), Quaternion.identity) as GameObject;
+            Destroy(instance, 0.25f);
             foreach (Transform child in ArrowBoard.transform)
             {
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.Bomb);
