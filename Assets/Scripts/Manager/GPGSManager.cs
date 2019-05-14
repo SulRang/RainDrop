@@ -77,6 +77,21 @@ public class GPGSManager : MonoBehaviour
         {
             Social.ShowLeaderboardUI();
         }
+        else
+        {
+            Social.localUser.Authenticate((bool success) =>
+            {
+                if (success)
+                {
+                    Debug.Log("Sign in successful!");
+                    Social.ShowLeaderboardUI();
+                }
+                else
+                {
+                    Debug.LogWarning("Failed to sign in with Google Play");
+                }
+            });
+        }
     }
 }
 
