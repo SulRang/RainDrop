@@ -54,6 +54,22 @@ public class ArrowManager : MonoBehaviour
         }
     }
 
+    public void MakeVectorArrow(float angle)
+    {
+        float x = radius * Mathf.Cos(angle);
+        float y = radius * Mathf.Sin(angle);
+        ScoreManager.CScore++;
+        try
+        {
+            GameObject instance = Instantiate(RandomArrow(), new Vector3(x, y, 0f), Quaternion.identity);
+            instance.transform.SetParent(ArrowHolder);
+        }
+        catch (NullReferenceException ex)
+        {
+            Debug.Log(ex.ToString());
+        }
+    }
+
     public void MakeBoom()
     {
         float random = Random.Range(0, 100);
