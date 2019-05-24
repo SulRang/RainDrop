@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player_tutorial : MonoBehaviour
 {
     public bool bPlayerMove;
     public bool bPlayerControl;
-    private UIManager mUIManager;
     public GameObject ArrowBoard = null;
     public static int BoomCount = 0;
     public GameObject BombEffect;
@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     public float fRadius = 1.5f;
     public float fRunningTime = 0f;
 
-    private bool bLeft = false;
-    private bool bRight = false;
+    public bool bLeft = false;
+    public bool bRight = false;
 
     private Vector3 vNewPos = new Vector3();
     private float x = 0f;
@@ -29,23 +29,7 @@ public class Player : MonoBehaviour
     {
         if (col.gameObject.tag == "Arrow")
         {
-            if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
-            {
-                PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
-                Social.Active.ReportScore(ScoreManager.CScore*1, GPGSIds.leaderboard_readerboard, bSuccess =>
-                {
-                    if (bSuccess)
-                    {
-                        Debug.Log($"{ScoreManager.CScore} reported");
-                    }
-                    else
-                    {
-                        Debug.Log("Authentication is required");
-                    }
-                });
-            }
-            mUIManager.Result();
-            AdManager.Instance.IsShowAd();
+            SceneManager.LoadScene("MainScene");
         }
         if (col.gameObject.tag.Equals("Item"))
         {
@@ -175,7 +159,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        mUIManager = FindObjectOfType<UIManager>();
+        MovePositionRight();
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         BoomCount = 0;
     }
@@ -183,23 +167,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         PlayerIdle();
-
-        //if (GameManager.Instance.IsTutorial)
-        //{
-        //    GoToMove();
-        //    return;
-        //}
-
-        if (GameManager.Instance.IsStart)
-        {
-            MoveAnimationRight();
-            MovePositionRight();
-            return;
-        }
-
-        if (!GameManager.Instance.IsInGame)
-            return;
-
         if (bRight)
         {
             MoveAnimationRight();

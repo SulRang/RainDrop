@@ -6,14 +6,6 @@ using DG.Tweening;
 using DG;
 using UnityEngine.SceneManagement;
 
-enum eSOUND_LEVEL
-{
-    MUTE,
-    LEVEL1,
-    LEVEL2,
-    LEVEL3
-}
-
 public class UIManager : MonoBehaviour
 {
     private static UIManager _instance = null;
@@ -32,11 +24,14 @@ public class UIManager : MonoBehaviour
     //  Main UI
     public RectTransform title, start, option, login, leaderboard;
 
+    // Tutorial UI
+    public RectTransform tutorial, tutorialbtn,tutorialBack;
+
     //  Option UI
     public RectTransform op_panel, back;
 
     //  Ingame UI
-    public RectTransform score, pause, bomb, tutorial, level;
+    public RectTransform score, pause, bomb, level;
 
     //  Pause UI 
     public RectTransform ps_panel;
@@ -53,16 +48,24 @@ public class UIManager : MonoBehaviour
     {
         CloseMain();
         OpenIngame();
-        tutorial.gameObject.active = true;
         GameManager.Instance.IsStart = false;
-        GameManager.Instance.IsTutorial = true;
+        GameManager.Instance.IsInGame = true;
     }
 
     public void TutorialBnt()
     {
-        tutorial.gameObject.active = false;
+        CloseMain();
+        OpenTutorial();
+        GameManager.Instance.IsTutorial = true;
+        GameManager.Instance.IsStart = false;
+    }
+    
+    public void TutorialBackBnt()
+    {
+        OpenMenu();
+        CloseTutorial();
         GameManager.Instance.IsTutorial = false;
-        GameManager.Instance.IsInGame = true;
+        GameManager.Instance.IsStart = true;
     }
 
     public void OptionBnt()
@@ -162,6 +165,7 @@ public class UIManager : MonoBehaviour
         leaderboard.DOAnchorPos(new Vector2(850, -620), UI_duration);
         start.gameObject.SetActive(false);
         option.DOAnchorPos(new Vector2(855, 620), UI_duration);
+        tutorialbtn.DOAnchorPos(new Vector2(-855, -620), UI_duration);
     }
 
     void OpenMenu()
@@ -171,6 +175,21 @@ public class UIManager : MonoBehaviour
         leaderboard.DOAnchorPos(new Vector2(850, -250), UI_duration);
         start.gameObject.SetActive(true);
         option.DOAnchorPos(new Vector2(855, 435), UI_duration);
+        tutorialbtn.DOAnchorPos(new Vector2(-855, -420), UI_duration);
+    }
+
+    void OpenTutorial()
+    {
+        tutorial.DOAnchorPos(new Vector2(0, 0), UI_duration);
+        tutorialbtn.DOAnchorPos(new Vector2(-834, -620), UI_duration);
+        tutorialBack.DOAnchorPos(new Vector2(855, 420), UI_duration);
+    }
+
+    void CloseTutorial()
+    {
+        tutorial.DOAnchorPos(new Vector2(0,1200), UI_duration);
+        tutorialbtn.DOAnchorPos(new Vector2(-834, -430), UI_duration);
+        tutorialBack.DOAnchorPos(new Vector2(855, 620), UI_duration);
     }
 
     void OpenOption()

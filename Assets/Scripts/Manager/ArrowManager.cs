@@ -11,10 +11,7 @@ public class ArrowManager : MonoBehaviour
     private static ArrowManager _instance = null;
     public GameObject Boom;
     public GameObject[] Arrows;
-    private List<GameObject> ArrowTable;
-
     private Transform ArrowHolder = null;
-
     private int count = 0;
 
     public static ArrowManager Instance
