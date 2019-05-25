@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
 
     private void Run()
     {
+        if (IsTutorial) return;
+
         if (IsInGame)
         {
             ArrowManager.Instance.ArrowUpdate();

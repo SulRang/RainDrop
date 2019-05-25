@@ -14,6 +14,8 @@ public class TutorialManager : MonoBehaviour
     public Sprite[] Tutorial_Imaage;
     public string[] Tutorial_Masseages;
     public string[] Tutorial_SceneName;
+    public bool TutorialCheck;
+    public bool TutorialMode = false;
     public Image ImageBox;
     public Text MasseageBox;
     public int Chapter = 0;
@@ -47,7 +49,7 @@ public class TutorialManager : MonoBehaviour
     // 현재 정보 업데이트
     public void PanelUpdate()
     {
-        MasseageBox.text = Tutorial_Masseages[m_NowPage]; 
+        MasseageBox.text = Tutorial_Masseages[m_NowPage];
         ImageBox.sprite = Tutorial_Imaage[m_NowPage];
     }
 
@@ -64,12 +66,7 @@ public class TutorialManager : MonoBehaviour
 
     public void HomeScene()
     {
-        SceneManager.LoadScene(Tutorial_SceneName[0]);
-    }
-
-    public void MoveTutorial()
-    {
-        
+        SceneManager.LoadScene("MainScene");
     }
 
     public void GotoMain()
@@ -87,10 +84,6 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Chapter == 0) return;
-        if (Chapter == 1)
-        {
-            
-        }
+        
     }
 }

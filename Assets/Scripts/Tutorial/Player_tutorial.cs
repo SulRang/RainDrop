@@ -29,7 +29,7 @@ public class Player_tutorial : MonoBehaviour
     {
         if (col.gameObject.tag == "Arrow")
         {
-            SceneManager.LoadScene("MainScene");
+            TutorialManager.Instance.IntoScene();
         }
         if (col.gameObject.tag.Equals("Item"))
         {
@@ -167,6 +167,7 @@ public class Player_tutorial : MonoBehaviour
     private void Update()
     {
         PlayerIdle();
+        if (TutorialManager.Instance.TutorialCheck) return;
         if (bRight)
         {
             MoveAnimationRight();
