@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         if (_instance != this)
             Destroy(gameObject);
 
+ 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         Screen.SetResolution(1920, 1080, true);
 
@@ -60,6 +61,8 @@ public class GameManager : MonoBehaviour
 
     private void Run()
     {
+        if (IsTutorial) return;
+
         if (IsInGame)
         {
             ArrowManager.Instance.ArrowUpdate();

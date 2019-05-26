@@ -63,6 +63,7 @@ public class ArrowChangeSpeedMove : MonoBehaviour
     void Update()
     {
         MoveArrow();
+        if (transform.position.y == 0 && transform.position.x == 0) Destroy(this.gameObject);
     }
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)
     {

@@ -11,10 +11,7 @@ public class ArrowManager : MonoBehaviour
     private static ArrowManager _instance = null;
     public GameObject Boom;
     public GameObject[] Arrows;
-    private List<GameObject> ArrowTable;
-
     private Transform ArrowHolder = null;
-
     private int count = 0;
 
     public static ArrowManager Instance
@@ -42,6 +39,22 @@ public class ArrowManager : MonoBehaviour
         float random = Random.Range(0, 100);
         float x = radius * Mathf.Cos(random);
         float y = radius * Mathf.Sin(random);
+        ScoreManager.CScore++;
+        try
+        {
+            GameObject instance = Instantiate(RandomArrow(), new Vector3(x, y, 0f), Quaternion.identity);
+            instance.transform.SetParent(ArrowHolder);
+        }
+        catch (NullReferenceException ex)
+        {
+            Debug.Log(ex.ToString());
+        }
+    }
+
+    public void MakeVectorArrow(float angle)
+    {
+        float x = radius * Mathf.Cos(angle);
+        float y = radius * Mathf.Sin(angle);
         ScoreManager.CScore++;
         try
         {
