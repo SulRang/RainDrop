@@ -4163,9 +4163,9 @@ MonoBehaviour:
   m_NowPage: 1
   Tutorial_Imaage:
   - {fileID: 0}
-  - {fileID: 21300000, guid: 35d90c4961593214799270ab56245edd, type: 3}
-  - {fileID: 21300000, guid: a31867690862d834b891c85c651e59a4, type: 3}
-  - {fileID: 21300000, guid: 39b4b51b9d188494dadb1da3abd9b362, type: 3}
+  - {fileID: 21300000, guid: 963a04297fbe25c40a0af76e1f193b89, type: 3}
+  - {fileID: 21300000, guid: e10380a27117e25418808f3daa6d6e40, type: 3}
+  - {fileID: 21300000, guid: a561bf3a79de88e41a33a57243a85ee8, type: 3}
   Tutorial_Masseages:
   - 
   - "Move Tutorial\\n\\n\uBD88\uC740 \uD50C\uB798\uC774\uC5B4\uC785\uB2C8\uB2E4.\\n\uC67C\uCABD\uACFC
@@ -4181,6 +4181,7 @@ MonoBehaviour:
   - ArrowSpawnTutorial
   - BombTutorial
   TutorialCheck: 0
+  TutorialMode: 0
   ImageBox: {fileID: 922747846}
   MasseageBox: {fileID: 916096822}
   Chapter: 0
