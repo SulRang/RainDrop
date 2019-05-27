@@ -9,6 +9,7 @@ public class BombTutorial : MonoBehaviour
     public GameObject m_Bomb;
     public bool m_Start = false;
     public bool m_Check = false;
+    public bool m_Item = false;
     public string[] m_Message;
     public Sprite[] m_Sprites;
     public Image ImageBox;
@@ -24,6 +25,12 @@ public class BombTutorial : MonoBehaviour
         GameManager.Instance.IsInGame = true;
         Box.active = false;
         m_Start = true;
+    }
+
+    public void ItemBtn()
+    {
+        if (Chapter != 1) return;
+        m_Item = true;
     }
 
     private void OpenResult()
@@ -59,7 +66,6 @@ public class BombTutorial : MonoBehaviour
             MessageBoxOpen();
             for (int i = 0; i < 60; i++)
                 ArrowManager.Instance.MakeArrowToSelect(0);
-            Invoke("OpenResult", 3f);
         }
     }
 
@@ -75,5 +81,6 @@ public class BombTutorial : MonoBehaviour
     {
         if (!m_Start) return;
         if (Chapter == 0) BombMoveTutorial();
+        if (Chapter == 1 && m_Item) OpenResult();
     }
 }

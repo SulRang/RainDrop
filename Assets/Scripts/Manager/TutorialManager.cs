@@ -49,7 +49,7 @@ public class TutorialManager : MonoBehaviour
     // 현재 정보 업데이트
     public void PanelUpdate()
     {
-        MasseageBox.text = Tutorial_Masseages[m_NowPage];
+        MasseageBox.text = Tutorial_Masseages[m_NowPage].Replace(',','\n');
         ImageBox.sprite = Tutorial_Imaage[m_NowPage];
     }
 
@@ -84,6 +84,6 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
