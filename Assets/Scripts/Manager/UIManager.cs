@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     public RectTransform op_panel, back;
 
     //  Ingame UI
-    public RectTransform score, pause, bomb, level;
+    public RectTransform score, pause, bomb, level,leveltext;
 
     //  Pause UI 
     public RectTransform ps_panel;
@@ -210,7 +210,8 @@ public class UIManager : MonoBehaviour
         bomb.DOAnchorPos(new Vector2(850, -450), UI_duration);
         score.DOAnchorPos(new Vector2(-860, 495), UI_duration);
         pause.DOAnchorPos(new Vector2(855, 435), UI_duration);
-        level.DOAnchorPos(new Vector2(-860, 423), UI_duration);
+        level.DOAnchorPos(new Vector2(-889, 423), UI_duration);
+        leveltext.DOAnchorPos(new Vector2(-788, 423), UI_duration);
     }
 
     void CloseIngame()
@@ -218,7 +219,8 @@ public class UIManager : MonoBehaviour
         bomb.DOAnchorPos(new Vector2(850, -600), UI_duration);
         score.DOAnchorPos(new Vector2(-860, 585), UI_duration);
         pause.DOAnchorPos(new Vector2(855, 620), UI_duration);
-        level.DOAnchorPos(new Vector2(-860, 647), UI_duration);
+        level.DOAnchorPos(new Vector2(-889, 647), UI_duration);
+        leveltext.DOAnchorPos(new Vector2(-788, 647), UI_duration);
     }
 
     void OpenPause()

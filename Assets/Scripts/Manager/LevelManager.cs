@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     public int gameLevel = 1;
     public float fRunningTime = 0f;
     public Slider LvLable;
+    public Text LvText;
 
     private static LevelManager _instance = null;
 
@@ -62,6 +63,6 @@ public class LevelManager : MonoBehaviour
     
     void Update()
     {
-        
+        LvText.text = gameLevel.ToString() + " Lv";
     }
 }

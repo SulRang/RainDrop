@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     public bool bPlayerControl;
     private UIManager mUIManager;
     public GameObject ArrowBoard = null;
+    public Text BombText;
     public static int BoomCount = 0;
     public GameObject BombEffect;
 
@@ -183,12 +185,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         PlayerIdle();
-
-        //if (GameManager.Instance.IsTutorial)
-        //{
-        //    GoToMove();
-        //    return;
-        //}
+        BombText.text = BoomCount.ToString();
 
         if (GameManager.Instance.IsStart)
         {
