@@ -378,6 +378,7 @@ MonoBehaviour:
   m_Bomb: {fileID: 1769733188}
   m_Start: 1
   m_Check: 0
+  m_Item: 0
   m_Message:
   - "\uB808\uBCA8\uC774 \uC624\uB974\uBA74 \uC6B0\uC0B0\uC744 \uD68D\uB4DD\uD560 \uC218
     \uC788\uC2B5\uB2C8\uB2E4."
@@ -523,6 +524,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 375698490}
         m_MethodName: ActiveBoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 84724306}
+        m_MethodName: ItemBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
