@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.PlayMusic(AudioManager.Instance.Background);
         AudioManager.Instance.PlayMusic(AudioManager.Instance.RainDrop);
         AudioManager.Instance.PlayMusic(AudioManager.Instance.Fire);
+        AudioManager.Instance.TotalAudioMuteOf();
 
         ScoreManager.CScore = 0;
         ScoreManager.BScore = 0;

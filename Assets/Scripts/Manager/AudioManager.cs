@@ -84,6 +84,15 @@ public class AudioManager : MonoBehaviour
         EffectsSource.Play();
     }
 
+    public void TotalAudioMuteOf()
+    {
+        foreach (var item in MusicSource)
+        {
+            item.mute = false;
+        }
+        EffectsSource.mute = false;
+    }
+
     public void AudioRun()
     {
         CheckSilder();
