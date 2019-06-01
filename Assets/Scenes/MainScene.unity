@@ -203,17 +203,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 34556367}
-        m_MethodName: SwapImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &34556365
@@ -269,6 +258,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e9e65b09c02bba64d82e02d9c37b91df, type: 3}
   - {fileID: 21300000, guid: 428ed25772893854dbe9ea45a2d8f3e5, type: 3}
   image: {fileID: 34556365}
+  buttonType: 0
 --- !u!1 &42322635
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,17 +1991,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 497987856}
-        m_MethodName: SwapImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &497987854
@@ -2067,6 +2046,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e9e65b09c02bba64d82e02d9c37b91df, type: 3}
   - {fileID: 21300000, guid: 428ed25772893854dbe9ea45a2d8f3e5, type: 3}
   image: {fileID: 497987854}
+  buttonType: 0
 --- !u!1 &583848817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,17 +2296,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 613454944}
-        m_MethodName: SwapImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &613454942
@@ -2382,6 +2351,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e9e65b09c02bba64d82e02d9c37b91df, type: 3}
   - {fileID: 21300000, guid: 428ed25772893854dbe9ea45a2d8f3e5, type: 3}
   image: {fileID: 613454942}
+  buttonType: 1
 --- !u!1 &689353846
 GameObject:
   m_ObjectHideFlags: 0
@@ -6656,17 +6626,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1724379521}
-        m_MethodName: SwapImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1211388175}
         m_MethodName: MusicBnt
         m_Mode: 1
@@ -6733,6 +6692,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e9e65b09c02bba64d82e02d9c37b91df, type: 3}
   - {fileID: 21300000, guid: 428ed25772893854dbe9ea45a2d8f3e5, type: 3}
   image: {fileID: 1724379519}
+  buttonType: 1
 --- !u!1 &1725728365
 GameObject:
   m_ObjectHideFlags: 0
