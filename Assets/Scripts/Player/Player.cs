@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public static int BoomCount = 0;
     public GameObject BombEffect;
 
+    public GameObject Umbrella;
+
     public float fSpeed = 5f;
     public float fRadius = 1.5f;
     public float fRunningTime = 0f;
@@ -34,17 +36,17 @@ public class Player : MonoBehaviour
             if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
             {
                 PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
-                Social.Active.ReportScore(ScoreManager.CScore*1, GPGSIds.leaderboard_readerboard, bSuccess =>
-                {
-                    if (bSuccess)
-                    {
-                        Debug.Log($"{ScoreManager.CScore} reported");
-                    }
-                    else
-                    {
-                        Debug.Log("Authentication is required");
-                    }
-                });
+                Social.Active.ReportScore(ScoreManager.CScore * 1, GPGSIds.leaderboard_readerboard, bSuccess =>
+                  {
+                      if (bSuccess)
+                      {
+                          Debug.Log($"{ScoreManager.CScore} reported");
+                      }
+                      else
+                      {
+                          Debug.Log("Authentication is required");
+                      }
+                  });
             }
             mUIManager.Result();
             AdManager.Instance.IsShowAd();
@@ -76,20 +78,33 @@ public class Player : MonoBehaviour
         bLeft = false;
     }
 
+    public void UmrellaFalse()
+    {
+        Umbrella.active = false;
+    }
+
     public void ActiveBoom()
     {
-        if (BoomCount > 0)
+        if(BoomCount > 0)
         {
             BoomCount--;
-            GameObject instance = Instantiate(BombEffect, new Vector3(0f, 0f, 10f), Quaternion.identity) as GameObject;
-            Destroy(instance, 0.25f);
-            foreach (Transform child in ArrowBoard.transform)
-            {
-                AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.Bomb);
-                if (child.tag == "Arrow")
-                    Destroy(child.gameObject);
-            }
+            Umbrella.active = true;
+            Invoke("UmrellaFalse", 5f);
+            AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.Bomb);
         }
+
+        //if (BoomCount > 0)
+        //{
+        //    BoomCount--;
+        //    GameObject instance = Instantiate(BombEffect, new Vector3(0f, 0f, 10f), Quaternion.identity) as GameObject;
+        //    Destroy(instance, 0.25f);
+        //    AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.Bomb);
+        //    foreach (Transform child in ArrowBoard.transform)
+        //    {
+        //        if (child.tag == "Arrow")
+        //            Destroy(child.gameObject);
+        //    }
+        //}
     }
 
     public float GetAngle(Vector3 vStart, Vector3 vEnd)
@@ -113,10 +128,10 @@ public class Player : MonoBehaviour
 
     private void MoveIdleAnimation()
     {
-        if (fAnimationAngle == 0) return;
-        if (fAnimationAngle > 1)
+        if ((int)fAnimationAngle == 0f) return;
+        if (fAnimationAngle > 5)
             ChangeAnimationAngle(-200);
-        else if (fAnimationAngle < 1)
+        else if (fAnimationAngle < 5)
             ChangeAnimationAngle(200);
         else fAnimationAngle = 0;
     }

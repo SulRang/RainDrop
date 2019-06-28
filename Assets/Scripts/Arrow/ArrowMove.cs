@@ -10,7 +10,7 @@ public class ArrowMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name.Equals("DestroyArrow"))
+        if (collision.gameObject.tag.Equals("Respawn"))
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);

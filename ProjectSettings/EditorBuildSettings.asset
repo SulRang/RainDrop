@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ArrowSpawnTutorial.unity
     guid: 33cd2c13bde5619409efc91517289773
-  - enabled: 1
-    path: Assets/Scenes/BombTutorial.unity
-    guid: 0cacf5307731886498b4da1f6b68abbd
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

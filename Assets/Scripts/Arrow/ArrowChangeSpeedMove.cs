@@ -9,16 +9,15 @@ public class ArrowChangeSpeedMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Active")
-        {
-            ChangeSpeed();
-        }
-
         if (collision.gameObject.tag.Equals("Respawn"))
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
             Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Active")
+        {
+            ChangeSpeed();
         }
     }
 
