@@ -7920,8 +7920,7 @@ MonoBehaviour:
   fRunningTime: 0
   x: 0
   y: 1
-  fRadius: 3
-  fTime: 5
+  fRadius: 2
   vNewPos: {x: 0, y: 0, z: 0}
   Player: {fileID: 267586902}
   m_CPlayer: {fileID: 0}

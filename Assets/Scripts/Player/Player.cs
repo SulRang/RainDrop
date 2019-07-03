@@ -129,11 +129,12 @@ public class Player : MonoBehaviour
     private void MoveIdleAnimation()
     {
         if ((int)fAnimationAngle == 0f) return;
-        if (fAnimationAngle > 5)
+        if (fAnimationAngle < 5 && fAnimationAngle > -5)
+            fAnimationAngle = 0;
+        else if (fAnimationAngle > 5)
             ChangeAnimationAngle(-200);
         else if (fAnimationAngle < 5)
             ChangeAnimationAngle(200);
-        else fAnimationAngle = 0;
     }
 
     private void MovePositionRight()
