@@ -134,6 +134,7 @@ public class UIManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         ScoreManager.CScore = 0;
+        LevelManager.Instance.Initialize();
         arrowManager.speed = 13;
         LevelManager.Instance.gameLevel = 1;
         GameManager.Instance.IsInGame = true;

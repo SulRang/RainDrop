@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class ArrowRoundMove : MonoBehaviour
 {
     public Vector3 vTarget = new Vector3(0f, 0f, 0f);
+    public Animator animator;
     public float fArrowSpeed = 2;
     public float RoundSpeed = 0.5f;
     public float fNowAngle = 0;
@@ -18,6 +19,10 @@ public class ArrowRoundMove : MonoBehaviour
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
             Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Active")
+        {
+            animator.speed = 1f;
         }
     }
 
@@ -57,8 +62,10 @@ public class ArrowRoundMove : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         RandomArrowSpeed(5);
         CheckAngle();
+        animator.speed = 0f;
     }
 
     // Update is called once per frame

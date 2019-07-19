@@ -7,6 +7,7 @@ public class ArrowChangePositionMove : MonoBehaviour
     private Vector3 target = new Vector3(0f, 0f, 0f);
     public float fArrowSpeed = 3;
     private bool bChange = true;
+    private Animator animator;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,13 +15,14 @@ public class ArrowChangePositionMove : MonoBehaviour
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         if (collision.gameObject.tag == "Active")
         {
             float x = this.transform.position.x;
             float y = this.transform.position.y;
-            transform.position = new Vector3((-1) * x, (-1) * y, 0f);
+            transform.position = new Vector3((-1) * x, (-1) * y, 5f);
+            animator.speed = 1.5f;
         }
     }
 
@@ -30,7 +32,7 @@ public class ArrowChangePositionMove : MonoBehaviour
         {
             float x = this.transform.position.x;
             float y = this.transform.position.y;
-            transform.position = new Vector3((-1) * x, (-1) * y, 0f);
+            transform.position = new Vector3((-1) * x, (-1) * y, 5f);
         }
     }
 
@@ -53,22 +55,15 @@ public class ArrowChangePositionMove : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         RandomArrowSpeed(4);
+        animator.speed = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         MoveArrow();
-        //if (Mathf.Abs(this.transform.position.x) <= 5f && Mathf.Abs(this.transform.position.y) <= 3f && bChange)
-        //{
-        //    float x = this.transform.position.x;
-        //    float y = this.transform.position.y;
-
-        //    transform.position = new Vector3((-1) * x, (-1) * y, 0f);
-
-        //    bChange = false;
-        //}
     }
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)
     {

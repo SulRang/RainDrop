@@ -52,6 +52,6 @@ public class ScoreManager : MonoBehaviour
     {
         scoreLabel.text = CScore.ToString();
         currentScore.text = CScore.ToString();
-        BestScore.text = PlayerPrefs.GetFloat("BEST", 0).ToString("N2");
+        BestScore.text = PlayerPrefs.GetFloat("BEST", 0).ToString("N0");
     }
 }

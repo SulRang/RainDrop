@@ -6,6 +6,7 @@ public class ArrowChangeSpeedMove : MonoBehaviour
 {
     public Vector3 target = new Vector3(0f, 0f, 0f);
     public float fArrowSpeed;
+    private Animator animator;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,6 +19,7 @@ public class ArrowChangeSpeedMove : MonoBehaviour
         if (collision.gameObject.tag == "Active")
         {
             ChangeSpeed();
+            animator.speed = 1f;
         }
     }
 
@@ -55,7 +57,9 @@ public class ArrowChangeSpeedMove : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         RandomArrowSpeed(5);
+        animator.speed = 0f;
     }
 
     // Update is called once per frame
