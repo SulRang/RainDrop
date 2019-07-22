@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public Text BombText;
     public static int BoomCount = 0;
     public GameObject BombEffect;
+    public GameObject UmbrellaBtn;
+    public GameObject UmbrellaEffectPref;
 
     public GameObject Umbrella;
 
@@ -54,6 +56,8 @@ public class Player : MonoBehaviour
         if (col.gameObject.tag.Equals("Item"))
         {
             BoomCount++;
+            //GameObject instance = (GameObject)Instantiate(UmbrellaEffectPref, new Vector3(UmbrellaBtn.transform.position.x, UmbrellaBtn.transform.position.y, 10f), UmbrellaBtn.transform.rotation);
+            //Destroy(instance, 4f);
             Destroy(col.gameObject);
         }
     }

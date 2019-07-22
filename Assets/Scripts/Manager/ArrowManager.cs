@@ -34,11 +34,11 @@ public class ArrowManager : MonoBehaviour
         return Arrows[Random.Range(0, LevelManager.Instance.GetGameLevel()) % (Arrows.Length)];
     }
 
-    public void MakeArrowToSelect(int num)
+    public void MakeArrowToSelect(int num, float Rad)
     {
         float random = Random.Range(0, 100);
-        float x = radius * Mathf.Cos(random);
-        float y = radius * Mathf.Sin(random);
+        float x = Rad * Mathf.Cos(random);
+        float y = Rad * Mathf.Sin(random);
         try
         {
             GameObject instance = Instantiate(Arrows[num], new Vector3(x, y, 0f), Quaternion.identity);

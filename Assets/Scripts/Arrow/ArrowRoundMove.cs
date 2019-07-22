@@ -47,7 +47,7 @@ public class ArrowRoundMove : MonoBehaviour
 
     private void MoveArrow()
     {
-        if (!GameManager.Instance.IsInGame)
+        if (!GameManager.Instance.IsInGame && !GameManager.Instance.IsTutorial)
             return;
 
         fNowAngle += RoundSpeed * Time.deltaTime;

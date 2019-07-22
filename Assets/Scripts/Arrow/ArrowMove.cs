@@ -25,7 +25,7 @@ public class ArrowMove : MonoBehaviour
 
     private void MoveArrow()
     {
-        if (!GameManager.Instance.IsInGame)
+        if (!GameManager.Instance.IsInGame && !GameManager.Instance.IsTutorial)
             return;
 
         float step = fArrowSpeed * Time.deltaTime;

@@ -17,6 +17,7 @@ public class Tutorial : MonoBehaviour
 
     public GameObject GamemanagerGO;
     public GameObject PlayerGO;
+    public GameObject ArrowParent;
 
     private ArrowManager m_ArrowManager;
     private Player m_Player;
@@ -57,20 +58,23 @@ public class Tutorial : MonoBehaviour
         LeftMoveTutorial();
         yield return new WaitWhile(() => tutorialStep < 4 || !TutorialCheck || !step4);
         StartArrowTutorial();
-        yield return new WaitWhile(() => tutorialStep < 5 || !TutorialCheck);
+        yield return new WaitWhile(() => tutorialStep < 5 || !TutorialCheck || !step5);
         NormalArrowTutorial();
-        yield return new WaitWhile(() => tutorialStep < 6 || !TutorialCheck);
+        yield return new WaitWhile(() => tutorialStep < 6 || !TutorialCheck || !step6);
         RoundArrowTutorial();
-        yield return new WaitWhile(() => tutorialStep < 7 || !TutorialCheck);
+        yield return new WaitWhile(() => tutorialStep < 7 || !TutorialCheck || !step7);
         PositionArrowTutorial();
-        yield return new WaitWhile(() => tutorialStep < 8 || !TutorialCheck);
+        yield return new WaitWhile(() => tutorialStep < 8 || !TutorialCheck || !step8);
         StartBombTutorial();
-        yield return new WaitWhile(() => tutorialStep < 9 || !TutorialCheck);
+        yield return new WaitWhile(() => tutorialStep < 9 || !TutorialCheck || !step9);
         GetBombTutorial();
-        yield return new WaitWhile(() => tutorialStep < 10 || !TutorialCheck);
+        yield return new WaitWhile(() => tutorialStep < 10 || !TutorialCheck || !step10);
         UseBombTutorial();
-        yield return new WaitWhile(() => tutorialStep < 11 || !TutorialCheck);
+        yield return new WaitWhile(() => tutorialStep < 11 || !TutorialCheck || !step11);
+        LastTutorial();
+        yield return new WaitWhile(() => tutorialStep < 12 || !TutorialCheck);
         GameManager.Instance.InGameStart();
+        Destroy(this.gameObject);
     }
 
     public void SkipButton()
@@ -144,6 +148,7 @@ public class Tutorial : MonoBehaviour
         TutorialText.text = "Normal drops of water has white color";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialPanel.active = true;
+        ArrowManager.Instance.MakeArrowToVector(0, new Vector3(0f, 10f, 0f));
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
@@ -151,9 +156,10 @@ public class Tutorial : MonoBehaviour
 
     void SpeedArrowTutorial()   //step.6
     {
-        TutorialText.text = "Normal drops of water has white color";
+        TutorialText.text = "Speedy drops of water has white color black.";
         //TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialImage.sprite = TutorialSprite[tutorialStep];
+        ArrowManager.Instance.MakeArrowToVector(2, new Vector3(0f, 10f, 0f));
         TutorialPanel.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
@@ -162,9 +168,10 @@ public class Tutorial : MonoBehaviour
 
     void RoundArrowTutorial()   //step.7
     {
-        TutorialText.text = "Normal drops of water has white color";
+        TutorialText.text = "Spin drops of water has white blue.";
         //TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialImage.sprite = TutorialSprite[tutorialStep];
+        ArrowManager.Instance.MakeArrowToVector(1, new Vector3(0f, 10f, 0f));
         TutorialPanel.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
@@ -173,9 +180,10 @@ public class Tutorial : MonoBehaviour
 
     void PositionArrowTutorial()    //step.8
     {
-        TutorialText.text = "Normal drops of water has white color";
+        TutorialText.text = "Teleport drops of water has yellow color, hint is \"Opposite\"";
         //TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialImage.sprite = TutorialSprite[tutorialStep];
+        ArrowManager.Instance.MakeArrowToVector(3, new Vector3(0f, 10f, 0f));
         TutorialPanel.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
@@ -184,8 +192,7 @@ public class Tutorial : MonoBehaviour
 
     void StartBombTutorial()        //step.9
     {
-        TutorialText.text = "Normal drops of water has white color";
-        //TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialText.text = "When your level grows up, Make a Umbrella";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialPanel.active = true;
         GameManager.Instance.IsTutorial = false;
@@ -195,8 +202,10 @@ public class Tutorial : MonoBehaviour
 
     void GetBombTutorial()          //step.10
     {
-        TutorialText.text = "Normal drops of water has white color";
-        //TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialText.text = "You have to approach it.";
+        TutorialImage.sprite = TutorialSprite[tutorialStep];
+        ArrowManager.Instance.MakeBoom();
+        GameManager.Instance.IsTutorial = false;
         TutorialPanel.active = true;
         TutorialCheck = false;
         tutorialStep++;
@@ -204,12 +213,24 @@ public class Tutorial : MonoBehaviour
 
     void UseBombTutorial()          //step.11
     {
-        TutorialText.text = "Normal drops of water has white color";
-        //TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialText.text = "When a dangerous situation comes, Touch umbrella button.";
+        TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialPanel.active = true;
+        GameManager.Instance.IsTutorial = false;
+        for (int i = 0; i < 30; i++)
+            ArrowManager.Instance.MakeArrowToSelect(0,10f);
         TutorialCheck = false;
         tutorialStep++;
-        GameManager.Instance.InGameStart();
+    }
+
+    void LastTutorial()
+    {
+        TutorialText.text = "Tutorial is done, GO TO GAME!!";
+        TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialPanel.active = true;
+        GameManager.Instance.IsTutorial = false;
+        TutorialCheck = false;
+        tutorialStep++;
     }
 
     private void Update()
@@ -234,9 +255,40 @@ public class Tutorial : MonoBehaviour
                 step4 = true;
             }
         }
+        if(tutorialStep == 5)
+        {
+            if (ArrowParent.transform.childCount == 0)
+                step5 = true;
+        }
         if(tutorialStep == 6)
         {
-
+            if (ArrowParent.transform.childCount == 0)
+                step6 = true;
+        }
+        if(tutorialStep == 7)
+        {
+            if (ArrowParent.transform.childCount == 0)
+                step7 = true;
+        }
+        if(tutorialStep == 8)
+        {
+            if (ArrowParent.transform.childCount == 0)
+                step8 = true;
+        }
+        if (tutorialStep == 8)
+        {
+            if (ArrowParent.transform.childCount == 0)
+                step9 = true;
+        }
+        if (tutorialStep == 10)
+        {
+            if (Player.BoomCount > 0)
+                step10 = true;
+        }
+        if (tutorialStep == 11)
+        {
+            if (ArrowParent.transform.childCount == 0)
+                step11 = true;
         }
     }
 }
