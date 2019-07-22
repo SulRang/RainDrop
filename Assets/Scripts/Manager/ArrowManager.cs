@@ -50,6 +50,19 @@ public class ArrowManager : MonoBehaviour
         }
     }
 
+    public void MakeArrowToVector(int number, Vector3 pos)
+    {
+        try
+        {
+            GameObject instance = Instantiate(Arrows[number], pos, Quaternion.identity);
+            instance.transform.SetParent(ArrowHolder);
+        }
+        catch (NullReferenceException ex)
+        {
+            Debug.Log(ex.ToString());
+        }
+    }
+
     public void MakeArrow()
     {
         float random = Random.Range(0, 100);

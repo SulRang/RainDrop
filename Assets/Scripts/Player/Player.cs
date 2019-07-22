@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
     public float fRadius = 1.5f;
     public float fRunningTime = 0f;
 
-    private bool bLeft = false;
-    private bool bRight = false;
+    public bool bLeft = false;
+    public bool bRight = false;
 
     private Vector3 vNewPos = new Vector3();
     private float x = 0f;
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
 
     public void ActiveBoom()
     {
-        if(BoomCount > 0)
+        if (BoomCount > 0)
         {
             BoomCount--;
             Umbrella.active = true;
@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
     }
 
     //tutorial
-    private void GoToMove()
+    public void GoToMove()
     {
         fSpeed = 2f;
         if (transform.position.y <= 1.49f)
@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (!GameManager.Instance.IsInGame)
+        if (!GameManager.Instance.IsInGame && !GameManager.Instance.IsTutorial)
             return;
 
         if (bRight)

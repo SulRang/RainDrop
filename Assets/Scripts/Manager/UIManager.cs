@@ -25,7 +25,9 @@ public class UIManager : MonoBehaviour
     public RectTransform title, start, option, login, leaderboard;
 
     // Tutorial UI
-    public RectTransform tutorial, tutorialbtn,tutorialBack;
+    public RectTransform tutorialPanel, tutorialbtn,tutorialSkip;
+    public GameObject TutorialMangaer;
+    public GameObject EffectArea;
 
     //  Option UI
     public RectTransform op_panel, back;
@@ -56,8 +58,8 @@ public class UIManager : MonoBehaviour
     {
         CloseMain();
         OpenTutorial();
-        GameManager.Instance.IsTutorial = true;
-        GameManager.Instance.IsStart = false;
+        OpenIngame();
+        GameManager.Instance.TutorialStart();
     }
     
     public void TutorialBackBnt()
@@ -181,16 +183,17 @@ public class UIManager : MonoBehaviour
 
     void OpenTutorial()
     {
-        tutorial.DOAnchorPos(new Vector2(0, 0), UI_duration);
+        EffectArea.SetActive(true);
+        TutorialMangaer.gameObject.SetActive(true);
+        tutorialPanel.DOAnchorPos(new Vector2(0, 0), UI_duration);
         tutorialbtn.DOAnchorPos(new Vector2(-834, -620), UI_duration);
-        tutorialBack.DOAnchorPos(new Vector2(855, 420), UI_duration);
     }
 
     void CloseTutorial()
     {
-        tutorial.DOAnchorPos(new Vector2(0,1200), UI_duration);
+        tutorialPanel.DOAnchorPos(new Vector2(0,1200), UI_duration);
         tutorialbtn.DOAnchorPos(new Vector2(-834, -430), UI_duration);
-        tutorialBack.DOAnchorPos(new Vector2(855, 620), UI_duration);
+        tutorialSkip.DOAnchorPos(new Vector2(855, 620), UI_duration);
     }
 
     void OpenOption()

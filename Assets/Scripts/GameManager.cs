@@ -56,6 +56,26 @@ public class GameManager : MonoBehaviour
             Application.Quit();
     }
 
+    public void TutorialStart()
+    {
+        IsStart = false;
+        IsTutorial = true;
+        IsInGame = false;
+        IsOption = false;
+        IsResult = false;
+        IsPause = false;
+    }
+
+    public void InGameStart()
+    {
+        IsStart = false;
+        IsTutorial = false;
+        IsInGame = true;
+        IsOption = false;
+        IsResult = false;
+        IsPause = false;
+    }
+
     private void GameInit()
     {
         
