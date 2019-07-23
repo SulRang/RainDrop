@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using System;
 
 public class ArrowChangeSpeedMove : MonoBehaviour
 {
+    public GameObject DropEffectPref;
     public Vector3 target = new Vector3(0f, 0f, 0f);
     public float fArrowSpeed;
     private Animator animator;
@@ -14,6 +17,8 @@ public class ArrowChangeSpeedMove : MonoBehaviour
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            GameObject Instance = Instantiate(DropEffectPref, gameObject.transform.position, transform.rotation) as GameObject;
+            Destroy(Instance, 0.7f);
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Active")

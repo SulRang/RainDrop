@@ -8,6 +8,7 @@ public class ArrowChangePositionMove : MonoBehaviour
     public float fArrowSpeed = 3;
     private bool bChange = true;
     private Animator animator;
+    public GameObject DropEffectPref;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,6 +16,8 @@ public class ArrowChangePositionMove : MonoBehaviour
         {
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            GameObject Instance = Instantiate(DropEffectPref, gameObject.transform.position, transform.rotation) as GameObject;
+            Destroy(Instance, 0.7f);
             Destroy(this.gameObject);
         }
         if (collision.gameObject.tag == "Active")

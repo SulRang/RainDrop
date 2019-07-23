@@ -4070,7 +4070,7 @@ MonoBehaviour:
   Boom: {fileID: 1372633420742209349, guid: c0146d0e24712e1459cf992026a6d281, type: 3}
   Arrows:
   - {fileID: 2975562346421056502, guid: 5d78456f53fedb249b1beb105898d214, type: 3}
-  - {fileID: 6445022430480000040, guid: 6d28b0edfc54b8242ad9c02976643599, type: 3}
+  - {fileID: 3131370990253413110, guid: fcd451ec11958d94e946c578d0c968cd, type: 3}
   - {fileID: 3085990090916261877, guid: 6d2901e074be422458cc43b240d059d4, type: 3}
   - {fileID: 9110697754547295075, guid: aec7065a0c5ae4e4fae967f0334c8245, type: 3}
 --- !u!114 &1211388173
@@ -6037,7 +6037,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 15938da9394e43646afe16f398fa446c, type: 3}
-  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 0.60784316}
+  m_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

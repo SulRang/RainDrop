@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1252974568982574289}
   - component: {fileID: 1586396400166296617}
   m_Layer: 0
-  m_Name: Arrow(ChanageSpeed) 1
+  m_Name: Arrow(ChanageSpeed)
   m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,5 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2288a3a43e8c848b20ce49df73f0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DropEffectPref: {fileID: 495261284427882177, guid: 3c17812a98657494591d75635f582670,
+    type: 3}
   target: {x: 0, y: 0, z: 0}
   fArrowSpeed: 0

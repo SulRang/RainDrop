@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2975562346421056491}
   - component: {fileID: 2975562346421056488}
   - component: {fileID: 2975562346421056489}
-  - component: {fileID: 1537889014711637597}
   m_Layer: 10
   m_Name: Arrow(Normal)
   m_TagString: Arrow
@@ -150,16 +149,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
   fArrowSpeed: 0
---- !u!114 &1537889014711637597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975562346421056502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7556fbe81cd5a2540a1419da4c7a307b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  DropEffectPref: {fileID: 495261284427882177, guid: 3c17812a98657494591d75635f582670,
+    type: 3}

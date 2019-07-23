@@ -7,14 +7,21 @@ public class ArrowMove : MonoBehaviour
 {
     public Vector3 target = new Vector3(0f, 0f, 0f);
     public float fArrowSpeed;
+    public GameObject DropEffectPref;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Respawn"))
         {
+            if (this.gameObject.tag.Equals("Item"))
+                Destroy(gameObject);
+
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
+            GameObject Instance = Instantiate(DropEffectPref, gameObject.transform.position, transform.rotation) as GameObject;
+            Destroy(Instance, 0.7f);
             Destroy(gameObject);
+            
         }
     }
 
