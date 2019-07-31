@@ -82,9 +82,9 @@ public class Player : MonoBehaviour
         bLeft = false;
     }
 
-    public void UmrellaFalse()
+    private void UmbrellaFalse()
     {
-        Umbrella.active = false;
+        Umbrella.SetActive(false);
     }
 
     public void ActiveBoom()
@@ -93,22 +93,10 @@ public class Player : MonoBehaviour
         {
             BoomCount--;
             Umbrella.active = true;
-            Invoke("UmrellaFalse", 5f);
+            Invoke("UmbrellaFalse", 5f);
+            Umbrella.GetComponent<Unbrella>().UmbrellaOpen();
             AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.Bomb);
         }
-
-        //if (BoomCount > 0)
-        //{
-        //    BoomCount--;
-        //    GameObject instance = Instantiate(BombEffect, new Vector3(0f, 0f, 10f), Quaternion.identity) as GameObject;
-        //    Destroy(instance, 0.25f);
-        //    AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.Bomb);
-        //    foreach (Transform child in ArrowBoard.transform)
-        //    {
-        //        if (child.tag == "Arrow")
-        //            Destroy(child.gameObject);
-        //    }
-        //}
     }
 
     public float GetAngle(Vector3 vStart, Vector3 vEnd)

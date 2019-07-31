@@ -22,10 +22,8 @@ public class ArrowChangePositionMove : MonoBehaviour
         }
         if (collision.gameObject.tag == "Active")
         {
-            float x = this.transform.position.x;
-            float y = this.transform.position.y;
-            transform.position = new Vector3((-1) * x, (-1) * y, 5f);
-            animator.speed = 1.5f;
+            Invoke("ChangePosition", 0.375f);
+            animator.speed = 2.0f;
         }
     }
 
@@ -33,15 +31,28 @@ public class ArrowChangePositionMove : MonoBehaviour
     {
         if (collision.gameObject.tag == "Active")
         {
-            float x = this.transform.position.x;
-            float y = this.transform.position.y;
-            transform.position = new Vector3((-1) * x, (-1) * y, 5f);
+            Invoke("ChangePosition", 0.375f);
+            animator.speed = 2.0f;
         }
     }
 
     private void RandomArrowSpeed(int val)
     {
         fArrowSpeed = Random.Range(2, val);
+    }
+
+    private void ChangePosition()
+    {
+        float x = this.transform.position.x;
+        float y = this.transform.position.y;
+        transform.position = new Vector3((-1) * x, (-1) * y, 5f);
+        animator.SetBool("fAppear", true);
+        Invoke("StopAnimation",0.45f);
+    }
+
+    private void StopAnimation()
+    {
+        animator.speed = 0f;
     }
 
     private void MoveArrow()
@@ -54,12 +65,13 @@ public class ArrowChangePositionMove : MonoBehaviour
         float angle = GetAngle(transform.position, target);
         Vector3 euler = new Vector3(0f, 0f, angle);
         transform.rotation = Quaternion.Euler(euler);
+        transform.Rotate(new Vector3(0f, 0f, 90f));
     }
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        RandomArrowSpeed(4);
+        RandomArrowSpeed(3);
         animator.speed = 0f;
     }
 

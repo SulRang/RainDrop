@@ -14,7 +14,10 @@ public class ArrowMove : MonoBehaviour
         if (collision.gameObject.tag.Equals("Respawn"))
         {
             if (this.gameObject.tag.Equals("Item"))
+            {
                 Destroy(gameObject);
+                return;
+            }
 
             if (fArrowSpeed >= 5)
                 AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.RainCol);
@@ -40,6 +43,7 @@ public class ArrowMove : MonoBehaviour
         float angle = GetAngle(transform.position, target);
         Vector3 euler = new Vector3(0f, 0f, angle);
         transform.rotation = Quaternion.Euler(euler);
+        transform.Rotate(new Vector3(0f, 0f, 90f));
     }
 
     public static float GetAngle(Vector3 vStart, Vector3 vEnd)

@@ -12,11 +12,23 @@ public class Unbrella : MonoBehaviour
     public Vector3 vNewPos;
     public GameObject Player;
     public Player m_CPlayer;
+    private Animator animator;
   
     public float GetAngle(Vector3 vStart, Vector3 vEnd)
     {
         Vector3 v = vEnd - vStart;
         return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+    }
+
+    private void StopAnimation()
+    {
+        animator.speed = 0f;
+    }
+
+    public void UmbrellaOpen()
+    {
+        animator.speed = 1f;
+        Invoke("StopAnimation", 5f);
     }
 
     private void UmbrellaIdle()
@@ -37,8 +49,10 @@ public class Unbrella : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         m_CPlayer = Player.GetComponent<Player>();
         fRunningTime = m_CPlayer.fRunningTime;
+        animator.speed = 1f;
     }
 
     // Update is called once per frame
