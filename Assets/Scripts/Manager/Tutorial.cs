@@ -150,7 +150,7 @@ public class Tutorial : MonoBehaviour
 
     void NormalArrowTutorial()  //step.5
     {
-        TutorialText.text = "기본 물방울은 하얀색을 뜁니다.";
+        TutorialText.text = "기본 물방울은 아무 특징이 없습니다.";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialPanel.active = true;
         ArrowManager.Instance.MakeArrowToVector(0, new Vector3(0f, 10f, 0f));
@@ -161,7 +161,7 @@ public class Tutorial : MonoBehaviour
 
     void SpeedArrowTutorial()   //step.6
     {
-        TutorialText.text = "속도가 빠른 물방울은 검정색을 뛰며 일정순간에 길어집니다.";
+        TutorialText.text = "속도가 빠른 물방울은 일정순간에 빨라지고 길어집니다.";
         //TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         ArrowManager.Instance.MakeArrowToVector(2, new Vector3(0f, 10f, 0f));
@@ -173,7 +173,7 @@ public class Tutorial : MonoBehaviour
 
     void RoundArrowTutorial()   //step.7
     {
-        TutorialText.text = "회전하여 오는 물방울은 회오리모양을 뜁니다..";
+        TutorialText.text = "회전하여 오는 물방울은 회오리모양을 하며 회전하여 날아옵니다.";
         //TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         ArrowManager.Instance.MakeArrowToVector(1, new Vector3(0f, 10f, 0f));
@@ -185,7 +185,7 @@ public class Tutorial : MonoBehaviour
 
     void PositionArrowTutorial()    //step.8
     {
-        TutorialText.text = "순간이동을 하는 물방울은 노란색을 뛰며 일정순간에 사라집니다.";
+        TutorialText.text = "순간이동을 하는 물방울은 일정순간에 사라집니다.";
         //TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         ArrowManager.Instance.MakeArrowToVector(3, new Vector3(0f, 10f, 0f));
