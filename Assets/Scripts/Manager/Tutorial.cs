@@ -207,7 +207,7 @@ public class Tutorial : MonoBehaviour
 
     void GetBombTutorial()          //step.10
     {
-        TutorialText.text = "우산에 다가가서 우산을 획득하세요";
+        TutorialText.text = "우산에 다가가서 우산을 획득하세요.";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         ArrowManager.Instance.MakeBoom();
         GameManager.Instance.IsTutorial = false;
