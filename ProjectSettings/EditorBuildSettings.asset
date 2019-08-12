@@ -8,16 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: b133dc885555ed947a5412e916c35ddd
-  - enabled: 1
-    path: Assets/Scenes/MoveTutorial.unity
-    guid: 1a5a50c914862a5418cb24115ad68272
-  - enabled: 1
-    path: Assets/Scenes/ArrowSpawnTutorial.unity
-    guid: 33cd2c13bde5619409efc91517289773
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/BombTutorial.unity
-    guid: 5f5bf40a79a57da4fa15ca053ab5df7a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

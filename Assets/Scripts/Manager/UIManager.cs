@@ -131,6 +131,7 @@ public class UIManager : MonoBehaviour
     {
         GameObject arrowBoard = GameObject.Find("ArrowParent");
         ArrowManager arrowManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ArrowManager>();
+        Player.BoomCount = 0;
         foreach (Transform child in arrowBoard.transform)
         {
             Destroy(child.gameObject);

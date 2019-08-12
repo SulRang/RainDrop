@@ -31,10 +31,22 @@ public class Player : MonoBehaviour
 
     private float fAnimationAngle = 0;
 
+    public float fHp;
+    public float fMaxHp = 1f;
+    public float fMinHp = 0.2f;
+    public float fDamage = 0.3f;
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Arrow")
         {
+            fHp -= fDamage;
+            //float temp = fHp;
+            //fHp = Mathf.Lerp(temp, temp - fDamage, Time.deltaTime * 10);
+            Destroy(col.gameObject);
+            if (fHp >= fMinHp)
+                return;
+
             if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
             {
                 PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
@@ -59,6 +71,12 @@ public class Player : MonoBehaviour
             //GameObject instance = (GameObject)Instantiate(UmbrellaEffectPref, new Vector3(UmbrellaBtn.transform.position.x, UmbrellaBtn.transform.position.y, 10f), UmbrellaBtn.transform.rotation);
             //Destroy(instance, 4f);
             Destroy(col.gameObject);
+        }
+        if (col.gameObject.name.Equals("Heal"))
+        {
+            fHp += fDamage;
+            if (fHp > fMaxHp)
+                fHp = fMaxHp;
         }
     }
 
@@ -85,6 +103,11 @@ public class Player : MonoBehaviour
     private void UmbrellaFalse()
     {
         Umbrella.SetActive(false);
+    }
+    
+    private void UpdateScale()
+    {
+        transform.localScale = new Vector3(fHp * 0.25f, fHp * 0.25f, 0f);
     }
 
     public void ActiveBoom()
@@ -188,10 +211,12 @@ public class Player : MonoBehaviour
         mUIManager = FindObjectOfType<UIManager>();
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         BoomCount = 0;
+        fHp = fMaxHp;
     }
 
     private void Update()
     {
+        UpdateScale();
         PlayerIdle();
         BombText.text = BoomCount.ToString();
 
