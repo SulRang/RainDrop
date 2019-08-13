@@ -74,6 +74,7 @@ public class Tutorial : MonoBehaviour
         LastTutorial();
         yield return new WaitWhile(() => tutorialStep < 12 || !TutorialCheck);
         GameManager.Instance.InGameStart();
+        PlayerGO.GetComponent<Player>().PlayerReset();
         Destroy(this.gameObject);
     }
 
@@ -230,7 +231,7 @@ public class Tutorial : MonoBehaviour
 
     void LastTutorial()
     {
-        TutorialText.text = "튜토리얼을 끝났습니다. 직접이용해 보세요!!";
+        TutorialText.text = "튜토리얼을 끝났습니다. 직접 플레이 보세요!!";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialPanel.active = true;
         GameManager.Instance.IsTutorial = false;

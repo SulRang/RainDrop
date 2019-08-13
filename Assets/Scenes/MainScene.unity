@@ -920,6 +920,7 @@ MonoBehaviour:
   fDamage: 0.3
   IsTracking: 0
   fHpTemp: 0
+  IsHeal: 0
 --- !u!95 &267586909
 Animator:
   serializedVersion: 3
@@ -2366,12 +2367,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aa53e251b17d8f043976e1e8cb9c1bc7, type: 3}
   - {fileID: 21300000, guid: 963a04297fbe25c40a0af76e1f193b89, type: 3}
   - {fileID: 21300000, guid: 39b4b51b9d188494dadb1da3abd9b362, type: 3}
-  - {fileID: 21300000, guid: e10380a27117e25418808f3daa6d6e40, type: 3}
-  - {fileID: 21300000, guid: e63c22a1bc0363b40abe3eb188376848, type: 3}
-  - {fileID: 21300000, guid: a561bf3a79de88e41a33a57243a85ee8, type: 3}
-  - {fileID: 21300000, guid: ca21a38b990176f47a53b83a6da27b37, type: 3}
-  - {fileID: 21300000, guid: a561bf3a79de88e41a33a57243a85ee8, type: 3}
-  - {fileID: 21300000, guid: ca21a38b990176f47a53b83a6da27b37, type: 3}
+  - {fileID: 21300000, guid: 04afd165c06bd4848bb6239f1e934bf4, type: 3}
+  - {fileID: 21300000, guid: 3597e9da8c952d64c95cb5aa6dcdb4c4, type: 3}
+  - {fileID: 21300000, guid: 6c79fc8ef38c359498196b7548189a83, type: 3}
+  - {fileID: 21300000, guid: 58b2ac07fc676da4697953bd55ca0df4, type: 3}
+  - {fileID: 21300000, guid: d7fead1ec8dfc4a4ca0e5544bf9487f7, type: 3}
+  - {fileID: 21300000, guid: 875239bcf8b7d164c9469d2ba9bbf0e4, type: 3}
   - {fileID: 21300000, guid: e5e1729624b81e74d93f004f78894ea6, type: 3}
   TutorialPanel: {fileID: 2042556195}
   TutorialImage: {fileID: 652234148}
@@ -2822,14 +2823,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 719959744}
-  - {fileID: 1036031862}
   - {fileID: 1015251959}
+  - {fileID: 1036031862}
   m_Father: {fileID: 823961514}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 800}
+  m_AnchoredPosition: {x: 9, y: 800}
   m_SizeDelta: {x: 900, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &917651633
@@ -3131,7 +3132,7 @@ RectTransform:
   - {fileID: 999776195}
   - {fileID: 1279647858}
   m_Father: {fileID: 917651632}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3151,7 +3152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3207,7 +3208,7 @@ RectTransform:
   - {fileID: 1719493596}
   - {fileID: 1534849697}
   m_Father: {fileID: 917651632}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3227,7 +3228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4330,7 +4331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4338,7 +4339,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: fd0516ce5b702a044b28e5f688b3fdd1, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -5415,7 +5416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5423,7 +5424,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: fd0516ce5b702a044b28e5f688b3fdd1, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
