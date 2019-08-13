@@ -35,35 +35,16 @@ public class Player : MonoBehaviour
     public float fMaxHp = 1f;
     public float fMinHp = 0.2f;
     public float fDamage = 0.3f;
+    public bool IsTracking = false;
+    public float fHpTemp = 0f;
+    public bool IsHeal = false;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Arrow")
         {
-            fHp -= fDamage;
-            //float temp = fHp;
-            //fHp = Mathf.Lerp(temp, temp - fDamage, Time.deltaTime * 10);
+            IsTracking = true;
             Destroy(col.gameObject);
-            if (fHp >= fMinHp)
-                return;
-
-            if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
-            {
-                PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
-                Social.Active.ReportScore(ScoreManager.CScore * 1, GPGSIds.leaderboard_readerboard, bSuccess =>
-                  {
-                      if (bSuccess)
-                      {
-                          Debug.Log($"{ScoreManager.CScore} reported");
-                      }
-                      else
-                      {
-                          Debug.Log("Authentication is required");
-                      }
-                  });
-            }
-            mUIManager.Result();
-            AdManager.Instance.IsShowAd();
         }
         if (col.gameObject.tag.Equals("Item"))
         {
@@ -74,12 +55,32 @@ public class Player : MonoBehaviour
         }
         if (col.gameObject.name.Equals("Heal"))
         {
-            fHp += fDamage;
-            if (fHp > fMaxHp)
-                fHp = fMaxHp;
+            IsHeal = true;
+            Destroy(col.gameObject);
         }
     }
 
+    public void PlayerResult()
+    {
+        if (ScoreManager.CScore >= PlayerPrefs.GetFloat("BEST", 0))
+        {
+            PlayerPrefs.SetFloat("BEST", ScoreManager.CScore);
+            Social.Active.ReportScore(ScoreManager.CScore * 1, GPGSIds.leaderboard_readerboard, bSuccess =>
+            {
+                if (bSuccess)
+                {
+                    Debug.Log($"{ScoreManager.CScore} reported");
+                }
+                else
+                {
+                    Debug.Log("Authentication is required");
+                }
+            });
+        }
+        mUIManager.Result();
+        AdManager.Instance.IsShowAd();
+    }
+    
     public void MoveLeft()
     {
         bRight = true;
@@ -107,6 +108,16 @@ public class Player : MonoBehaviour
     
     private void UpdateScale()
     {
+        if(fHp < fMinHp)
+        {
+            PlayerResult();
+            fHp = fMinHp;
+        }
+        if(fHp > fMaxHp)
+        {
+            fHp = fMaxHp;
+        }
+
         transform.localScale = new Vector3(fHp * 0.25f, fHp * 0.25f, 0f);
     }
 
@@ -206,16 +217,52 @@ public class Player : MonoBehaviour
         fSpeed = 5f;
     }
 
+    private void OnDamage()
+    {
+        if (IsTracking)
+        {
+            if (fHpTemp > fDamage)
+            {
+                IsTracking = false;
+                fHpTemp = 0f;
+            }
+            fHpTemp += Time.deltaTime;
+            fHp -= Time.deltaTime;
+        }
+    }
+
+    public void PlayerReset()
+    {
+        BoomCount = 0;
+        fHp = fMaxHp;
+    }
+
+    public void OnHeal()
+    {
+        if(IsHeal)
+        {
+            if(fHpTemp > fDamage)
+            {
+                IsHeal = false;
+                fHpTemp = 0f;
+            }
+            fHpTemp += Time.deltaTime;
+            fHp += Time.deltaTime;
+        }
+    }
+
     private void Start()
     {
         mUIManager = FindObjectOfType<UIManager>();
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
-        BoomCount = 0;
+        BoomCount = 3;
         fHp = fMaxHp;
     }
 
     private void Update()
     {
+        OnDamage();
+
         UpdateScale();
         PlayerIdle();
         BombText.text = BoomCount.ToString();

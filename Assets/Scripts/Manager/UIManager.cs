@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     public RectTransform tutorialPanel, tutorialbtn,tutorialSkip;
     public GameObject TutorialMangaer;
     public GameObject EffectArea;
+    public GameObject player;
 
     //  Option UI
     public RectTransform op_panel, back;
@@ -131,7 +132,7 @@ public class UIManager : MonoBehaviour
     {
         GameObject arrowBoard = GameObject.Find("ArrowParent");
         ArrowManager arrowManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ArrowManager>();
-        Player.BoomCount = 0;
+        player.GetComponent<Player>().PlayerReset();
         foreach (Transform child in arrowBoard.transform)
         {
             Destroy(child.gameObject);
