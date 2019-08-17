@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        
         if (col.gameObject.tag == "Arrow")
         {
             fHp--;
@@ -228,7 +229,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-
         UpdateHp();
         PlayerIdle();
         BombText.text = BoomCount.ToString();
