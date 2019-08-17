@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         if (col.gameObject.tag == "Arrow")
         {
             fHp--;
+            Handheld.Vibrate();
             Destroy(col.gameObject);
         }
         if (col.gameObject.tag.Equals("Item"))

@@ -915,12 +915,8 @@ MonoBehaviour:
   bLeft: 0
   bRight: 0
   fHp: 0
-  fMaxHp: 1.2
-  fMinHp: 0.5
-  fDamage: 0.3
+  fMaxHp: 2
   IsTracking: 0
-  fHpTemp: 0
-  IsHeal: 0
 --- !u!95 &267586909
 Animator:
   serializedVersion: 3
