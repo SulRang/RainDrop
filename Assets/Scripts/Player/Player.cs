@@ -32,18 +32,14 @@ public class Player : MonoBehaviour
     private float fAnimationAngle = 0;
 
     public float fHp;
-    public float fMaxHp = 1f;
-    public float fMinHp = 0.2f;
-    public float fDamage = 0.3f;
+    public float fMaxHp = 3f;
     public bool IsTracking = false;
-    public float fHpTemp = 0f;
-    public bool IsHeal = false;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Arrow")
         {
-            IsTracking = true;
+            fHp--;
             Destroy(col.gameObject);
         }
         if (col.gameObject.tag.Equals("Item"))
@@ -55,7 +51,7 @@ public class Player : MonoBehaviour
         }
         if (col.gameObject.name.Equals("Heal"))
         {
-            IsHeal = true;
+            fHp++;
             Destroy(col.gameObject);
         }
     }
@@ -106,19 +102,17 @@ public class Player : MonoBehaviour
         Umbrella.SetActive(false);
     }
     
-    private void UpdateScale()
+    private void UpdateHp()
     {
-        if(fHp < fMinHp)
+        if(fHp < 0)
         {
             PlayerResult();
-            fHp = fMinHp;
+            fHp = 0;
         }
         if(fHp > fMaxHp)
         {
             fHp = fMaxHp;
         }
-
-        transform.localScale = new Vector3(fHp * 0.25f, fHp * 0.25f, 0f);
     }
 
     public void ActiveBoom()
@@ -217,38 +211,10 @@ public class Player : MonoBehaviour
         fSpeed = 5f;
     }
 
-    private void OnDamage()
-    {
-        if (IsTracking)
-        {
-            if (fHpTemp > fDamage)
-            {
-                IsTracking = false;
-                fHpTemp = 0f;
-            }
-            fHpTemp += Time.deltaTime;
-            fHp -= Time.deltaTime;
-        }
-    }
-
     public void PlayerReset()
     {
         BoomCount = 0;
         fHp = fMaxHp;
-    }
-
-    public void OnHeal()
-    {
-        if(IsHeal)
-        {
-            if(fHpTemp > fDamage)
-            {
-                IsHeal = false;
-                fHpTemp = 0f;
-            }
-            fHpTemp += Time.deltaTime;
-            fHp += Time.deltaTime;
-        }
     }
 
     private void Start()
@@ -261,9 +227,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        OnDamage();
 
-        UpdateScale();
+        UpdateHp();
         PlayerIdle();
         BombText.text = BoomCount.ToString();
 

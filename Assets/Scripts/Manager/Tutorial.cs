@@ -281,7 +281,7 @@ public class Tutorial : MonoBehaviour
             if (ArrowParent.transform.childCount == 0)
                 step8 = true;
         }
-        if (tutorialStep == 8)
+        if (tutorialStep == 9)
         {
             if (ArrowParent.transform.childCount == 0)
                 step9 = true;
