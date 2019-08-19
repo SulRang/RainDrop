@@ -19,6 +19,10 @@ public class Tutorial : MonoBehaviour
     public GameObject PlayerGO;
     public GameObject ArrowParent;
 
+    public GameObject Target;
+    public GameObject[] ViewTarget;
+    private GameObject GoDestory;
+
     private ArrowManager m_ArrowManager;
     private Player m_Player;
 
@@ -119,6 +123,7 @@ public class Tutorial : MonoBehaviour
         //TutorialText.text = "You can move a clockwise direction by touch screen on right, pause right";
         TutorialText.text = "오른쪽화면을 터치하면 플레이어는 시계방향으로 움직입니다.";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
+        GoDestory = Instantiate(ViewTarget[0], new Vector3(4.5f, 0f, 0f), Quaternion.identity);
         TutorialPanel.active = true;
         TutorialCheck = false;
         GameManager.Instance.IsTutorial = false;
@@ -131,6 +136,7 @@ public class Tutorial : MonoBehaviour
         //TutorialText.text = "You can move a clockwise direction by touch screen on Left, pause left";
         TutorialText.text = "왼쪽화면을 터치하면 플레이어는 반시계방향으로 움직입니다.";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
+        GoDestory = Instantiate(ViewTarget[0], new Vector3(-4.5f, 0f, 0f), Quaternion.identity);
         TutorialPanel.active = true;
         TutorialCheck = false;
         GameManager.Instance.IsTutorial = false;
@@ -154,7 +160,7 @@ public class Tutorial : MonoBehaviour
         TutorialText.text = "기본 물방울은 아무 특징이 없습니다.";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialPanel.active = true;
-        ArrowManager.Instance.MakeArrowToVector(0, new Vector3(0f, 10f, 0f));
+        Target = ArrowManager.Instance.MakeArrowToVector(0, new Vector3(0f, 10f, 0f));
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
@@ -249,6 +255,7 @@ public class Tutorial : MonoBehaviour
             {
                 temp = 0f;
                 step3 = true;
+                Destroy(GoDestory);
             }
         }
         if(tutorialStep == 4)
@@ -259,42 +266,72 @@ public class Tutorial : MonoBehaviour
             {
                 temp = 0f;
                 step4 = true;
+                Destroy(GoDestory);
             }
         }
         if(tutorialStep == 5)
         {
             if (ArrowParent.transform.childCount == 0)
+            {
                 step5 = true;
+                if (GoDestory != null)
+                    Destroy(GoDestory);
+            }
         }
         if(tutorialStep == 6)
         {
             if (ArrowParent.transform.childCount == 0)
+            {
                 step6 = true;
+                if (GoDestory != null)
+                    Destroy(GoDestory);
+            }
+
         }
         if(tutorialStep == 7)
         {
             if (ArrowParent.transform.childCount == 0)
+            {
                 step7 = true;
+                if (GoDestory != null)
+                    Destroy(GoDestory);
+            }
         }
         if(tutorialStep == 8)
         {
             if (ArrowParent.transform.childCount == 0)
+            {
                 step8 = true;
+                if (GoDestory != null)
+                    Destroy(GoDestory);
+            }
         }
         if (tutorialStep == 9)
         {
             if (ArrowParent.transform.childCount == 0)
+            {
                 step9 = true;
+                if (GoDestory != null)
+                    Destroy(GoDestory);
+            }
         }
         if (tutorialStep == 10)
         {
             if (ArrowParent.transform.childCount == 0)
+            {
                 step10 = true;
+                if (GoDestory != null)
+                    Destroy(GoDestory);
+            }
         }
         if (tutorialStep == 11)
         {
             if (ArrowParent.transform.childCount == 0)
+            {
                 step11 = true;
+                if (GoDestory != null)
+                    Destroy(GoDestory);
+            }
         }
     }
 }

@@ -2377,6 +2377,9 @@ MonoBehaviour:
   GamemanagerGO: {fileID: 1211388171}
   PlayerGO: {fileID: 267586902}
   ArrowParent: {fileID: 1624776435}
+  Target: {fileID: 0}
+  ViewTarget:
+  - {fileID: 2815579651334200180, guid: 436e6f689c4eea042a0f6b346b5b13ea, type: 3}
 --- !u!1 &689353846
 GameObject:
   m_ObjectHideFlags: 0
@@ -5917,7 +5920,7 @@ Transform:
   m_GameObject: {fileID: 1624446155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 8, y: 8, z: 0}
+  m_LocalScale: {x: 7, y: 7, z: 0}
   m_Children: []
   m_Father: {fileID: 1051979340}
   m_RootOrder: 4

@@ -50,17 +50,20 @@ public class ArrowManager : MonoBehaviour
         }
     }
 
-    public void MakeArrowToVector(int number, Vector3 pos)
+    public GameObject MakeArrowToVector(int number, Vector3 pos)
     {
         try
         {
             GameObject instance = Instantiate(Arrows[number], pos, Quaternion.identity);
             instance.transform.SetParent(ArrowHolder);
+            return instance;
         }
         catch (NullReferenceException ex)
         {
             Debug.Log(ex.ToString());
+            return null;
         }
+       
     }
 
     public void MakeArrow()
