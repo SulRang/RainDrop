@@ -42,9 +42,23 @@ public class UIManager : MonoBehaviour
     //  Result UI
     public RectTransform rs_panel, retry, home;
 
+    public RectTransform test;
+
     void Start()
     {
 
+    }
+
+    public void TestBtn()
+    {
+        CloseMain();
+        OpenTest();
+    }
+
+    public void TestCloseBtn()
+    {
+        OpenMenu();
+        CloseTest();
     }
 
     public void StartBnt()
@@ -148,6 +162,15 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void OpenTest()
+    {
+        test.DOAnchorPos(new Vector2(0f, 0f), UI_duration);
+    }
+
+    public void CloseTest()
+    {
+        test.DOAnchorPos(new Vector2(0f, 900f), UI_duration);
+    }
 
     public void MusicBnt()
     {
