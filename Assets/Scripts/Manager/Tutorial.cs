@@ -10,18 +10,25 @@ public class Tutorial : MonoBehaviour
 
     public Sprite[] TutorialSprite;
 
+    [Header("Panel 1")]
     public GameObject TutorialPanel;
     public Image TutorialImage;
     public Text TutorialText;
     public bool TutorialCheck = false;
 
+    [Header("Panel 2")]
+    public GameObject TutorialPanel2;
+    public Text TutorialText2;
+    public bool TutorialCheck2 = false;
+
     public GameObject GamemanagerGO;
     public GameObject PlayerGO;
     public GameObject ArrowParent;
 
-    public GameObject Target;
+    public GameObject Target;               // Arrow
     public GameObject[] ViewTarget;
-    private GameObject GoDestory;
+    private GameObject GoDestory;           // UI Destory
+    public Vector3 Zer0 = Vector3.zero;
 
     private ArrowManager m_ArrowManager;
     private Player m_Player;
@@ -37,6 +44,8 @@ public class Tutorial : MonoBehaviour
     private bool step10 = false;
     private bool step11 = false;
 
+    private bool tempbool = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,10 +55,6 @@ public class Tutorial : MonoBehaviour
         StartCoroutine(TutorialStart());
     }
 
-    public void Step2Button()
-    {
-        step2 = true;
-    }
 
     IEnumerator TutorialStart()
     {
@@ -91,6 +96,14 @@ public class Tutorial : MonoBehaviour
     {
         GameManager.Instance.IsTutorial = true;
         TutorialCheck = true;
+    }
+
+    public void NextButton2()
+    {
+        GameManager.Instance.IsTutorial = true;
+        TutorialCheck = true;
+        Destroy(GoDestory);
+        TutorialPanel2.active = false;
     }
 
     void StartTutorial()        // step.0
@@ -145,6 +158,7 @@ public class Tutorial : MonoBehaviour
 
     void StartArrowTutorial()   //step.4
     {
+        tempbool = false;
         // You have to avoid flying drops of water, if you can not avoid it, you die!.
         //ㅆutorialText.text = "You have to avoid flying drops of water, if you can not avoid it, you die!.";
         TutorialText.text = "날아오는 물방울에 맞으면 플레이어는 게임오버됩니다.";
@@ -155,8 +169,9 @@ public class Tutorial : MonoBehaviour
         tutorialStep++;
     }
 
-    void NormalArrowTutorial()  //step.5
+    void NormalArrowTutorial()  //step.5  기준
     {
+        tempbool = false;
         TutorialText.text = "기본 물방울은 아무 특징이 없습니다.";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialPanel.active = true;
@@ -166,44 +181,84 @@ public class Tutorial : MonoBehaviour
         tutorialStep++;
     }
 
+    void NormalArrowDestory()           // 기준
+    {
+        GoDestory = Instantiate(ViewTarget[1], Target.transform.position, Quaternion.identity);
+        TutorialText2.text = "기본 물방울은 아무 특징이 없습니다.";
+        TutorialPanel2.active = true;
+        GameManager.Instance.IsTutorial = false;
+        tempbool = true;
+    }
+
     void SpeedArrowTutorial()   //step.6
     {
+        tempbool = false;
         TutorialText.text = "속도가 빠른 물방울은 일정순간에 빨라지고 길어집니다.";
         //TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialImage.sprite = TutorialSprite[tutorialStep];
-        ArrowManager.Instance.MakeArrowToVector(2, new Vector3(0f, 10f, 0f));
+        Target =  ArrowManager.Instance.MakeArrowToVector(2, new Vector3(0f, 10f, 0f));
         TutorialPanel.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
+    }
+
+    void SpeedArrowDestory()
+    {
+        GoDestory = Instantiate(ViewTarget[1], Target.transform.position, Quaternion.identity);
+        TutorialText2.text = "속도가 빠른 물방울은 일정순간에 빨라지고 길어집니다.";
+        TutorialPanel2.active = true;
+        GameManager.Instance.IsTutorial = false;
+        tempbool = true;
     }
 
     void RoundArrowTutorial()   //step.7
     {
+        tempbool = false;
         TutorialText.text = "회전하여 오는 물방울은 회오리모양을 하며 회전하여 날아옵니다.";
         //TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialImage.sprite = TutorialSprite[tutorialStep];
-        ArrowManager.Instance.MakeArrowToVector(1, new Vector3(0f, 10f, 0f));
+        Target = ArrowManager.Instance.MakeArrowToVector(1, new Vector3(0f, 10f, 0f));
         TutorialPanel.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
+    }
+
+    void RoundArrowDestory()
+    {
+        GoDestory = Instantiate(ViewTarget[1], Target.transform.position, Quaternion.identity);
+        TutorialText2.text = "회전하여 오는 물방울은 회오리모양을 하며 회전하여 날아옵니다.";
+        TutorialPanel2.active = true;
+        GameManager.Instance.IsTutorial = false;
+        tempbool = true;
     }
 
     void PositionArrowTutorial()    //step.8
     {
+        tempbool = false;
         TutorialText.text = "순간이동을 하는 물방울은 일정순간에 사라집니다.";
         //TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialImage.sprite = TutorialSprite[tutorialStep];
-        ArrowManager.Instance.MakeArrowToVector(3, new Vector3(0f, 10f, 0f));
+        Target = ArrowManager.Instance.MakeArrowToVector(3, new Vector3(0f, 10f, 0f));
         TutorialPanel.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
     }
 
+    void PositionArrowDestory()
+    {
+        GoDestory = Instantiate(ViewTarget[1], Target.transform.position, Quaternion.identity);
+        TutorialText2.text = "순간이동을 하는 물방울은 일정순간에 사라집니다.";
+        TutorialPanel2.active = true;
+        GameManager.Instance.IsTutorial = false;
+        tempbool = true;
+    }
+
     void StartBombTutorial()        //step.9
     {
+        tempbool = false;
         TutorialText.text = "만약에 레벨이 오르면 우산이 생성됩니다.";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
         TutorialPanel.active = true;
@@ -214,13 +269,23 @@ public class Tutorial : MonoBehaviour
 
     void GetBombTutorial()          //step.10
     {
+        tempbool = false;
         TutorialText.text = "우산에 다가가서 우산을 획득하세요.";
         TutorialImage.sprite = TutorialSprite[tutorialStep];
-        ArrowManager.Instance.MakeBoom();
+        Target = ArrowManager.Instance.MakeBoom();
         GameManager.Instance.IsTutorial = false;
         TutorialPanel.active = true;
         TutorialCheck = false;
         tutorialStep++;
+    }
+
+    void GetBombDestory()
+    {
+        GoDestory = Instantiate(ViewTarget[1], Target.transform.position, Quaternion.identity);
+        TutorialText2.text = "우산에 다가가서 우산을 획득하세요.";
+        TutorialPanel2.active = true;
+        GameManager.Instance.IsTutorial = false;
+        tempbool = true;
     }
 
     void UseBombTutorial()          //step.11
@@ -243,6 +308,11 @@ public class Tutorial : MonoBehaviour
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
+    }
+
+    public void DestoryTarget()
+    {
+        Destroy(GoDestory);
     }
 
     private void Update()
@@ -280,6 +350,15 @@ public class Tutorial : MonoBehaviour
         }
         if(tutorialStep == 6)
         {
+            if (!tempbool)
+            {
+                if (Vector3.Distance(Target.transform.position, Zer0) < 3.5f)
+                {
+                    NormalArrowDestory();
+                    return;
+                }
+            }
+
             if (ArrowParent.transform.childCount == 0)
             {
                 step6 = true;
@@ -290,6 +369,15 @@ public class Tutorial : MonoBehaviour
         }
         if(tutorialStep == 7)
         {
+            if (!tempbool)
+            {
+                if (Vector3.Distance(Target.transform.position, Zer0) < 3.5f)
+                {
+                    RoundArrowDestory();
+                    return;
+                }
+            }
+
             if (ArrowParent.transform.childCount == 0)
             {
                 step7 = true;
@@ -299,6 +387,15 @@ public class Tutorial : MonoBehaviour
         }
         if(tutorialStep == 8)
         {
+            if (!tempbool)
+            {
+                if (Vector3.Distance(Target.transform.position, Zer0) < 3.5f)
+                {
+                    PositionArrowDestory();
+                    return;
+                }
+            }
+
             if (ArrowParent.transform.childCount == 0)
             {
                 step8 = true;
@@ -308,6 +405,7 @@ public class Tutorial : MonoBehaviour
         }
         if (tutorialStep == 9)
         {
+
             if (ArrowParent.transform.childCount == 0)
             {
                 step9 = true;
@@ -317,6 +415,15 @@ public class Tutorial : MonoBehaviour
         }
         if (tutorialStep == 10)
         {
+            if (!tempbool)
+            {
+                if (Vector3.Distance(Target.transform.position, Zer0) < 3.5f)
+                {
+                    GetBombDestory();
+                    return;
+                }
+            }
+
             if (ArrowParent.transform.childCount == 0)
             {
                 step10 = true;

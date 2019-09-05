@@ -47,6 +47,7 @@ public class GPGSManager : MonoBehaviour
         PlayGamesPlatform.DebugLogEnabled = true;
 
         PlayGamesPlatform.Activate();
+        Login();
         
     }
     // 로그인
@@ -71,6 +72,13 @@ public class GPGSManager : MonoBehaviour
             PlayGamesPlatform.Instance.SignOut();
         }
     }
+
+    public void Logout()
+    {
+        if (PlayGamesPlatform.Instance.IsAuthenticated() == true)
+            PlayGamesPlatform.Instance.SignOut();
+    }
+
     public void ShowLeaderboardUI()
     {
         if (Authenticated)

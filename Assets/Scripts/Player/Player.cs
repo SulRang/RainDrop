@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public bool bReserve = false;
     public bool bPlayerMove;
     public bool bPlayerControl;
     private UIManager mUIManager;
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     public GameObject UmbrellaEffectPref;
 
     public GameObject Umbrella;
+
+    public GameObject HPBar;
 
     public float fSpeed = 5f;
     public float fRadius = 1.5f;
@@ -40,6 +43,10 @@ public class Player : MonoBehaviour
      
         if (col.gameObject.tag == "Arrow")
         {
+            if (fHp > 0)
+            {
+                HPBar.transform.GetChild((int)fHp).gameObject.active = false;
+            }
             fHp--;
             Handheld.Vibrate();
             Destroy(col.gameObject);
@@ -81,22 +88,38 @@ public class Player : MonoBehaviour
     
     public void MoveLeft()
     {
-        bRight = true;
+        if (!bReserve)
+        {
+            bRight = true;
+        }
+        else
+        {
+            bLeft = true;
+        }
     }
 
     public void MoveRight()
     {
-        bLeft = true;
+        if (!bReserve)
+            bLeft = true;
+        else
+            bRight = true;
     }
 
     public void MoveLeftDown()
     {
-        bRight = false;
+        if (!bReserve)
+            bRight = false;
+        else
+            bLeft = false;
     }
 
     public void MoveRightDown()
     {
-        bLeft = false;
+        if (!bReserve)
+            bLeft = false;
+        else
+            bRight = false;
     }
 
     private void UmbrellaFalse()

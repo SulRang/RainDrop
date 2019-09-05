@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     public RectTransform op_panel, back;
 
     //  Ingame UI
-    public RectTransform score, pause, bomb, level,leveltext;
+    public RectTransform score, pause, bomb, level,leveltext,hpbar;
 
     //  Pause UI 
     public RectTransform ps_panel;
@@ -213,6 +213,7 @@ public class UIManager : MonoBehaviour
 
     void OpenIngame()
     {
+        hpbar.DOAnchorPos(new Vector2(0, 0), UI_duration);
         bomb.DOAnchorPos(new Vector2(850, -450), UI_duration);
         score.DOAnchorPos(new Vector2(-860, 495), UI_duration);
         pause.DOAnchorPos(new Vector2(855, 435), UI_duration);
@@ -222,6 +223,7 @@ public class UIManager : MonoBehaviour
 
     void CloseIngame()
     {
+        hpbar.DOAnchorPos(new Vector2(0, -200), UI_duration);
         bomb.DOAnchorPos(new Vector2(850, -600), UI_duration);
         score.DOAnchorPos(new Vector2(-860, 585), UI_duration);
         pause.DOAnchorPos(new Vector2(855, 620), UI_duration);

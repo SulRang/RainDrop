@@ -99,7 +99,7 @@ public class ArrowManager : MonoBehaviour
         }
     }
 
-    public void MakeBoom()
+    public GameObject MakeBoom()
     {
         float random = Random.Range(0, 100);
         float x = radius * Mathf.Cos(random);
@@ -107,6 +107,7 @@ public class ArrowManager : MonoBehaviour
 
         GameObject Object = Instantiate(Boom, new Vector3(x, y, 0f), Quaternion.identity);
         Object.transform.SetParent(ArrowHolder);
+        return Object;
     }
 
     public void ArrowUpdate()
