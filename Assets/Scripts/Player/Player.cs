@@ -86,6 +86,11 @@ public class Player : MonoBehaviour
         AdManager.Instance.IsShowAd();
     }
     
+    public void ReserveBtn()
+    {
+        bReserve = !bReserve;
+    }
+
     public void MoveLeft()
     {
         if (!bReserve)
