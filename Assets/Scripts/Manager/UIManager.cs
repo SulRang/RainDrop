@@ -185,6 +185,10 @@ public class UIManager : MonoBehaviour
         AudioManager.Instance.EffectsSource.mute = !(AudioManager.Instance.EffectsSource.mute);
     }
 
+    public void VibBtn()
+    {
+        AudioManager.Instance.Vib = !AudioManager.Instance.Vib;
+    }
 
     void CloseMain()
     {

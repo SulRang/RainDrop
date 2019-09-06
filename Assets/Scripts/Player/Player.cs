@@ -48,7 +48,8 @@ public class Player : MonoBehaviour
                 HPBar.transform.GetChild((int)fHp).gameObject.active = false;
             }
             fHp--;
-            Handheld.Vibrate();
+            if(!AudioManager.Instance.Vib)
+                Handheld.Vibrate();
             Destroy(col.gameObject);
         }
         if (col.gameObject.tag.Equals("Item"))

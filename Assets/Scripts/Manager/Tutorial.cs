@@ -10,10 +10,6 @@ public class Tutorial : MonoBehaviour
 
     public Sprite[] TutorialSprite;
 
-    [Header("Panel 1")]
-    public GameObject TutorialPanel;
-    public Image TutorialImage;
-    public Text TutorialText;
     public bool TutorialCheck = false;
 
     [Header("Panel 2")]
@@ -25,6 +21,7 @@ public class Tutorial : MonoBehaviour
     public GameObject PlayerGO;
     public GameObject ArrowParent;
 
+    public GameObject UmbrellaBtn;
     public GameObject Target;               // Arrow
     public GameObject[] ViewTarget;
     private GameObject GoDestory;           // UI Destory
@@ -79,6 +76,7 @@ public class Tutorial : MonoBehaviour
         GetBombTutorial();
         yield return new WaitWhile(() => tutorialStep < 10 || !TutorialCheck || !step10);
         UseBombTutorial();
+        UseBombDestory();
         yield return new WaitWhile(() => tutorialStep < 11 || !TutorialCheck || !step11);
         LastTutorial();
         yield return new WaitWhile(() => tutorialStep < 12 || !TutorialCheck);
@@ -96,23 +94,15 @@ public class Tutorial : MonoBehaviour
     {
         GameManager.Instance.IsTutorial = true;
         TutorialCheck = true;
-    }
-
-    public void NextButton2()
-    {
-        GameManager.Instance.IsTutorial = true;
-        TutorialCheck = true;
-        Destroy(GoDestory);
+        if(GoDestory != null && GoDestory.name != "Check1(Clone)")
+            Destroy(GoDestory);
         TutorialPanel2.active = false;
     }
 
-    void StartTutorial()        // step.0
+    void StartTutorial()
     {
-        // Welcome To RainDrop!
-        //TutorialText.text = "Welcome To RainDrop!";
-        TutorialText.text = "RainDrop 튜토리얼입니다.";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialPanel.active = true;
+        TutorialText2.text = "RainDrop 튜토리얼입니다.";
+        TutorialPanel2.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
@@ -122,9 +112,8 @@ public class Tutorial : MonoBehaviour
     {
         // Users can move by bursting the screens on the left and right.
         //TutorialText.text = "Users can move by bursting the screens on the left and right.";
-        TutorialText.text = "플레이어는 오른쪽과 왼쪽화면을 터치하여 움직일 수 있습니다.";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialPanel.active = true;
+        TutorialText2.text = "플레이어는 오른쪽과 왼쪽화면을 터치하여 움직일 수 있습니다.";
+        TutorialPanel2.active = true;
         TutorialCheck = false;
         GameManager.Instance.IsTutorial = false;
         tutorialStep++;
@@ -134,10 +123,9 @@ public class Tutorial : MonoBehaviour
     {
         // You can move a clockwise direction by touch screen on right;
         //TutorialText.text = "You can move a clockwise direction by touch screen on right, pause right";
-        TutorialText.text = "오른쪽화면을 터치하면 플레이어는 시계방향으로 움직입니다.";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialText2.text = "오른쪽화면을 터치하면 플레이어는 시계방향으로 움직입니다.";
         GoDestory = Instantiate(ViewTarget[0], new Vector3(4.5f, 0f, 0f), Quaternion.identity);
-        TutorialPanel.active = true;
+        TutorialPanel2.active = true;
         TutorialCheck = false;
         GameManager.Instance.IsTutorial = false;
         tutorialStep++;
@@ -147,10 +135,9 @@ public class Tutorial : MonoBehaviour
     {
         // You can move a clockwise direction by touch screen on Left;
         //TutorialText.text = "You can move a clockwise direction by touch screen on Left, pause left";
-        TutorialText.text = "왼쪽화면을 터치하면 플레이어는 반시계방향으로 움직입니다.";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialText2.text = "왼쪽화면을 터치하면 플레이어는 반시계방향으로 움직입니다.";
         GoDestory = Instantiate(ViewTarget[0], new Vector3(-4.5f, 0f, 0f), Quaternion.identity);
-        TutorialPanel.active = true;
+        TutorialPanel2.active = true;
         TutorialCheck = false;
         GameManager.Instance.IsTutorial = false;
         tutorialStep++;
@@ -161,9 +148,8 @@ public class Tutorial : MonoBehaviour
         tempbool = false;
         // You have to avoid flying drops of water, if you can not avoid it, you die!.
         //ㅆutorialText.text = "You have to avoid flying drops of water, if you can not avoid it, you die!.";
-        TutorialText.text = "날아오는 물방울에 맞으면 플레이어는 게임오버됩니다.";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialPanel.active = true;
+        TutorialText2.text = "날아오는 물방울에 맞으면 플레이어는 게임오버됩니다.";
+        TutorialPanel2.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
@@ -172,11 +158,10 @@ public class Tutorial : MonoBehaviour
     void NormalArrowTutorial()  //step.5  기준
     {
         tempbool = false;
-        TutorialText.text = "기본 물방울은 아무 특징이 없습니다.";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialPanel.active = true;
+        TutorialText2.text = "기본 물방울은 아무 특징이 없습니다.";
+        //TutorialPanel2.active = true;
         Target = ArrowManager.Instance.MakeArrowToVector(0, new Vector3(0f, 10f, 0f));
-        GameManager.Instance.IsTutorial = false;
+        //GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
     }
@@ -193,12 +178,10 @@ public class Tutorial : MonoBehaviour
     void SpeedArrowTutorial()   //step.6
     {
         tempbool = false;
-        TutorialText.text = "속도가 빠른 물방울은 일정순간에 빨라지고 길어집니다.";
-        //TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialText2.text = "속도가 빠른 물방울은 일정순간에 빨라지고 길어집니다.";
         Target =  ArrowManager.Instance.MakeArrowToVector(2, new Vector3(0f, 10f, 0f));
-        TutorialPanel.active = true;
-        GameManager.Instance.IsTutorial = false;
+        //TutorialPanel.active = true;
+        //GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
     }
@@ -215,12 +198,10 @@ public class Tutorial : MonoBehaviour
     void RoundArrowTutorial()   //step.7
     {
         tempbool = false;
-        TutorialText.text = "회전하여 오는 물방울은 회오리모양을 하며 회전하여 날아옵니다.";
-        //TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialText2.text = "회전하여 오는 물방울은 회오리모양을 하며 회전하여 날아옵니다.";
         Target = ArrowManager.Instance.MakeArrowToVector(1, new Vector3(0f, 10f, 0f));
-        TutorialPanel.active = true;
-        GameManager.Instance.IsTutorial = false;
+        //TutorialPanel2.active = true;
+        //GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
     }
@@ -237,12 +218,10 @@ public class Tutorial : MonoBehaviour
     void PositionArrowTutorial()    //step.8
     {
         tempbool = false;
-        TutorialText.text = "순간이동을 하는 물방울은 일정순간에 사라집니다.";
-        //TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialText2.text = "순간이동을 하는 물방울은 일정순간에 사라집니다.";
         Target = ArrowManager.Instance.MakeArrowToVector(3, new Vector3(0f, 10f, 0f));
-        TutorialPanel.active = true;
-        GameManager.Instance.IsTutorial = false;
+        //TutorialPanel2.active = true;
+        //GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
     }
@@ -259,9 +238,8 @@ public class Tutorial : MonoBehaviour
     void StartBombTutorial()        //step.9
     {
         tempbool = false;
-        TutorialText.text = "만약에 레벨이 오르면 우산이 생성됩니다.";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialPanel.active = true;
+        TutorialText2.text = "만약에 레벨이 오르면 우산이 생성됩니다.";
+        TutorialPanel2.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;
@@ -270,11 +248,10 @@ public class Tutorial : MonoBehaviour
     void GetBombTutorial()          //step.10
     {
         tempbool = false;
-        TutorialText.text = "우산에 다가가서 우산을 획득하세요.";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
+        TutorialText2.text = "우산에 다가가서 우산을 획득하세요.";
         Target = ArrowManager.Instance.MakeBoom();
-        GameManager.Instance.IsTutorial = false;
-        TutorialPanel.active = true;
+        //GameManager.Instance.IsTutorial = false;
+        //TutorialPanel2.active = true;
         TutorialCheck = false;
         tutorialStep++;
     }
@@ -290,21 +267,29 @@ public class Tutorial : MonoBehaviour
 
     void UseBombTutorial()          //step.11
     {
-        TutorialText.text = "위험한 순간에 우산을 사용하여 위기를 넘겨보세요.";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialPanel.active = true;
-        GameManager.Instance.IsTutorial = false;
+        TutorialText2.text = "위험한 순간에 우산을 사용하여 위기를 넘겨보세요.";
+        //TutorialPanel2.active = true;
+        //GameManager.Instance.IsTutorial = false;
         for (int i = 0; i < 30; i++)
             ArrowManager.Instance.MakeArrowToSelect(0,10f);
         TutorialCheck = false;
         tutorialStep++;
     }
 
+    void UseBombDestory()
+    {
+        GoDestory = Instantiate(ViewTarget[1], UmbrellaBtn.transform.position, Quaternion.identity);
+        GoDestory.transform.localScale = new Vector3(0.75f, 0.75f, 0f);
+        TutorialText2.text = "위험한 순간에 우산을 사용하여 위기를 넘겨보세요.";
+        TutorialPanel2.active = true;
+        GameManager.Instance.IsTutorial = false;
+        tempbool = true;
+    }
+
     void LastTutorial()
     {
-        TutorialText.text = "튜토리얼을 끝났습니다. 직접 플레이 보세요!!";
-        TutorialImage.sprite = TutorialSprite[tutorialStep];
-        TutorialPanel.active = true;
+        TutorialText2.text = "튜토리얼을 끝났습니다. 직접 플레이 보세요!!";
+        TutorialPanel2.active = true;
         GameManager.Instance.IsTutorial = false;
         TutorialCheck = false;
         tutorialStep++;

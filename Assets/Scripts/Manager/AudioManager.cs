@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
     public float EffectValue = 1f;
     public float LowPitch = 0.95f;
     public float HighPitch = 1.05f;
+    public bool Vib = true;
 
     public static AudioManager Instance = null;
 
@@ -38,28 +39,27 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
     }
 
     public void CheckSilder()
     {
-        if(BackgroundMusic == null || EffectMusic == null)
+        //if(BackgroundMusic == null || EffectMusic == null)
         {
-            BackgroundMusic = GameObject.Find("Canvas/option/Panel/bgm").GetComponent<Slider>();
-            EffectMusic = GameObject.Find("Canvas/option/Panel/sfx").GetComponent<Slider>();
+            //BackgroundMusic = GameObject.Find("Canvas/option/Panel/bgm").GetComponent<Slider>();
+            //EffectMusic = GameObject.Find("Canvas/option/Panel/sfx").GetComponent<Slider>();
 
-            BackgroundMusic.value = PlayerPrefs.GetFloat("Background", BackgroundValue);
-            EffectMusic.value = PlayerPrefs.GetFloat("Effect", EffectValue);
+            //BackgroundMusic.value = PlayerPrefs.GetFloat("Background", BackgroundValue);
+            //EffectMusic.value = PlayerPrefs.GetFloat("Effect", EffectValue);
         }
     }
 
     public void InitAudioManager()
     {
-        BackgroundMusic = GameObject.Find("Canvas/option/Panel/bgm").GetComponent<Slider>();
-        EffectMusic = GameObject.Find("Canvas/option/Panel/sfx").GetComponent<Slider>();
+        //BackgroundMusic = GameObject.Find("Canvas/option/Panel/bgm").GetComponent<Slider>();
+        //EffectMusic = GameObject.Find("Canvas/option/Panel/sfx").GetComponent<Slider>();
 
-        BackgroundMusic.value = PlayerPrefs.GetFloat("Background", BackgroundValue);
-        EffectMusic.value = PlayerPrefs.GetFloat("Effect", EffectValue);
+        //BackgroundMusic.value = PlayerPrefs.GetFloat("Background", BackgroundValue);
+        //EffectMusic.value = PlayerPrefs.GetFloat("Effect", EffectValue);
     }
 
     // Play a single clip through the music source.
