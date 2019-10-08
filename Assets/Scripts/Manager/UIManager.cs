@@ -151,10 +151,11 @@ public class UIManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        ScoreManager.CScore = 0;
-        LevelManager.Instance.Initialize();
+        AdManager.Instance.ShowRewardedAd();
+        //ScoreManager.CScore = 0;
+        //LevelManager.Instance.Initialize();
         arrowManager.speed = 13;
-        LevelManager.Instance.gameLevel = 1;
+        //LevelManager.Instance.gameLevel = 1;
         GameManager.Instance.IsInGame = true;
         GameManager.Instance.IsResult = false;
         CloseResult();
