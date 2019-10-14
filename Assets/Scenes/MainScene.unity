@@ -2903,7 +2903,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reserve
+  m_Text: Reverse
 --- !u!222 &702705295
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3922,7 +3922,7 @@ GameObject:
   - component: {fileID: 984676696}
   - component: {fileID: 984676695}
   m_Layer: 5
-  m_Name: ReserveSwap
+  m_Name: ReverseSwap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -246,6 +246,8 @@ public class Player : MonoBehaviour
     {
         BoomCount = 0;
         fHp = fMaxHp;
+        HPBar.transform.GetChild((int)1).gameObject.active = true;
+        HPBar.transform.GetChild((int)2).gameObject.active = true;
     }
 
     private void Start()
