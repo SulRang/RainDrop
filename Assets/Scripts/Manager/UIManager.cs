@@ -155,6 +155,7 @@ public class UIManager : MonoBehaviour
         LevelManager.Instance.Initialize();
         arrowManager.speed = 13;
         LevelManager.Instance.gameLevel = 1;
+        Player.BoomCount = 3;
         GameManager.Instance.IsInGame = true;
         GameManager.Instance.IsResult = false;
         CloseResult();

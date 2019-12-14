@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public bool bReserve = false;
     public bool bPlayerMove;
     public bool bPlayerControl;
     private UIManager mUIManager;
@@ -86,46 +85,25 @@ public class Player : MonoBehaviour
         mUIManager.Result();
         AdManager.Instance.IsShowAd();
     }
-    
-    public void ReserveBtn()
-    {
-        bReserve = !bReserve;
-    }
 
     public void MoveLeft()
     {
-        if (!bReserve)
-        {
-            bRight = true;
-        }
-        else
-        {
-            bLeft = true;
-        }
+        bRight = true;
     }
 
     public void MoveRight()
     {
-        if (!bReserve)
             bLeft = true;
-        else
-            bRight = true;
     }
 
     public void MoveLeftDown()
     {
-        if (!bReserve)
             bRight = false;
-        else
-            bLeft = false;
     }
 
     public void MoveRightDown()
     {
-        if (!bReserve)
             bLeft = false;
-        else
-            bRight = false;
     }
 
     private void UmbrellaFalse()

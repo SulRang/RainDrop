@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour
     public float BackgroundValue = 1f;
     public Slider EffectMusic;
     public float EffectValue = 1f;
+    public Slider MainBackgroundMusic;
+    public Slider MainEffectMusic;
     public float LowPitch = 0.95f;
     public float HighPitch = 1.05f;
     public bool Vib = true;
@@ -107,5 +109,4 @@ public class AudioManager : MonoBehaviour
         EffectValue = EffectMusic.value;
         PlayerPrefs.SetFloat("Effect", EffectValue);
     }
-
 }
